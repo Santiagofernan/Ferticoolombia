@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, ArrowUp } from "lucide-react";
-
+import whatsappIcon from "@/assets/brand/whatsapp.webp";
 const WHATSAPP_NUMBER = "312 4804546";
 const WHATSAPP_MSG = encodeURIComponent("Hola Ferticolombia, quisiera recibir asesoría sobre sus fertilizantes.");
 
@@ -31,9 +31,9 @@ export function FloatingActions() {
         rel="noopener noreferrer"
         aria-label="Escríbenos por WhatsApp"
         className="group grid h-14 w-14 place-items-center rounded-full text-white shadow-[0_15px_40px_-10px_rgba(37,211,102,0.55)] transition hover:-translate-y-0.5"
-        style={{ background: "#25D366" }}
+        style={{ backgroundColor: "#ffffff" }}
       >
-        <MessageCircle className="h-6 w-6" strokeWidth={2.25} />
+        <img src={whatsappIcon} alt="WhatsApp" className="h-12 w-12 object-contain rounded-full" />
         <span className="pointer-events-none absolute right-16 whitespace-nowrap rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-background opacity-0 shadow-lg transition group-hover:opacity-100">
           Chatea con nosotros
         </span>

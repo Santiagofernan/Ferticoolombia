@@ -94,8 +94,8 @@ export function Contact() {
             transition={{ duration: 0.7, ease: EASE }}
             className="group relative overflow-hidden rounded-[28px] p-8 sm:p-10 transition-all duration-300 hover:-translate-y-1"
             style={{
-              background: "linear-gradient(135deg, #128C7E 0%, #25D366 55%, #4ade80 100%)",
-              boxShadow: "0 25px 60px -20px rgba(37, 211, 102, 0.55)",
+              background: "linear-gradient(135deg, #23786e 0%, #1cbf58 55%, #20af55 100%)",
+              boxShadow: "0 25px 60px -20px rgba(58, 242, 125, 0.55)",
             }}
           >
             <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:scale-110" />

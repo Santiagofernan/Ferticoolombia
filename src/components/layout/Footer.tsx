@@ -44,7 +44,7 @@ export function Footer() {
   return (
     <footer className="bg-footer text-footer-foreground">
       <div className="container-fc py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.8fr]">
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3" aria-label="Ferticolombia">
@@ -103,7 +103,7 @@ export function Footer() {
               <li className="flex gap-3">
                 <Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary-light" strokeWidth={2} />
                 <a href="mailto:contacto@ferticolombia.com" className="hover:text-white transition break-all">
-                  contacto@ferticolombia.com
+                  ferticoolombia@coocentral.co 
                 </a>
               </li>
             </ul>
