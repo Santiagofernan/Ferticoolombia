@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/layout/Hero";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
-import { About } from "@/components/sections/About";
+import { About } from "@/components/sections/Nosotros";
 import { Stats } from "@/components/sections/Stats";
 import { ParallaxCta } from "@/components/sections/ParallaxCta";
 import { Products } from "@/components/sections/Products";

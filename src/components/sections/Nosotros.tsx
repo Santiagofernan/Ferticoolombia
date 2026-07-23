@@ -205,7 +205,7 @@ export function About() {
           >
             Quiénes somos
           </motion.span>
-
+          
           <div className="grid gap-6 lg:gap-8 md:grid-cols-3">
             {corporateBlocks.map((block, i) => (
               <motion.div
