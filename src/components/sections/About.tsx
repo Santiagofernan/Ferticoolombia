@@ -7,8 +7,9 @@ import h1 from "@/assets/hero/h1.jpg";
 import h2 from "@/assets/hero/h2.jpg";
 import h3 from "@/assets/hero/h3.jpg";
 import h5 from "@/assets/hero/h5.jpg";
+import videoNosotros from "@/assets/about/video-nosotros.mp4";
 
-const gallery = [coffee, h1, h2, h3, h5];
+const gallery = [coffee, h1, h2, h3, h5, videoNosotros];
 
 const values = [
   {
@@ -74,10 +75,23 @@ export function About() {
   return (
     <section
       id="nosotros"
-      className="pt-24 md:pt-32 pb-12 md:pb-16"
-      style={{ backgroundColor: "var(--about-section-bg)" }}
+      className="relative overflow-hidden pt-24 md:pt-32 pb-12 md:pb-16"
     >
-      <div className="container-fc">
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={videoNosotros} type="video/mp4" />
+      </video>
+
+      {/* Capa oscura para mejorar la lectura */}
+      <div className="absolute inset-0 bg-black/55" />
+
+      <div className="relative z-10 container-fc">
         {/* Header block */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
           {/* Carrusel automático */}
@@ -87,7 +101,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: EASE }}
-            className="relative"
+            className="relative z-20"
           >
             <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-[24px] shadow-[var(--shadow-elevated)]">
               <AnimatePresence mode="sync">
@@ -140,16 +154,16 @@ export function About() {
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="font-display font-extrabold tracking-tight text-foreground text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] leading-[1.02]"
+              className="font-display font-extrabold tracking-tight text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] leading-[1.02]"
             >
               Aliados técnicos del productor colombiano
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="mt-6 text-lg text-foreground">
+            <motion.p variants={fadeUp} custom={2} className="mt-6 text-lg text-white/90">
               En Ferticolombia importamos y formulamos fertilizantes de alta eficiencia con foco en el rendimiento real
               de los cultivos. Más de dos décadas trabajando junto a agricultores, cooperativas y distribuidores en todo
               el territorio nacional.
             </motion.p>
-            <motion.p variants={fadeUp} custom={3} className="mt-4 text-lg text-foreground">
+            <motion.p variants={fadeUp} custom={3} className="mt-4 text-lg text-white/90">
               Nuestra misión es entregar soluciones nutricionales precisas, sostenibles y respaldadas por acompañamiento
               agronómico permanente.
             </motion.p>
