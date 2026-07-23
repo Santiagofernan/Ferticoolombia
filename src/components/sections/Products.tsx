@@ -18,11 +18,11 @@ function ProductCard({ product }: { product: IProduct }) {
           }}
         />
         <img
-          src={product.image}
-          alt={`Empaque de ${product.name} ${product.formula}`}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover p-1 transition-transform duration-500 group-hover:scale-105"
+            src={product.image}
+            alt={`Empaque de ${product.name} ${product.formula}`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-contain scale-110 transition-transform duration-500 group-hover:scale-125"
         />
         <div className="absolute top-4 left-4 rounded-full bg-white/95 backdrop-blur-sm px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-primary shadow-[var(--shadow-soft)]">
           {product.formula}
