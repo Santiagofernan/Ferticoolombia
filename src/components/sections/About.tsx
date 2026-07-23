@@ -201,7 +201,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="mb-8 md:mb-10 block text-center text-sm md:text-base font-bold uppercase tracking-[0.25em] text-primary"
+            className="mb-8 md:mb-10 block text-center text-sm md:text-base font-bold uppercase tracking-[0.25em] text-primary-light text-xl"
           >
             Quiénes somos
           </motion.span>

@@ -148,7 +148,7 @@ export function Products() {
           transition={{ duration: 0.7, ease: EASE }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.24em] text-[#A5D6A7]">
+          <span className="inline-block text-xl font-semibold uppercase tracking-[0.24em] text-[#A5D6A7] text-light">
             Nuestros productos
           </span>
           <h2 className="mt-4 font-display text-white text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.05] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">

@@ -52,8 +52,8 @@ export function Benefits() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+        >   
+          <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-primary-light">
             Por qué Ferticolombia
           </span>
           <h2 className="mt-4 font-display">
