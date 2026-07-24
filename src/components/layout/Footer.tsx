@@ -44,7 +44,7 @@ export function Footer() {
   return (
     <footer className="bg-footer text-footer-foreground">
       <div className="container-fc py-20">
-        <div className="grid gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.8fr]">
+        <div className="grid gap-12 lg:gap-16 xl:gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.5fr]">
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3" aria-label="Ferticolombia">
