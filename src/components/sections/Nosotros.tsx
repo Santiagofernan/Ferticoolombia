@@ -2,14 +2,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
 import { Leaf, Target, ShieldCheck, ArrowRight, Building2, Compass, Eye } from "lucide-react";
-import coffee from "@/assets/about/coffee.jpg";
-import h1 from "@/assets/hero/h1.jpg";
-import h2 from "@/assets/hero/h2.jpeg";
-import h3 from "@/assets/hero/h3.jpg";
-import h5 from "@/assets/hero/h5.jpeg";
 import videoNosotros from "@/assets/about/video-nosotros.mp4";
-
-const gallery = [coffee, h1, h2, h3, h5, videoNosotros];
 
 const values = [
   {
@@ -63,15 +56,6 @@ export function About() {
     offset: ["start end", "end start"],
   });
   const yMain = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % gallery.length);
-    }, 5000);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <section
       id="nosotros"
@@ -105,37 +89,12 @@ export function About() {
           >
             <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-[24px] shadow-[var(--shadow-elevated)]">
               <AnimatePresence mode="sync">
-                <motion.img
-                  key={gallery[index]}
-                  src={gallery[index]}
-                  alt="Ferticolombia en el campo colombiano"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.4, ease: EASE }}
-                  style={{ y: yMain }}
-                  className="absolute -inset-y-[8%] inset-x-0 h-[116%] w-full object-cover will-change-transform"
-                  loading="lazy"
-                />
               </AnimatePresence>
               <div
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
               />
-
-              {/* Indicadores */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
-                {gallery.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${
-                      i === index ? "w-8 bg-white" : "w-1.5 bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
-
             {/* Card flotante de experiencia */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
