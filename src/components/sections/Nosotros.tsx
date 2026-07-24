@@ -87,14 +87,6 @@ export function About() {
             transition={{ duration: 0.9, ease: EASE }}
             className="relative z-20"
           >
-            <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-[24px] shadow-[var(--shadow-elevated)]">
-              <AnimatePresence mode="sync">
-              </AnimatePresence>
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
-              />
-            </div>
             {/* Card flotante de experiencia */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -107,9 +99,13 @@ export function About() {
               <div className="mt-2 text-sm text-muted-foreground">años nutriendo el campo colombiano</div>
             </motion.div>
           </motion.div>
-
           {/* Contenido */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+          <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-80px" }}
+          className="mx-auto max-w-5xl text-center"
+          >
             <motion.h2
               variants={fadeUp}
               custom={1}
