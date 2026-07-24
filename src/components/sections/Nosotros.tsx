@@ -4,9 +4,9 @@ import { motion, AnimatePresence, useScroll, useTransform, type Variants } from 
 import { Leaf, Target, ShieldCheck, ArrowRight, Building2, Compass, Eye } from "lucide-react";
 import coffee from "@/assets/about/coffee.jpg";
 import h1 from "@/assets/hero/h1.jpg";
-import h2 from "@/assets/hero/h2.jpg";
+import h2 from "@/assets/hero/h2.jpeg";
 import h3 from "@/assets/hero/h3.jpg";
-import h5 from "@/assets/hero/h5.jpg";
+import h5 from "@/assets/hero/h5.jpeg";
 import videoNosotros from "@/assets/about/video-nosotros.mp4";
 
 const gallery = [coffee, h1, h2, h3, h5, videoNosotros];

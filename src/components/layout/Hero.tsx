@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Sprout, ArrowRight } from "lucide-react";
 
 import h1 from "@/assets/hero/h1.jpg";
-import h2 from "@/assets/hero/h2.jpg";
+import h2 from "@/assets/hero/h2.jpeg";
 import h3 from "@/assets/hero/h3.jpg";
 import h4 from "@/assets/hero/h4.avif";
-import h5 from "@/assets/hero/h5.jpg";
-import h6 from "@/assets/hero/h6.jpg";
+import h5 from "@/assets/hero/h5.jpeg";
+import h6 from "@/assets/hero/h6.jpeg";
 import h7 from "@/assets/hero/h7.jpg";
 
 const slides = [
-  { url: h5, alt: "Caficultor cosechando cerezas de café" },
+  { url: h5, alt: "cosecha de café" },
   { url: h7, alt: "Cultivo de café en Sevilla" },
   { url: h1, alt: "Flor de café en plena floración" },
   { url: h3, alt: "Finca de café y plátano" },
   { url: h4, alt: "Campo cultivado" },
   { url: h6, alt: "Cerezas de café maduras" },
-  { url: h2, alt: "Flores blancas del cafeto" },
+  { url: h2, alt: "Palo de café" },
 ];
 
 const INTERVAL = 2500;

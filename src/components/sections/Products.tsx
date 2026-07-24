@@ -110,7 +110,7 @@ function PromoBanner() {
 
   return (
     <div className="mt-16 sm:mt-24 mx-auto w-[96%] sm:w-[98%]">
-      <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] border border-white/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] h-[220px] xs:h-[280px] sm:h-[420px] md:h-[560px] lg:h-[680px]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-primary/15 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
         <AnimatePresence mode="sync">
           <motion.img
             key={bannerIndex}
@@ -120,7 +120,7 @@ function PromoBanner() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.9, ease: EASE }}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-conta transition-opacity duration-[1400ms] ease-out"
           />
         </AnimatePresence>
 
@@ -204,7 +204,7 @@ export function Products() {
         }}
       />
 
-      <div className="container-fc relative z-10">
+      <div className="container-fc w-full px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -297,10 +297,9 @@ export function Products() {
             })}
           </AnimatePresence>
         </div>
-
         {/* Banner promocional */}
-        <PromoBanner />
       </div>
+    <PromoBanner />
     </section>
   );
 }
