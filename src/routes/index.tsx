@@ -11,7 +11,7 @@ import { Crops } from "@/components/sections/Crops";
 import { Benefits } from "@/components/sections/Benefits";
 import { Brands } from "@/components/sections/Brands";
 import { Contact } from "@/components/sections/Contact";
-
+import PromoPopup from "@/components/layout/PromoPopup";
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -20,6 +20,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <PromoPopup />
       <main>
         <Hero />
         <About />

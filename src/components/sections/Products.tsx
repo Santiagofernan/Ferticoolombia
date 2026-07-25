@@ -319,7 +319,6 @@ export function Products() {
         </div>
         {/* Banner promocional */}
       </div>
-    <PromoBanner />
     </section>
   );
 }
