@@ -54,7 +54,7 @@ export function Stats() {
   return (
     <section
       ref={sectionRef}
-      aria-label="Ferticolombia en cifras"
+      aria-label="Ferticoolombia en cifras"
       className="relative isolate overflow-hidden py-24 lg:py-32 min-h-[620px] lg:min-h-[720px] flex items-center"
     >
       {/* Fondo con parallax */}

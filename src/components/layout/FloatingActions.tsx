@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MessageCircle, ArrowUp } from "lucide-react";
 import whatsappIcon from "@/assets/brand/whatsapp.webp";
 const WHATSAPP_NUMBER = "312 4804546";
-const WHATSAPP_MSG = encodeURIComponent("Hola Ferticolombia, quisiera recibir asesoría sobre sus fertilizantes.");
+const WHATSAPP_MSG = encodeURIComponent("Hola Ferticoolombia, quisiera recibir asesoría sobre sus fertilizantes.");
 
 export function FloatingActions() {
   const [show, setShow] = useState(false);

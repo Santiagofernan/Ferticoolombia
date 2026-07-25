@@ -77,15 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ferticolombia — Nutrición vegetal para el campo colombiano" },
+      { title: "Ferticoolombia" },
       {
         name: "description",
         content:
           "Más de 20 años importando y formulando fertilizantes de alta eficiencia para el productor colombiano. Soluciones técnicas, sostenibles y confiables.",
       },
-      { name: "author", content: "Ferticolombia" },
+      { name: "author", content: "Ferticoolombia" },
       { name: "theme-color", content: "#2E7D32" },
-      { property: "og:title", content: "Ferticolombia — Nutrición vegetal" },
+      { property: "og:title", content: "Ferticoolombia" },
       {
         property: "og:description",
         content:
@@ -93,10 +93,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "es_CO" },
-      { property: "og:site_name", content: "Ferticolombia" },
+      { property: "og:site_name", content: "Ferticoolombia" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Ferticolombia — Nutrición vegetal" },
+      { name: "twitter:title", content: "Ferticoolombia" },
       {
         name: "twitter:description",
         content:
@@ -126,7 +126,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Ferticolombia",
+          name: "Ferticoolombia",
           description:
             "Importación y formulación de fertilizantes de alta eficiencia para el agricultor colombiano.",
           areaServed: "CO",

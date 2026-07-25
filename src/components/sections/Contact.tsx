@@ -12,7 +12,7 @@ const PHONE_DISPLAY = "+57 312 480 4546";
 const PHONE_RAW = "+57 312 480 4546";
 const ADDRESS = "Garzón, Huila — Colombia";
 const WHATSAPP_MSG = encodeURIComponent(
-  "Hola Ferticolombia, quisiera recibir asesoría técnica sobre sus fertilizantes.",
+  "Hola Ferticoolombia, quisiera recibir asesoría técnica sobre sus fertilizantes.",
 );
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER_RAW}?text=${WHATSAPP_MSG}`;
 

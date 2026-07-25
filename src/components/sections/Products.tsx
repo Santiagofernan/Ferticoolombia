@@ -8,8 +8,8 @@ import banner1 from "@/assets/banners/banner1.png";
 import banner2 from "@/assets/banners/banner2.png";
 
 const promotionalBanners = [
-  { image: banner1, alt: "Promoción Ferticolombia 1" },
-  { image: banner2, alt: "Promoción Ferticolombia 2" },
+  { image: banner1, alt: "Promoción Ferticoolombia 1" },
+  { image: banner2, alt: "Promoción Ferticoolombia 2" },
 ];
 
 function ProductCard({ product }: { product: IProduct }) {

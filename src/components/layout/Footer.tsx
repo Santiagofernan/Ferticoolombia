@@ -35,9 +35,9 @@ const columns = [
 ];
 
 const socials = [
-  { Icon: Facebook, label: "Facebook de Ferticolombia", href: "#" },
-  { Icon: Instagram, label: "Instagram de Ferticolombia", href: "#" },
-  { Icon: Linkedin, label: "LinkedIn de Ferticolombia", href: "#" },
+  { Icon: Facebook, label: "Facebook de Ferticoolombia", href: "#" },
+  { Icon: Instagram, label: "Instagram de Ferticoolombia", href: "#" },
+  { Icon: Linkedin, label: "LinkedIn de Ferticoolombia", href: "#" },
 ];
 
 export function Footer() {
@@ -47,8 +47,8 @@ export function Footer() {
         <div className="grid gap-12 lg:gap-16 xl:gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.5fr]">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-3" aria-label="Ferticolombia">
-              <img src={logo} alt="Ferticolombia" className="h-12 w-auto" />
+            <Link to="/" className="flex items-center gap-3" aria-label="Ferticoolombia">
+              <img src={logo} alt="Ferticoolombia" className="h-12 w-auto" />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/60 max-w-xs">
               Más de dos décadas nutriendo el crecimiento del campo colombiano con fertilizantes de alta eficiencia.
@@ -102,7 +102,7 @@ export function Footer() {
               </li>
               <li className="flex gap-3">
                 <Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary-light" strokeWidth={2} />
-                <a href="mailto:contacto@ferticolombia.com" className="hover:text-white transition break-all">
+                <a href="mailto:contacto@ferticoolombia.com" className="hover:text-white transition break-all">
                   ferticoolombia@coocentral.co 
                 </a>
               </li>
@@ -113,7 +113,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-fc py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Ferticolombia. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Ferticoolombia. Todos los derechos reservados.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition">
               Política de privacidad

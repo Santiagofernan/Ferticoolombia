@@ -1,4 +1,4 @@
-# Guía de assets locales — Ferticolombia
+# Guía de assets locales — Ferticoolombia
 
 Todas las imágenes viven ahora dentro de `src/assets/` y se importan como módulos ES estándar de Vite (`import img from "@/assets/..."`). Ya no existen archivos `.asset.json` ni referencias al CDN de Lovable (`/__l5e/...`).
 

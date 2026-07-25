@@ -76,7 +76,7 @@ export function Brands() {
     <section
       ref={sectionRef}
       id="marcas"
-      aria-label="Marcas aliadas de Ferticolombia"
+      aria-label="Marcas aliadas de Ferticoolombia"
       className="relative isolate overflow-hidden bg-primary-dark py-24 lg:py-32 min-h-[640px] lg:min-h-[760px] flex items-center"
     >
       {/* Carrusel de fondo con parallax */}

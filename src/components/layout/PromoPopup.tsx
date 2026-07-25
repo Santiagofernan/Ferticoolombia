@@ -15,11 +15,11 @@ export default function PromoPopup() {
 
   // Mostrar una sola vez al día
   useEffect(() => {
-  const popupShown = localStorage.getItem("ferticolombia-popup-shown");
+  const popupShown = localStorage.getItem("ferticoolombia-popup-shown");
 
   if (!popupShown) {
     setOpen(true);
-    localStorage.setItem("ferticolombia-popup-shown", "true");
+    localStorage.setItem("ferticoolombia-popup-shown", "true");
   }
 }, []);
 
@@ -36,7 +36,7 @@ export default function PromoPopup() {
 
   const closePopup = () => {
     localStorage.setItem(
-      "ferticolombia-popup",
+      "ferticoolombia-popup",
       new Date().toDateString()
     );
 

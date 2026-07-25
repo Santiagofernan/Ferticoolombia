@@ -54,7 +54,7 @@ export function Benefits() {
           className="text-center max-w-2xl mx-auto mb-16"
         >   
           <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-primary-light">
-            Por qué Ferticolombia
+            Por qué Ferticoolombia
           </span>
           <h2 className="mt-4 font-display">
             Beneficios que marcan la diferencia
