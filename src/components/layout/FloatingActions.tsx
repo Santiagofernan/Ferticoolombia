@@ -30,10 +30,10 @@ export function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Escríbenos por WhatsApp"
-        className="group grid h-16 w-16 place-items-center rounded-full text-white shadow-[0_15px_40px_-10px_rgba(37,211,102,0.55)] transition hover:-translate-y-0.5"
+         className="group whatsapp-pulse grid place-items-center rounded-full text-white shadow-[0_15px_40px_-10px_rgba(37,211,102,0.55)] transition hover:-translate-y-0.1"
         style={{ backgroundColor: "#ffffff" }}
       >
-        <img src={whatsappIcon} alt="WhatsApp" className="h-15 w-15 object-contain rounded-full" />
+        <img src={whatsappIcon} alt="WhatsApp" className="h-16 w-16 object-contain rounded-full" />
         <span className="pointer-events-none absolute right-16 whitespace-nowrap rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-background opacity-0 shadow-lg transition group-hover:opacity-100">
           Chatea con nosotros
         </span>
