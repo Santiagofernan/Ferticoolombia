@@ -98,19 +98,19 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: Math.min(i * 0.1, 0.35), ease: EASE }}
-              className="group flex flex-col items-center justify-between rounded-[24px] border border-white/20 bg-white/10 backdrop-blur-xl p-9 md:p-10 lg:p-12 text-center transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 hover:border-primary-light/50 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] min-h-[340px] md:min-h-[380px] lg:min-h-[420px]"
+              className="group flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-5 rounded-[24px] border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 lg:p-10 text-center transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 hover:border-primary-light/50 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
             >
-              <div className="inline-flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-[16px] bg-primary-light/20 text-primary-light ring-1 ring-white/20 transition-transform duration-500 group-hover:scale-110 shrink-0">
-                <s.icon className="h-7 w-7 md:h-8 md:w-8" strokeWidth={2} />
+              <div className="inline-flex h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-[16px] bg-primary-light/20 text-primary-light ring-1 ring-white/20 transition-transform duration-500 group-hover:scale-110 shrink-0">
+                <s.icon className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" strokeWidth={2} />
               </div>
-              <div className="flex-1 flex items-center justify-center w-full py-4">
-                <div className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-none tracking-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center justify-center w-full">
+                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]">
                   {s.prefix}
                   <Counter to={s.value} />
                   {s.suffix}
                 </div>
               </div>
-              <div className="text-sm md:text-base uppercase tracking-[0.2em] text-white/90 shrink-0">
+              <div className="text-xs md:text-sm lg:text-base uppercase tracking-[0.2em] text-white/90">
                 {s.label}
               </div>
             </motion.div>

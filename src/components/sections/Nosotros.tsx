@@ -50,16 +50,10 @@ const fadeUp: Variants = {
 };
 
 export function About() {
-  const mediaRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: mediaRef,
-    offset: ["start end", "end start"],
-  });
-  const yMain = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
   return (
     <section
       id="nosotros"
-      className="relative overflow-hidden pt-24 md:pt-32 pb-12 md:pb-16"
+      className="relative overflow-hidden pt-16 md:pt-20 pb-10 md:pb-12"
     >
       {/* Video de fondo */}
       <video
@@ -77,65 +71,55 @@ export function About() {
 
       <div className="relative z-10 container-fc">
         {/* Header block */}
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
-          {/* Carrusel automático */}
+        <div className="flex flex-col items-center justify-center">
+          {/* Card flotante de experiencia */}
           <motion.div
-            ref={mediaRef}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, ease: EASE }}
-            className="relative z-20"
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mb-8 w-fit rounded-[20px] bg-white/15 backdrop-blur-xl border border-white/20 px-5 py-3 shadow-[0_8px_32px_rgba(255,255,255,0.1)]"
           >
-            {/* Card flotante de experiencia */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="absolute -top-6 -right-4 sm:-right-8 max-w-[220px] rounded-[20px] bg-card border border-border p-5 shadow-[var(--shadow-elevated)]"
-            >
-              <div className="text-4xl font-display font-extrabold text-primary leading-none">+20</div>
-              <div className="mt-2 text-sm text-muted-foreground">años nutriendo el campo colombiano</div>
-            </motion.div>
+            <div className="text-sm font-semibold text-white">+20 años nutriendo el campo colombiano</div>
           </motion.div>
+
           {/* Contenido */}
           <motion.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, margin: "-80px" }}
-          className="mx-auto max-w-5xl text-center"
+          className="mx-auto max-w-3xl text-center"
           >
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="font-display font-extrabold tracking-tight text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] leading-[1.02]"
+              className="font-display font-extrabold tracking-tight text-white text-4xl sm:text-5xl lg:text-6xl leading-tight"
             >
               Aliados técnicos del productor colombiano
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="mt-6 text-lg text-white/90">
+            <motion.p variants={fadeUp} custom={2} className="mt-5 text-lg text-white">
               En Ferticolombia importamos y formulamos fertilizantes de alta eficiencia con foco en el rendimiento real
               de los cultivos. Más de dos décadas trabajando junto a agricultores, cooperativas y distribuidores en todo
               el territorio nacional.
             </motion.p>
-            <motion.p variants={fadeUp} custom={3} className="mt-4 text-lg text-white/90">
+            <motion.p variants={fadeUp} custom={3} className="mt-3 text-lg text-white">
               Nuestra misión es entregar soluciones nutricionales precisas, sostenibles y respaldadas por acompañamiento
               agronómico permanente.
             </motion.p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto">
               {values.map((v, i) => (
                 <motion.div
                   key={v.title}
                   variants={fadeUp}
                   custom={4 + i}
-                  className="rounded-[20px] border border-border bg-[var(--about-card-bg)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]"
+                  className="rounded-[22px] border border-white/30 bg-gradient-to-br from-white/20 via-white/12 to-white/8 backdrop-blur-2xl p-5 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_12px_40px_rgba(255,255,255,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] hover:border-white/70 hover:from-white/30 hover:via-white/20 hover:to-white/15 group"
                 >
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] bg-primary/10 text-primary">
-                    <v.icon className="h-5 w-5" strokeWidth={2} />
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-[16px] bg-white/10 text-white transition-transform duration-300 group-hover:scale-110">
+                    <v.icon className="h-5 w-5" strokeWidth={2.5} />
                   </div>
-                  <h3 className="mt-4 text-base font-semibold text-foreground font-sans">{v.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground">{v.desc}</p>
+                  <h3 className="mt-4 text-base font-bold text-white font-sans">{v.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-white/90">{v.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -150,18 +134,18 @@ export function About() {
         </div>
 
         {/* Corporate sub-section */}
-        <div className="mt-12 md:mt-16">
+        <div className="mt-12 md:mt-14">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="mb-8 md:mb-10 block text-center text-sm md:text-base font-bold uppercase tracking-[0.25em] text-primary-light text-xl"
+            className="mb-10 block text-center text-sm md:text-base font-bold uppercase tracking-[0.3em] text-white"
           >
             Quiénes somos
           </motion.span>
           
-          <div className="grid gap-6 lg:gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
             {corporateBlocks.map((block, i) => (
               <motion.div
                 key={block.title}
@@ -169,19 +153,19 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: EASE }}
-                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-border bg-card p-8 md:p-10 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-elevated)]"
+                className="group relative flex flex-col overflow-hidden rounded-[22px] border border-white/30 bg-gradient-to-br from-white/20 via-white/12 to-white/8 backdrop-blur-2xl p-6 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_12px_40px_rgba(255,255,255,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] hover:border-white/70 hover:from-white/30 hover:via-white/20 hover:to-white/15"
               >
                 {/* Decorative accent line */}
                 <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-primary/80 via-primary to-primary-light/80 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-[16px] bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
-                    <block.icon className="h-6 w-6" strokeWidth={2} />
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-[14px] bg-white/10 text-white transition-transform duration-300 group-hover:scale-110">
+                    <block.icon className="h-5 w-5" strokeWidth={2.5} />
                   </div>
-                  <h3 className="mt-6 text-xl font-display font-bold text-foreground">
+                  <h3 className="mt-4 text-lg font-display font-bold text-white">
                     {block.title}
                   </h3>
-                  <p className="mt-4 text-base leading-relaxed text-foreground flex-grow">
+                  <p className="mt-3 text-sm leading-relaxed text-white/95 flex-grow">
                     {block.text}
                   </p>
                 </div>

@@ -13,18 +13,11 @@ const promotionalBanners = [
 ];
 
 function ProductCard({ product }: { product: IProduct }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] border border-primary/15 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
-      <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden bg-gradient-to-b from-[oklch(0.96_0.04_145)] to-[oklch(0.92_0.06_145)]">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, oklch(0.52 0.14 145 / 0.22) 1px, transparent 0)",
-            backgroundSize: "22px 22px",
-          }}
-        />
+      <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden bg-white">
         <img
           src={product.image}
           alt={`Empaque de ${product.name} ${product.formula}`}
@@ -32,14 +25,6 @@ function ProductCard({ product }: { product: IProduct }) {
           decoding="async"
           className="absolute inset-0 h-full w-full object-contain p-5 sm:p-3 transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute top-2 left-2 sm:top-4 sm:left-4 rounded-full bg-white/95 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-primary shadow-[var(--shadow-soft)]">
-          {product.formula}
-        </div>
-        {product.icaRegistration && (
-          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 rounded-full border border-primary/25 bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-primary shadow-[var(--shadow-soft)]">
-            {product.icaRegistration}
-          </div>
-        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 sm:gap-4 p-3.5 sm:p-6">
@@ -50,20 +35,55 @@ function ProductCard({ product }: { product: IProduct }) {
           <p className="text-xs font-semibold text-primary">{product.tagline}</p>
         </header>
 
+        {/* Composición química e ICA */}
+        <div className="flex items-center gap-2 flex-wrap">
+          {product.formula && (
+            <div className="rounded-full backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB' }}>
+              {product.formula}
+            </div>
+          )}
+          {product.icaRegistration && (
+            <div className="rounded-full border backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB', borderColor: '#A8DCAB' }}>
+              {product.icaRegistration}
+            </div>
+          )}
+        </div>
+
         <p className="text-xs sm:text-[14px] leading-snug sm:leading-relaxed text-subtle line-clamp-3 sm:line-clamp-none">
           {product.description}
         </p>
 
-        <ul className="space-y-1 sm:space-y-2 rounded-lg sm:rounded-xl bg-[oklch(0.97_0.03_145)]/70 border border-primary/10 p-2 sm:p-3">
-          {product.benefits.map((b) => (
-            <li key={b} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm">
-              <span className="mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3" strokeWidth={3} />
-              </span>
-              <span className="text-subtle leading-snug">{b}</span>
-            </li>
-          ))}
-        </ul>
+        {product.benefits.length > 0 && (
+          <>
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary transition-all hover:text-primary-dark"
+            >
+              <span>Ver beneficios</span>
+              <ArrowRight 
+                className="h-4 w-4 transition-transform duration-300" 
+                strokeWidth={2.5}
+                style={{
+                  transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
+                }}
+              />
+            </button>
+
+            {isExpanded && (
+              <ul className="space-y-1 sm:space-y-2 rounded-lg sm:rounded-xl bg-[oklch(0.97_0.03_145)]/70 border border-primary/10 p-2 sm:p-3">
+                {product.benefits.map((b) => (
+                  <li key={b} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm">
+                    <span className="mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                      <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3" strokeWidth={3} />
+                    </span>
+                    <span className="text-subtle leading-snug">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        )}
 
         <div className="mt-auto pt-2 sm:pt-3 border-t border-primary/15">
           <a
