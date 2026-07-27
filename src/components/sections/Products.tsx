@@ -223,7 +223,6 @@ export function Products() {
             "linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.35) 100%)",
         }}
       />
-
       <div className="container-fc w-full px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -243,7 +242,6 @@ export function Products() {
             eficiencia, con registros ICA vigentes y respaldo agronómico.
           </p>
         </motion.div>
-
         <div className="relative">
           {/* Carrusel */}
           <div className="overflow-hidden px-1">
@@ -265,7 +263,6 @@ export function Products() {
               ))}
             </motion.div>
           </div>
-
           {/* Flechas */}
           {totalPages > 1 && (
             <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between">
@@ -292,7 +289,6 @@ export function Products() {
             </div>
           )}
         </div>
-
         {/* Dots productos */}
         <div className="mt-6 sm:mt-10 flex items-center justify-center gap-2.5">
           <AnimatePresence initial={false}>
