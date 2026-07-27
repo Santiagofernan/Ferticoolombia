@@ -86,7 +86,7 @@ export function Navbar() {
               : "bg-white text-primary hover:bg-white hover:text-primary-dark shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)]"
           }`} 
         >
-          Impacto agronómico
+          Impacto Ferticoolombia
         </Link>
       </div>
 

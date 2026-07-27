@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, FileText, Check } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
-import productsBg from "@/assets/backgrounds/products-bg-coffee.jpg";
+import productsBg from "@/assets/backgrounds/products-bg-coffee.png";
 import banner1 from "@/assets/banners/banner1.png";
 import banner2 from "@/assets/banners/banner2.png";
 

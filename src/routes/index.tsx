@@ -5,7 +5,6 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { About } from "@/components/sections/Nosotros";
 import { Stats } from "@/components/sections/Stats";
-import { ParallaxCta } from "@/components/sections/ParallaxCta";
 import { Products } from "@/components/sections/Products";
 import { Crops } from "@/components/sections/Crops";
 import { Benefits } from "@/components/sections/Benefits";
@@ -26,7 +25,6 @@ function Index() {
         <Hero />
         <About />
         <Stats />
-        <ParallaxCta />
         <Products />
         <Crops />
         <Benefits />
