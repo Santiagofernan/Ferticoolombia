@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import heroImg from "@/assets/backgrounds/products-bg-coffee.jpg";
+import heroImg from "@/assets/backgrounds/products-bg-coffee.png";
 import cafeImg from "@/assets/crops/cafe.jpg";
 import platanoImg from "@/assets/crops/platano.jpg";
 import maracuyaImg from "@/assets/crops/maracuya.jpg";
