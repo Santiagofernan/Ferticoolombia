@@ -12,6 +12,7 @@ import { Benefits } from "@/components/sections/Benefits";
 import { Brands } from "@/components/sections/Brands";
 import { Contact } from "@/components/sections/Contact";
 import PromoPopup from "@/components/layout/PromoPopup";
+
 export const Route = createFileRoute("/")({
   component: Index,
 });

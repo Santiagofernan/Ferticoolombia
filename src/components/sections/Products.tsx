@@ -16,8 +16,8 @@ function ProductCard({ product }: { product: IProduct }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] border border-primary/15 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
-      <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden bg-white">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
+    <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden rounded-t-[28px] border-b border-[#4CAF50]/40 bg-gradient-to-br from-white to-green-40">
         <img
           src={product.image}
           alt={`Empaque de ${product.name} ${product.formula}`}
@@ -130,7 +130,7 @@ function PromoBanner() {
 
   return (
     <div className="mt-16 sm:mt-24 mx-auto w-[96%] sm:w-[98%]">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-primary/15 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-primary/15 bg-white backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
         <AnimatePresence mode="sync">
           <motion.img
             key={bannerIndex}
@@ -274,7 +274,7 @@ export function Products() {
                 whileHover={{ scale: 1.08 }}
                 className="pointer-events-auto -ml-2 md:-ml-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/95 text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur transition-colors hover:bg-white"
               >
-                <ChevronLeft className="h-6 w-6" strokeWidth={2.25} />
+              <ChevronLeft className="h-6 w-6" strokeWidth={2.25} />
               </motion.button>
               <motion.button
                 type="button"

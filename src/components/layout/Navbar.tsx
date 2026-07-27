@@ -77,18 +77,18 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block shrink-0">
-          <a
-            href="#contacto"
-            className={`btn-primary-fc h-11 text-[14px] font-semibold transition-all duration-300 ${
-              scrolled
-                ? ""
-                : "bg-white text-primary hover:bg-white hover:text-primary-dark shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)]"
-            }`}
-          >
-            Solicitar asesoría
-          </a>
-        </div>
+      <div className="hidden lg:block shrink-0">
+        <Link
+          to="/impacto-agronomico"
+          className={`btn-primary-fc h-11 text-[14px] font-semibold transition-all duration-300 ${
+            scrolled
+              ? ""
+              : "bg-white text-primary hover:bg-white hover:text-primary-dark shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)]"
+          }`} 
+        >
+          Impacto agronómico
+        </Link>
+      </div>
 
         {/* Mobile toggle */}
         <button
@@ -121,12 +121,11 @@ export function Navbar() {
                   <span className="h-1.5 w-1.5 rounded-full bg-primary-light opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ))}
-              <a
-                href="#contacto"
-                onClick={() => setOpen(false)}
-                className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
+              <a href="#contacto"
+                 onClick={() => setOpen(false)}
+                 className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
               >
-                Solicitar asesoría
+              Solicitar asesoría
               </a>
             </nav>
           </div>
