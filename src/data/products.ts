@@ -10,11 +10,23 @@ import imgZaneta from "@/assets/products/czaneta.png";
 import imgUrea from "@/assets/products/curea.png";
 import imgYurika from "@/assets/products/cyurika.png";
 import imgBonanza from "@/assets/products/cbonanza-300x300.png";
-
-export interface IProduct {
+/*Fichas*/
+import mitakronFicha from "@/assets/fichas/mitakron.png";
+import katiuskaFicha from "@/assets/fichas/katiuska.png";
+import platanateFicha from "@/assets/fichas/platanate.png";
+import ficha210021 from "@/assets/fichas/21-0-21.png";
+import ficha25424 from "@/assets/fichas/25-4-24.png";
+import dapFicha from "@/assets/fichas/dap.png";
+import kclFicha from "@/assets/fichas/kcl.png";
+import spasivaFicha from "@/assets/fichas/spasiva.png";
+import bonanzaFicha from "@/assets/fichas/bonanza.png";
+import zanetaFicha from "@/assets/fichas/zaneta.png";
+import ureaFicha from "@/assets/fichas/urea.png";
+import yurikaFicha from "@/assets/fichas/yurika.png";export interface IProduct {
   slug: string;
   name: string;
   formula: string;
+  ficha: string;
   tagline: string;
   description: string;
   benefits: string[];
@@ -30,6 +42,7 @@ export const products: IProduct[] = [
     slug: "mitakron",
     name: "Mitakron",
     formula: "16-16-16 + 3,5 (CaO)",
+    ficha: mitakronFicha,
     tagline: "Desarrollo vegetativo balanceado",
     description:
       "Fertilizante compuesto complejo NPK con calcio, de reacción líquida y alta asimilación. Ideal para las etapas de levante, desarrollo y sostén del cultivo.",
@@ -45,6 +58,7 @@ export const products: IProduct[] = [
     slug: "katiuska",
     name: "Katiuska",
     formula: "18-6-18 + 2 (MgO) + 2 (S)",
+    ficha: katiuskaFicha,
     tagline: "Cargue y llenado del fruto",
     description:
       "Fertilizante complejo compuesto NPK con magnesio y azufre, ideal para las etapas de producción, cargue o cosecha. Aporta elementos secundarios para una nutrición más completa.",
@@ -60,6 +74,7 @@ export const products: IProduct[] = [
     slug: "platanate",
     name: "Platanate",
     formula: "15-4-30",
+    ficha: platanateFicha,
     tagline: "Engorde y maduración del fruto",
     description:
       "Fertilizante compuesto mezclado NPK con alta concentración de potasio. Recomendado para la fase de engorde y maduración en cultivos con altas exigencias de K: frutales, hortalizas, cítricos y plátano.",
@@ -75,6 +90,7 @@ export const products: IProduct[] = [
     slug: "spasiva",
     name: "Spasiva",
     formula: "21-5-20",
+    ficha: spasivaFicha,
     tagline: "Mezcla física premium NPK",
     description:
       "Mezcla física Premium con fuentes de alta eficiencia y asimilación de NPK. Formulada para etapas de máxima demanda vegetativa y productiva del cultivo.",
@@ -90,6 +106,7 @@ export const products: IProduct[] = [
     slug: "bonanza",
     name: "Bonanza",
     formula: "19-9-19 + 1 (CaO)",
+    ficha: bonanzaFicha,
     tagline: "Fructificación y cargue de cosecha",
     description:
       "Fertilizante compuesto complejo NPK con calcio y fuentes de alta eficiencia. La mejor opción para lograr una cosecha óptima, con gran aporte en el proceso de fructificación y cargue.",
@@ -105,6 +122,7 @@ export const products: IProduct[] = [
     slug: "yurika",
     name: "Yurika",
     formula: "23-4-20 + 3 (MgO) + 4 (S)",
+    ficha: yurikaFicha,
     tagline: "Nutrición completa con Mg y S",
     description:
       "Fertilizante complejo compuesto NPK con magnesio y azufre para aplicación al suelo. Formulación de alta concentración nitrogenada con aporte de elementos secundarios.",
@@ -119,6 +137,7 @@ export const products: IProduct[] = [
     slug: "urea",
     name: "Urea",
     formula: "46-0-0",
+    ficha: ureaFicha,
     tagline: "Fuente pura de nitrógeno",
     description:
       "Fertilizante simple nitrogenado granulado para aplicación al suelo. Fuente de nitrógeno de mayor concentración a nivel mundial, esencial para el desarrollo vegetativo.",
@@ -133,6 +152,7 @@ export const products: IProduct[] = [
     slug: "zaneta",
     name: "Zaneta",
     formula: "26-4-22",
+    ficha: zanetaFicha,
     tagline: "Máxima carga nitrogenada",
     description:
       "Fertilizante NPK de alta concentración de nitrógeno y potasio para cultivos de alta extracción y ciclos productivos exigentes.",
@@ -147,6 +167,7 @@ export const products: IProduct[] = [
     slug: "25-4-24",
     name: "25-4-24",
     formula: "NPK 25-4-24",
+    ficha: ficha25424,
     tagline: "Nutrición de precisión granulada",
     description:
       "Fertilizante compuesto mezclado NPK para aplicación al suelo. Uso agrícola granulado, ideal para planes de fertilización técnicos.",
@@ -161,6 +182,7 @@ export const products: IProduct[] = [
     slug: "21-0-21",
     name: "21-0-21",
     formula: "NPK 21-0-21",
+    ficha: ficha210021,
     tagline: "Nitrógeno y potasio balanceados",
     description:
       "Fertilizante mezclado NPK sin fósforo, formulado para suelos con niveles suficientes de P y cultivos que requieren mantenimiento de N y K.",
@@ -175,6 +197,7 @@ export const products: IProduct[] = [
     slug: "dap",
     name: "DAP",
     formula: "18-46-0",
+    ficha: dapFicha,
     tagline: "Fósforo de alta concentración",
     description:
       "Fosfato diamónico granulado, fuente de fósforo y nitrógeno de alta pureza y solubilidad para siembra y establecimiento de cultivos.",
@@ -189,6 +212,7 @@ export const products: IProduct[] = [
     slug: "kcl",
     name: "KCL Granulado",
     formula: "0-0-60",
+    ficha: kclFicha,
     tagline: "Potasio puro para máximo rendimiento",
     description:
       "Cloruro de potasio granulado de alta pureza, fuente de potasio más utilizada a nivel mundial para la mayoría de cultivos agrícolas.",
