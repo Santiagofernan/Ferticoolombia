@@ -102,11 +102,6 @@ export function About() {
               de los cultivos. Más de dos décadas trabajando junto a agricultores, cooperativas y distribuidores en todo
               el territorio nacional.
             </motion.p>
-            <motion.p variants={fadeUp} custom={3} className="mt-3 text-lg text-white">
-              Nuestra misión es entregar soluciones nutricionales precisas, sostenibles y respaldadas por acompañamiento
-              agronómico permanente.
-            </motion.p>
-
             <div className="mt-8 grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto">
               {values.map((v, i) => (
                 <motion.div

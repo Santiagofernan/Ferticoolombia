@@ -22,7 +22,7 @@ function ProductCard({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
+    <article className="group flex flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
     <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden rounded-t-[28px] border-b border-[#4CAF50]/40 bg-gradient-to-br from-white to-green-40">
         <img
           src={product.image}
@@ -258,7 +258,7 @@ function ProductCard({
                       className="shrink-0 px-3 sm:px-6 lg:px-8"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
-                      <div className="mx-auto h-full max-w-[414px]">
+                      <div className="mx-auto max-w-[414px]">
                         <ProductCard
                         product={p}
                         onOpenFicha={setSelectedFicha}
