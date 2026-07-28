@@ -121,13 +121,14 @@ export function Navbar() {
                   <span className="h-1.5 w-1.5 rounded-full bg-primary-light opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ))}
-              <a href="#contacto"
-                 onClick={() => setOpen(false)}
-                 className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
+              <Link
+                to="/impacto-agronomico"
+                onClick={() => setOpen(false)}
+                className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
               >
-              Solicitar asesoría
-              </a>
-            </nav>
+                Impacto Agronómico
+              </Link>            
+              </nav>
           </div>
           <style>{`@keyframes fadeSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}`}</style>
         </div>

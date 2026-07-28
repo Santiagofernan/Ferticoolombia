@@ -44,27 +44,99 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section id="beneficios" className="section-fc bg-surface">
-      <div className="container-fc">
-        <motion.div
+    <section id="beneficios" className="bg-surface">
+      <div   className="relative overflow-hidden section-fc bg-[#F7FAF8]">
+        {/* Fondo animado */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+                className="absolute inset-0"
+                style={{
+                  background: `
+                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.55), transparent 45%),
+                    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.35), transparent 40%),
+                    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.30), transparent 45%)
+                  `,
+                }}
+              />
+            {/* Verde */}
+            <motion.div
+              animate={{
+                x: [-120, 100, -120],
+                y: [-80, 60, -80],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#3AA655]/35 blur-[220px]"
+            />
+
+            {/* Amarillo */}
+            <motion.div
+              animate={{
+                x: [80, -60, 80],
+                y: [50, -80, 50],
+                scale: [1.1, 1, 1.1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-[#F2C94C]/28 blur-[150px]"
+            />
+
+            {/* Azul */}
+            <motion.div
+              animate={{
+                x: [-80, 70, -80],
+                y: [70, -50, 70],
+                scale: [1, 1.15, 1],
+              }}
+              transition={{
+                duration: 24,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute bottom-0 left-1/4 h-[450px] w-[450px] rounded-full bg-[#2F80ED]/25 blur-[260px]"
+            />
+
+            {/* Naranja */}
+            <motion.div
+              animate={{
+                x: [50, -100, 50],
+                y: [-40, 60, -40],
+                scale: [1, 1.15, 1],
+              }}
+              transition={{
+                duration: 26,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute bottom-[-100px] right-[-80px] h-[420px] w-[420px] rounded-full bg-[#F2994A]/28 blur-[170px]"
+            />
+          </div>
+          <div className="container-fc relative z-10">     
+          <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >   
-          <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-primary-light">
+          <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-[#2E7D32]">
             Por qué Ferticoolombia
           </span>
-          <h2 className="mt-4 font-display">
+          <h2 className="mt-4 font-display text-[#1B4332]">
             Beneficios que marcan la diferencia
           </h2>
-          <p className="mt-5 text-lg">
+          <p className="mt-5 text-lg text-slate-700">
             Combinamos ciencia, logística y acompañamiento para entregar
             resultados medibles en el campo.
           </p>
         </motion.div>
-
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (
             <motion.div
@@ -77,7 +149,7 @@ export function Benefits() {
                 delay: (i % 3) * 0.1,
                 ease: EASE,
               }}
-              className="group relative rounded-[24px] border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)] hover:border-primary/30"
+              className="group relative rounded-[24px] bg-white border border-green-300/30 p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-green-500"
             >
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-[16px] bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                 <b.icon className="h-7 w-7" strokeWidth={2} />
@@ -89,6 +161,7 @@ export function Benefits() {
             </motion.div>
           ))}
         </div>
+        </div>   
       </div>
     </section>
   );
