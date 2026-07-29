@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Sprout, ArrowRight } from "lucide-react";
 
-import h1 from "@/assets/hero/h1.jpg";
-import h2 from "@/assets/hero/h2.jpeg";
-import h3 from "@/assets/hero/h3.jpg";
-import h4 from "@/assets/hero/h4.avif";
-import h5 from "@/assets/hero/h5.jpeg";
-import h6 from "@/assets/hero/h6.jpeg";
+import h1 from "@/assets/hero/h1.png";
+import h2 from "@/assets/hero/h2.png";
+import h3 from "@/assets/hero/h3.png";
+import h4 from "@/assets/hero/h4.png";
+import h5 from "@/assets/hero/h5.png";
+import h6 from "@/assets/hero/h6.png";
 import h7 from "@/assets/hero/h7.jpg";
 
 const slides = [
