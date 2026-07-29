@@ -24,7 +24,6 @@ export function Crops() {
 
   const current = crops[index];
 
-
   return (
     <section id="cultivos" className="section-fc bg-background">
       <div className="container-fc">

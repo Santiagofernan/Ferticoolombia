@@ -5,6 +5,7 @@ import tomateImg from "@/assets/crops/tomate.png";
 import aguacateImg from "@/assets/crops/aguacate.png";
 import limonImg from "@/assets/crops/limon.png";
 import cañaImg from "@/assets/crops/caña.png";
+import papaImg  from "@/assets/crops/papa.png";
 
 export interface ICrop {
   slug: string;
@@ -81,5 +82,14 @@ export const crops: ICrop[] = [
     recommended: ["Mitakron", "Katiuska"],
     image: cañaImg,
     accent: "Raíces y tallos fuertes",
+  },
+  {
+    slug: "papa",
+    name: "Papa",
+    description:
+      "Nutrición balanceada para etapas de crecimiento, floración y tuberización. Formulaciones que potencian rendimiento y calidad del tubérculo.",
+    recommended: ["Mitakron", "Katiuska", "Spasiva"],
+    image: papaImg, 
+    accent: "Tuberización eficiente",
   },
 ];
