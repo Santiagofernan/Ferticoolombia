@@ -114,7 +114,7 @@ export function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="group flex items-center justify-between px-3 py-3.5 rounded-2xl text-[15px] font-semibold text-white/90 hover:text-white hover:bg-white/10 transition-all"
+                  className="group flex items-center justify-between px-3 py-3.5 rounded-2xl text-[15px] font-semibold text-white/90 hover:text-white hover:bg-white/30 transition-all"
                   style={{ animation: `fadeSlide 400ms ease-out ${i * 50}ms both` }}
                 >
                   <span>{l.label}</span>
@@ -126,7 +126,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
               >
-                Impacto Agronómico
+                Impacto Ferticoolombia
               </Link>            
               </nav>
           </div>

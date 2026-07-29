@@ -17,10 +17,14 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import heroImg from "@/assets/backgrounds/products-bg-coffee.png";
-import cafeImg from "@/assets/crops/cafe.jpg";
-import platanoImg from "@/assets/crops/platano.jpg";
-import maracuyaImg from "@/assets/crops/maracuya.jpg";
-import tomateImg from "@/assets/crops/tomate.jpg";
+import cafeImg from "@/assets/crops/cafe.png";
+import platanoImg from "@/assets/crops/platano.png";
+import maracuyaImg from "@/assets/crops/maracuya.png";
+import tomateImg from "@/assets/crops/tomate.png";
+import papaImg from "@/assets/crops/papa.png";
+import cañaImg from "@/assets/crops/caña.png";
+import limoImg from "@/assets/crops/limon.png";
+import aguacateImg from "@/assets/crops/aguacate.png";
 import beforeImg from "@/assets/hero/h5.jpeg";
 import afterImg from "@/assets/parallax/cafe.jpg";
 import person1 from "@/assets/brands/plant-4.jpg";
@@ -42,6 +46,10 @@ const cultivos: Cultivo[] = [
   { nombre: "Plátano", imagen: platanoImg, resultado: "Racimos con mayor peso y llenado", region: "Valle del Cauca" },
   { nombre: "Maracuyá", imagen: maracuyaImg, resultado: "Floración sostenida y mejor cuaje", region: "Huila" },
   { nombre: "Tomate", imagen: tomateImg, resultado: "Mayor firmeza y vida en anaquel", region: "Cundinamarca" },
+  { nombre: "Papa", imagen: papaImg, resultado: "Incremento en el tamaño y calidad del tubérculo", region: "Nariño" },
+  { nombre: "Caña de azúcar", imagen: cañaImg, resultado: "Mejor desarrollo y rendimiento del cultivo", region: "Cauca" },
+  { nombre: "Limón", imagen: limoImg, resultado: "Frutos más grandes y jugosos", region: "Magdalena" },
+  { nombre: "Aguacate", imagen: aguacateImg, resultado: "Mayor producción y calidad de frutos", region: "Antioquia" },
 ];
 
 const estadisticas = [
