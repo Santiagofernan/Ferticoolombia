@@ -25,7 +25,7 @@ import papaImg from "@/assets/crops/papa.png";
 import cañaImg from "@/assets/crops/caña.png";
 import limoImg from "@/assets/crops/limon.png";
 import aguacateImg from "@/assets/crops/aguacate.png";
-import beforeImg from "@/assets/hero/h5.jpeg";
+import beforeImg from "@/assets/hero/h5.png";
 import afterImg from "@/assets/parallax/cafe.jpg";
 import person1 from "@/assets/brands/plant-4.jpg";
 import person2 from "@/assets/brands/plant-5.jpg";

@@ -1,14 +1,9 @@
 import img210021 from "@/assets/products/c21-0-21.png";
 import img25424 from "@/assets/products/c25-4-24.png";
-import imgDap from "@/assets/products/cdap.png";
 import imgKatiuska from "@/assets/products/ckatiuska.png";
-import imgKcl from "@/assets/products/ckcl.png";
 import imgMitakron from "@/assets/products/cmitakron.png";
 import imgPlatanate from "@/assets/products/cplatanate.png";
 import imgSpasiva from "@/assets/products/cspasiva.png";
-import imgZaneta from "@/assets/products/czaneta.png";
-import imgUrea from "@/assets/products/curea.png";
-import imgYurika from "@/assets/products/cyurika.png";
 import imgBonanza from "@/assets/products/cbonanza-300x300.png";
 /*Fichas*/
 import mitakronFicha from "@/assets/fichas/mitakron.png";
@@ -16,8 +11,6 @@ import katiuskaFicha from "@/assets/fichas/katiuska.png";
 import platanateFicha from "@/assets/fichas/platanate.png";
 import ficha210021 from "@/assets/fichas/21-0-21.png";
 import ficha25424 from "@/assets/fichas/25-4-24.png";
-import dapFicha from "@/assets/fichas/dap.png";
-import kclFicha from "@/assets/fichas/kcl.png";
 import spasivaFicha from "@/assets/fichas/spasiva.png";
 import bonanzaFicha from "@/assets/fichas/bonanza.png";
 import zanetaFicha from "@/assets/fichas/zaneta.png";
@@ -119,51 +112,6 @@ export const products: IProduct[] = [
     image: imgBonanza,
   },
   {
-    slug: "yurika",
-    name: "Yurika",
-    formula: "23-4-20 + 3 (MgO) + 4 (S)",
-    ficha: yurikaFicha,
-    tagline: "Nutrición completa con Mg y S",
-    description:
-      "Fertilizante complejo compuesto NPK con magnesio y azufre para aplicación al suelo. Formulación de alta concentración nitrogenada con aporte de elementos secundarios.",
-    benefits: [
-      "Alta carga de nitrógeno (23%)",
-      "Aporte de Mg y S secundarios",
-      "Nutrición completa para cultivos exigentes",
-    ],
-    image: imgYurika,
-  },
-  {
-    slug: "urea",
-    name: "Urea",
-    formula: "46-0-0",
-    ficha: ureaFicha,
-    tagline: "Fuente pura de nitrógeno",
-    description:
-      "Fertilizante simple nitrogenado granulado para aplicación al suelo. Fuente de nitrógeno de mayor concentración a nivel mundial, esencial para el desarrollo vegetativo.",
-    benefits: [
-      "46% de nitrógeno total",
-      "Alta solubilidad en el suelo",
-      "Fuente económica de N",
-    ],
-    image: imgUrea,
-  },
-  {
-    slug: "zaneta",
-    name: "Zaneta",
-    formula: "26-4-22",
-    ficha: zanetaFicha,
-    tagline: "Máxima carga nitrogenada",
-    description:
-      "Fertilizante NPK de alta concentración de nitrógeno y potasio para cultivos de alta extracción y ciclos productivos exigentes.",
-    benefits: [
-      "Impulso vegetativo intenso",
-      "Refuerzo de potasio productivo",
-      "Excelente rendimiento por hectárea",
-    ],
-    image: imgZaneta,
-  },
-  {
     slug: "25-4-24",
     name: "25-4-24",
     formula: "NPK 25-4-24",
@@ -177,50 +125,5 @@ export const products: IProduct[] = [
       "Alta eficiencia agronómica",
     ],
     image: img25424,
-  },
-  {
-    slug: "21-0-21",
-    name: "21-0-21",
-    formula: "NPK 21-0-21",
-    ficha: ficha210021,
-    tagline: "Nitrógeno y potasio balanceados",
-    description:
-      "Fertilizante mezclado NPK sin fósforo, formulado para suelos con niveles suficientes de P y cultivos que requieren mantenimiento de N y K.",
-    benefits: [
-      "Ideal para mantenimiento nutricional",
-      "Alta solubilidad",
-      "Recomendado en suelos ricos en P",
-    ],
-    image: img210021,
-  },
-  {
-    slug: "dap",
-    name: "DAP",
-    formula: "18-46-0",
-    ficha: dapFicha,
-    tagline: "Fósforo de alta concentración",
-    description:
-      "Fosfato diamónico granulado, fuente de fósforo y nitrógeno de alta pureza y solubilidad para siembra y establecimiento de cultivos.",
-    benefits: [
-      "Mayor fuente concentrada de P",
-      "Estimula desarrollo radicular",
-      "Estándar mundial en siembra",
-    ],
-    image: imgDap,
-  },
-  {
-    slug: "kcl",
-    name: "KCL Granulado",
-    formula: "0-0-60",
-    ficha: kclFicha,
-    tagline: "Potasio puro para máximo rendimiento",
-    description:
-      "Cloruro de potasio granulado de alta pureza, fuente de potasio más utilizada a nivel mundial para la mayoría de cultivos agrícolas.",
-    benefits: [
-      "60% de K₂O soluble",
-      "Mejora llenado y calidad",
-      "Fuente económica de potasio",
-    ],
-    image: imgKcl,
   },
 ];
