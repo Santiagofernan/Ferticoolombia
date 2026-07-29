@@ -1,7 +1,10 @@
-import cafeImg from "@/assets/crops/cafe.jpg";
-import platanoImg from "@/assets/crops/platano.jpg";
-import maracuyaImg from "@/assets/crops/maracuya.jpg";
-import tomateImg from "@/assets/crops/tomate.jpg";
+import cafeImg from "@/assets/crops/cafe.png";
+import platanoImg from "@/assets/crops/platano.png";
+import maracuyaImg from "@/assets/crops/maracuya.png";
+import tomateImg from "@/assets/crops/tomate.png";
+import aguacateImg from "@/assets/crops/aguacate.png";
+import limonImg from "@/assets/crops/limon.png";
+import cañaImg from "@/assets/crops/caña.png";
 
 export interface ICrop {
   slug: string;
@@ -51,5 +54,32 @@ export const crops: ICrop[] = [
     recommended: ["mitakron", "25-4-24", "bonanza"],
     image: tomateImg,
     accent: "Cultivo de precisión",
+  },
+  {
+    slug: "aguacate",
+    name: "Aguacate",
+    description:
+      "Nutrición especializada para el desarrollo vegetativo, floración, cuajado y llenado del fruto.",
+    recommended: ["Mitakron", "Katiuska"],
+    image: aguacateImg,
+    accent: "Fruto de exportación",
+  },
+  {
+    slug: "limon",
+    name: "Limon",
+    description:
+      "Formulaciones diseñadas para mejorar la producción, calidad y tamaño del fruto.",
+    recommended: ["Platanate", "Mitakron"],
+    image: limonImg,
+    accent: "Fruto de exportación",
+  },
+  {
+    slug: "caña",
+    name: "Caña de azúcar",
+    description:
+      "Programas nutricionales para mejorar la productividad y calidad de la caña, con énfasis en el desarrollo de raíces y tallos.",
+    recommended: ["Mitakron", "Katiuska"],
+    image: cañaImg,
+    accent: "Raíces y tallos fuertes",
   },
 ];

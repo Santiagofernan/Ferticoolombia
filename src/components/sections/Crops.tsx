@@ -18,7 +18,7 @@ export function Crops() {
     const id = window.setInterval(() => {
       setDirection(1);
       setIndex((i) => (i + 1) % total);
-    }, 2500);
+    }, 5000);
     return () => window.clearInterval(id);
   }, [total]);
 
@@ -113,11 +113,7 @@ export function Crops() {
                 </motion.div>
               </AnimatePresence>
             </div>
-
-
-
           </div>
-
           {/* Indicadores / miniaturas */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {crops.map((c, i) => {
@@ -130,8 +126,6 @@ export function Crops() {
                     setDirection(i > index ? 1 : -1);
                     setIndex(i);
                   }}
-
-
                   aria-label={`Ver cultivo ${c.name}`}
                   aria-current={active}
                   className={`group relative flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
