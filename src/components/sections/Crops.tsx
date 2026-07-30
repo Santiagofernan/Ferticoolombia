@@ -51,7 +51,7 @@ export function Crops() {
           {/* Carrusel */}
           <div className="relative overflow-hidden rounded-[24px] border border-border bg-card shadow-[var(--shadow-soft)]">
 
-            <div className="relative aspect-[16/10] md:aspect-[21/9] lg:aspect-[24/9] w-full">
+            <div  className="relative h-[430px] sm:h-[480px] md:h-[520px] lg:h-[560px] w-full">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={current.slug}
@@ -104,7 +104,7 @@ export function Crops() {
                         href="#contacto"
                         className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-200 hover:gap-3 hover:bg-primary-dark"
                       >
-                        Solicitar asesoría técnica
+                        Solicitar asesoría
                         <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
                       </a>
                     </div>

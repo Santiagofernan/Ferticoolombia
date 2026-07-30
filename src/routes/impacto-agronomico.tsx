@@ -176,14 +176,14 @@ function ImpactoAgronomico() {
             </p>
           <div className="mt-10 flex items-center gap-5">    
             <a href="#resultados" className="btn-primary-fc  bg-white text-primary hover:bg-white hover:text-primary-dark">
-              Ver los resultados
+              Ver resultados
               <ArrowDown className="h-5 w-5" strokeWidth={2.25} />
             </a>
             <Link
               to="/"
               className="btn-secondary-fc  bg-white/10 text-white hover:bg-white/20"
             >
-            Volver a Ferticoolomabia
+            Volver
             </Link> 
           </div>         
           </motion.div>
@@ -366,25 +366,7 @@ function ImpactoAgronomico() {
               >
                 <X className="h-5 w-5" />
               </button>
-
-              <button
-                type="button"
-                onClick={() => move(-1)}
-                aria-label="Cultivo anterior"
-                className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md transition-colors hover:bg-white hover:text-primary"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => move(1)}
-                aria-label="Cultivo siguiente"
-                className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md transition-colors hover:bg-white hover:text-primary"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </button>
-
-              <div className="grid md:grid-cols-2">
+              <div className="relative">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={selected.nombre}
@@ -397,8 +379,23 @@ function ImpactoAgronomico() {
                     className="h-64 w-full object-cover md:h-full"
                   />
                 </AnimatePresence>
-
-                <div className="flex flex-col justify-center p-8 md:p-10">
+                  <button
+                    type="button"
+                    onClick={() => move(-1)}
+                    aria-label="Cultivo anterior"
+                    className="absolute left-4 top-[28%] z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-white hover:bg-white/25 transition-all duration-300 shadow-lg shadow-md transition-colors hover:bg-white hover:text-primary"
+                  >
+                    <ArrowLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => move(1)}
+                    aria-label="Cultivo siguiente"
+                    className="absolute right-4 top-[28%] z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-white hover:bg-white/25 transition-all duration-300 shadow-lg shadow-md transition-colors hover:bg-white hover:text-primary"
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
+                  <div className="flex flex-col justify-center p-8 md:p-10">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Caso de éxito</span>
                   <h3 className="mt-3 font-display">{selected.nombre}</h3>
                   <p className="mt-4 text-[17px] font-semibold text-foreground">{selected.resultado}</p>

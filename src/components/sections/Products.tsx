@@ -21,18 +21,21 @@ function ProductCard({
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  return (
-    <article className="group flex flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
-    <div className="relative aspect-[2/1] sm:aspect-[4/3] overflow-hidden rounded-t-[28px] border-b border-[#4CAF50]/40 bg-gradient-to-br from-white to-green-40">
-        <img
-          src={product.image}
-          alt={`Empaque de ${product.name} ${product.formula}`}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-contain p-5 sm:p-3 transition-transform duration-500 group-hover:scale-105"
-        />
+return (
+    <article className="group flex min-h-[500px] sm:min-h-[620px] lg:min-h-[720px] flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
+      <div onClick={() => onOpenFicha(product)}
+        className="cursor-pointer"
+        >   
+          <div className="relative h-[240px] sm:h-[280px] overflow-hidden rounded-t-[28px] border-b border-[#4CAF50]/40">
+            <img
+              src={product.image}
+              alt={`Empaque de ${product.name} ${product.formula}`}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-contain p-5 sm:p-3 transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
       </div>
-
       <div className="flex flex-1 flex-col gap-2 sm:gap-4 p-3.5 sm:p-6">
         <header className="space-y-0">
           <h3 className="font-display text-base sm:text-[1.45rem] leading-tight font-bold text-foreground">
@@ -57,24 +60,8 @@ function ProductCard({
         <p className="text-xs sm:text-[14px] leading-snug sm:leading-relaxed text-subtle line-clamp-3 sm:line-clamp-none">
           {product.description}
         </p>
-
         {product.benefits.length > 0 && (
           <>
-            <button
-              type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary transition-all hover:text-primary-dark"
-            >
-              <span>Ver beneficios</span>
-              <ArrowRight 
-                className="h-4 w-4 transition-transform duration-300" 
-                strokeWidth={2.5}
-                style={{
-                  transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)',
-                }}
-              />
-            </button>
-              {isExpanded && (
               <ul className="space-y-1 sm:space-y-2 rounded-lg sm:rounded-xl bg-[oklch(0.97_0.03_145)]/70 border border-primary/10 p-2 sm:p-3">
                 {product.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm">
@@ -85,24 +72,12 @@ function ProductCard({
                   </li>
                 ))}
               </ul>
-            )}
           </>
         )}
-        <div className="mt-auto pt-2 sm:pt-3 border-t border-primary/15">
-          <button
-            type="button"
-            onClick={() => onOpenFicha(product)}
-            className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold text-primary transition-all duration-200 hover:gap-2 sm:hover:gap-3 hover:text-primary-dark"
-          >
-            <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.25} />
-            Ver ficha técnica
-            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.25} />
-          </button>
         </div>
-        </div>
-        </article>
-          );
-        }
+      </article>
+    );
+  }
     function useItemsPerView() {
       const [items, setItems] = useState(3);
       useEffect(() => {
@@ -258,7 +233,7 @@ function ProductCard({
                       className="shrink-0 px-3 sm:px-6 lg:px-8"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
-                      <div className="mx-auto max-w-[414px]">
+                      <div className="mx-auto w-[92%] sm:w-full max-w-[390px]">
                         <ProductCard
                         product={p}
                         onOpenFicha={setSelectedFicha}
