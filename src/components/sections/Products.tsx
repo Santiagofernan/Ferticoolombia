@@ -4,13 +4,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, ChevronLeft, ChevronRight, FileText, Check } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
 import productsBg from "@/assets/backgrounds/products-bg-coffee.png";
-import banner1 from "@/assets/banners/banner1.png";
-import banner2 from "@/assets/banners/banner2.png";
-
-const promotionalBanners = [
-  { image: banner1, alt: "Promoción Ferticoolombia 1" },
-  { image: banner2, alt: "Promoción Ferticoolombia 2" },
-];
 
 function ProductCard({
   product,
@@ -93,64 +86,7 @@ return (
       }, []);
       return items;
     }
-
-    function PromoBanner() {
-      const [bannerIndex, setBannerIndex] = useState(0);
-
-      useEffect(() => {
-        const interval = setInterval(() => {
-          setBannerIndex((prev) => (prev + 1) % promotionalBanners.length);
-        }, 3000);
-        return () => clearInterval(interval);
-      }, []);
-
-      return (
-        <div className="mt-16 sm:mt-24 mx-auto w-[96%] sm:w-[98%]">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-primary/15 bg-white backdrop-blur-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_40px_90px_-20px_rgba(46,125,50,0.45)] hover:border-primary/50">
-            <AnimatePresence mode="sync">
-              <motion.img
-                key={bannerIndex}
-                src={promotionalBanners[bannerIndex].image}
-                alt={promotionalBanners[bannerIndex].alt}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.9, ease: EASE }}
-                className="absolute inset-0 h-full w-full object-conta transition-opacity duration-[1400ms] ease-out"
-              />
-            </AnimatePresence>
-
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10"
-            />
-
-            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-2.5 z-10">
-              {promotionalBanners.map((_, i) => {
-                const active = i === bannerIndex;
-                return (
-                  <motion.button
-                    key={i}
-                    type="button"
-                    onClick={() => setBannerIndex(i)}
-                    aria-label={`Ir al banner ${i + 1}`}
-                    className="h-2 sm:h-2.5 rounded-full"
-                    animate={{
-                      width: active ? 28 : 8,
-                      backgroundColor: active
-                        ? "rgba(255,255,255,0.95)"
-                        : "rgba(255,255,255,0.5)",
-                    }}
-                    whileHover={{ scale: 1.15 }}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      );
-    }
-
+    
     export function Products() {
       const ref = useRef(null);
       const { scrollYProgress } = useScroll({

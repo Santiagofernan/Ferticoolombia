@@ -1,14 +1,18 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/brand/logo.png";
 
 const columns = [
   {
     title: "Empresa",
     links: [
-      { label: "Quiénes somos", href: "#nosotros" },
+      { label: "Inicio", href: "#top" },
+      { label: "Nosotros", href: "#nosotros" },
       { label: "Beneficios", href: "#beneficios" },
       { label: "Contacto", href: "#contacto" },
+      { label: "Cultivos", href: "#cultivos" },
+      { label: "Productos", href: "#productos" },
+
     ],
   },
   {
@@ -19,7 +23,7 @@ const columns = [
       { label: "Platanate", href: "#productos" },
       { label: "Spasiva", href: "#productos" },
       { label: "Bonanza", href: "#productos" },
-      { label: "DAP · KCL · Urea", href: "#productos" },
+      { label: "25-4-24", href: "#productos" },
     ],
   },
   {
@@ -28,16 +32,16 @@ const columns = [
       { label: "Café", href: "#cultivos" },
       { label: "Plátano", href: "#cultivos" },
       { label: "Cítricos", href: "#cultivos" },
-      { label: "Hortalizas", href: "#cultivos" },
-      { label: "Maíz", href: "#cultivos" },
+      { label: "Papa", href: "#cultivos" },
+      { label: "Caña de azucar", href: "#cultivos" },
+      { label: "Tomate", href: "#cultivos" },
     ],
   },
 ];
 
 const socials = [
-  { Icon: Facebook, label: "Facebook de Ferticoolombia", href: "#" },
-  { Icon: Instagram, label: "Instagram de Ferticoolombia", href: "#" },
-  { Icon: Linkedin, label: "LinkedIn de Ferticoolombia", href: "#" },
+  { Icon: Facebook, label: "Facebook de Ferticoolombia", href: "https://www.facebook.com/ferticoolombia" },
+  { Icon: Instagram, label: "Instagram de Ferticoolombia", href: "https://www.instagram.com/ferticoolombia" },
 ];
 
 export function Footer() {
@@ -69,7 +73,6 @@ export function Footer() {
               ))}
             </div>
           </div>
-
           {/* Link columns */}
           {columns.map((col) => (
             <div key={col.title}>
@@ -110,7 +113,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-
       <div className="border-t border-white/10">
         <div className="container-fc py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Ferticoolombia. Todos los derechos reservados.</p>

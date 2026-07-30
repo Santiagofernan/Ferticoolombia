@@ -46,7 +46,7 @@ export function Navbar() {
               <img src={logoIcon} alt="" className="h-9 w-auto transition-all duration-500" />
               <span
                 className={`text-[17px] font-bold tracking-[0.12em] leading-none transition-colors duration-500 ${
-                  scrolled || open ? "text-black" : "text-white"
+                  scrolled ? "text-black" : "text-white"
                 }`}
               >
                 FERTICOOLOMBIA
@@ -106,7 +106,7 @@ export function Navbar() {
       {/* Mobile panel */}
       {open && (
         <div className="lg:hidden absolute inset-x-0 top-full">
-          <div className="mx-4 mt-3 mb-4 overflow-hidden rounded-3xl border border-white/15 bg-black/40 backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)]">
+          <div className="mx-4 mt-3 mb-4 overflow-hidden rounded-3xl border border-white/10 bg-[#1E241D]/85 backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)]">
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent pointer-events-none" />
             <nav className="relative px-5 py-5 flex flex-col">
               {links.map((l, i) => (

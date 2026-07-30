@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import banner1 from "@/assets/banners/banner1.png";
-import banner2 from "@/assets/banners/banner2.png";
+import banner1 from "@/assets/banners/banner1.webp";
+import banner2 from "@/assets/banners/banner2.webp";
 
 const banners = [
   banner1,
