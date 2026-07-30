@@ -14,14 +14,14 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import heroImg from "@/assets/backgrounds/products-bg-coffee.png";
-import cafeImg from "@/assets/crops/cafe.png";
-import platanoImg from "@/assets/crops/platano.png";
-import maracuyaImg from "@/assets/crops/maracuya.png";
-import tomateImg from "@/assets/crops/tomate.png";
-import papaImg from "@/assets/crops/papa.png";
-import cañaImg from "@/assets/crops/caña.png";
-import limoImg from "@/assets/crops/limon.png";
-import aguacateImg from "@/assets/crops/aguacate.png";
+import cafeImg from "@/assets/crops/cafe.webp";
+import platanoImg from "@/assets/crops/platano.webp";
+import maracuyaImg from "@/assets/crops/maracuya.webp";
+import tomateImg from "@/assets/crops/tomate.webp";
+import papaImg from "@/assets/crops/papa.webp";
+import cañaImg from "@/assets/crops/caña.webp";
+import limoImg from "@/assets/crops/limon.webp";
+import aguacateImg from "@/assets/crops/aguacate.webp";
 import beforeImg from "@/assets/hero/h5.png";
 import afterImg from "@/assets/parallax/cafe.jpg";
 import ctaBg from "@/assets/stats/coffee-field.jpg";
