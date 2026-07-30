@@ -9,9 +9,6 @@ import {
   Users,
   MapPin,
   Package,
-  Star,
-  ChevronLeft,
-  ChevronRight,
   MoveHorizontal,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -27,10 +24,10 @@ import limoImg from "@/assets/crops/limon.png";
 import aguacateImg from "@/assets/crops/aguacate.png";
 import beforeImg from "@/assets/hero/h5.png";
 import afterImg from "@/assets/parallax/cafe.jpg";
-import person1 from "@/assets/brands/plant-4.jpg";
-import person2 from "@/assets/brands/plant-5.jpg";
-import person3 from "@/assets/brands/plant-6.jpg";
 import ctaBg from "@/assets/stats/coffee-field.jpg";
+
+import { Link } from "@tanstack/react-router";
+
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -58,34 +55,6 @@ const estadisticas = [
   { icon: MapPin, value: 15, prefix: "+", label: "Departamentos con presencia" },
   { icon: Package, value: 50, prefix: "+", label: "Referencias de fertilizantes" },
 ];
-
-const testimonios = [
-  {
-    nombre: "Carlos Restrepo",
-    cultivo: "Café",
-    ciudad: "Chinchiná, Caldas",
-    foto: person1,
-    texto:
-      "Desde que trabajamos con el programa nutricional de Ferticolombia, la finca mejoró notablemente el llenado del grano y la calidad de taza. El acompañamiento técnico marcó la diferencia.",
-  },
-  {
-    nombre: "María Fernanda Ríos",
-    cultivo: "Plátano",
-    ciudad: "Palmira, Valle del Cauca",
-    foto: person2,
-    texto:
-      "Los racimos salen más pesados y parejos. Con la asesoría ajustamos las dosis por etapa y el resultado se vio en la primera cosecha.",
-  },
-  {
-    nombre: "Jorge Andrés Perdomo",
-    cultivo: "Maracuyá",
-    ciudad: "Garzón, Huila",
-    foto: person3,
-    texto:
-      "La floración se mantuvo mucho más estable y el cuaje mejoró. Hoy tenemos fruta con calibre para exportación de forma constante.",
-  },
-];
-
 export const Route = createFileRoute("/impacto-agronomico")({
   head: () => ({
     meta: [
@@ -168,80 +137,6 @@ function BeforeAfter() {
     </div>
   );
 }
-
-function Testimonios() {
-  const [index, setIndex] = useState(0);
-  const t = testimonios[index];
-
-  return (
-    <div className="relative mx-auto max-w-4xl">
-      <AnimatePresence mode="wait">
-        <motion.figure
-          key={t.nombre}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="rounded-[28px] border border-white/40 bg-white/70 p-8 shadow-[var(--shadow-card)] backdrop-blur-xl md:p-12"
-        >
-          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:text-left">
-            <img
-              src={t.foto}
-              alt={`Productor ${t.nombre}`}
-              loading="lazy"
-              className="h-24 w-24 shrink-0 rounded-full object-cover ring-4 ring-primary/15"
-            />
-            <div>
-              <div className="flex justify-center gap-1 md:justify-start">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <blockquote className="mt-4 text-[17px] leading-relaxed text-subtle">“{t.texto}”</blockquote>
-              <figcaption className="mt-5">
-                <span className="block font-display text-lg font-bold text-foreground">{t.nombre}</span>
-                <span className="text-sm text-muted-foreground">
-                  {t.cultivo} · {t.ciudad}
-                </span>
-              </figcaption>
-            </div>
-          </div>
-        </motion.figure>
-      </AnimatePresence>
-
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          aria-label="Testimonio anterior"
-          onClick={() => setIndex((i) => (i - 1 + testimonios.length) % testimonios.length)}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary hover:text-primary"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <div className="flex gap-2">
-          {testimonios.map((item, i) => (
-            <button
-              key={item.nombre}
-              type="button"
-              aria-label={`Ver testimonio de ${item.nombre}`}
-              onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-primary" : "w-2 bg-border"}`}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          aria-label="Testimonio siguiente"
-          onClick={() => setIndex((i) => (i + 1) % testimonios.length)}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary hover:text-primary"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function ImpactoAgronomico() {
   const [selected, setSelected] = useState<Cultivo | null>(null);
   const selectedIndex = selected ? cultivos.findIndex((c) => c.nombre === selected.nombre) : -1;
@@ -256,16 +151,16 @@ function ImpactoAgronomico() {
     <main>
       {/* HERO */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <img src={heroImg} alt="Cultivo de café en Colombia" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={heroImg} alt="Cultivo de café en Colombia" className=" absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
 
         <div className="container-fc relative z-10 py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className="max-w-[720px] text-white"
-          >
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className=" max-w-[720px] text-white"
+            >
             <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] backdrop-blur-md">
               Resultados reales
             </span>
@@ -275,20 +170,25 @@ function ImpactoAgronomico() {
               <br />
               Agronómico
             </h1>
-
             <p className="mt-6 max-w-[600px] text-lg text-white/90 leading-relaxed">
               Descubre cómo nuestros fertilizantes han mejorado la productividad, calidad y rendimiento de cientos de
               cultivos en Colombia.
             </p>
-
-            <a href="#resultados" className="btn-primary-fc mt-10 bg-white text-primary hover:bg-white hover:text-primary-dark">
-              Ver resultados
+          <div className="mt-10 flex items-center gap-5">    
+            <a href="#resultados" className="btn-primary-fc  bg-white text-primary hover:bg-white hover:text-primary-dark">
+              Ver los resultados
               <ArrowDown className="h-5 w-5" strokeWidth={2.25} />
             </a>
+            <Link
+              to="/"
+              className="btn-secondary-fc  bg-white/10 text-white hover:bg-white/20"
+            >
+            Volver a Ferticoolomabia
+            </Link> 
+          </div>         
           </motion.div>
         </div>
       </section>
-
       {/* ESTADÍSTICAS */}
       <section aria-label="Cifras de impacto" className="bg-surface py-16 lg:py-20">
         <div className="container-fc">
@@ -407,31 +307,10 @@ function ImpactoAgronomico() {
           </motion.div>
         </div>
       </section>
-
-      {/* TESTIMONIOS */}
-      <section className="section-fc bg-background">
-        <div className="container-fc">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mx-auto max-w-2xl text-center"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Testimonios</span>
-            <h2 className="mt-4 font-display">La voz de los productores</h2>
-          </motion.div>
-
-          <div className="mt-14">
-            <Testimonios />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section className="relative isolate overflow-hidden py-24 lg:py-32">
-        <img src={ctaBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
+  {/* CTA FINAL */}
+    <section className="relative isolate overflow-hidden py-24 lg:py-32">
+      <img src={ctaBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

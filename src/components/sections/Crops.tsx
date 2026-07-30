@@ -25,7 +25,7 @@ export function Crops() {
   const current = crops[index];
 
   return (
-    <section id="cultivos" className="section-fc">
+    <section id="cultivos" className="section-fc relative overflow-hidden">
       <div className="container-fc">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
