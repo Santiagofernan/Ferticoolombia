@@ -150,10 +150,6 @@ return (
               <h2 className="mt-3 sm:mt-4 font-display text-white text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.05] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">
                 Nutrición formulada para cada cultivo
               </h2>
-              <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-white/85">
-                Portafolio técnico de fertilizantes y bioestimulantes de alta
-                eficiencia, con registros ICA vigentes y respaldo agronómico.
-              </p>
             </motion.div>
             <div className="relative">
               {/* Carrusel */}
@@ -169,7 +165,7 @@ return (
                       className="shrink-0 px-3 sm:px-6 lg:px-8"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
-                      <div className="mx-auto w-[92%] sm:w-full max-w-[390px]">
+                      <div className="mx-auto w-[92%] sm:w-full max-w-[385px]">
                         <ProductCard
                         product={p}
                         onOpenFicha={setSelectedFicha}

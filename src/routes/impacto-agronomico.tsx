@@ -22,12 +22,11 @@ import papaImg from "@/assets/crops/papa.webp";
 import cañaImg from "@/assets/crops/caña.webp";
 import limoImg from "@/assets/crops/limon.webp";
 import aguacateImg from "@/assets/crops/aguacate.webp";
-import beforeImg from "@/assets/hero/h5.webp";
-import afterImg from "@/assets/parallax/cafe.jpg";
+import beforeImg from "@/assets/parallax/cafe.jpg";
+import afterImg from "@/assets/hero/h5.webp";
 import ctaBg from "@/assets/stats/coffee-field.jpg";
 
 import { Link } from "@tanstack/react-router";
-
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
