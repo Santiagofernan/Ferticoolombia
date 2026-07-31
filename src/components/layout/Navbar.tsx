@@ -61,16 +61,16 @@ export function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              className={`group relative px-4 py-2 text-[15px] font-semibold tracking-[0.005em] transition-colors duration-300 ${
+              className={`group relative px-4 py-2 text-[18px] font-semibold tracking-[0.005em] transition-colors duration-300 ${
                 scrolled ? "text-foreground/85 hover:text-primary" : "text-white/90 hover:text-white"
               }`}
             >
               <span className="relative">
                 {l.label}
                 <span
-                  className={`pointer-events-none absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full transition-transform duration-300 ease-out group-hover:scale-x-100 ${
-                    scrolled ? "bg-primary" : "bg-white"
-                  }`}
+                  className={`pointer-events-none absolute -bottom-2 left-0 h-[3px] w-full origin-left scale-x-0 rounded-full transition-transform duration-300 ease-out group-hover:scale-x-100 ${
+                  scrolled ? "bg-primary" : "bg-white"
+                }`}
                 />
               </span>
             </a>
@@ -80,16 +80,15 @@ export function Navbar() {
       <div className="hidden lg:block shrink-0">
         <Link
           to="/impacto-agronomico"
-          className={`btn-primary-fc h-11 text-[14px] font-semibold transition-all duration-300 ${
+          className={`btn-primary-fc animate-impact h-11 text-[14px] font-semibold transition-all duration-300 ${
             scrolled
               ? ""
               : "bg-white text-primary hover:bg-white hover:text-primary-dark shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)]"
-          }`} 
+          }`}
         >
           Impacto Ferticoolombia
-        </Link>
+        </Link>      
       </div>
-
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen((v) => !v)}

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Sprout, ArrowRight } from "lucide-react";
 
-import h1 from "@/assets/hero/h1.png";
-import h2 from "@/assets/hero/h2.png";
-import h3 from "@/assets/hero/h3.png";
-import h4 from "@/assets/hero/h4.png";
-import h5 from "@/assets/hero/h5.png";
-import h6 from "@/assets/hero/h6.png";
-import h7 from "@/assets/hero/h7.jpg";
+import h1 from "@/assets/hero/h1.webp";
+import h2 from "@/assets/hero/h2.webp";
+import h3 from "@/assets/hero/h3.webp";
+import h4 from "@/assets/hero/h4.webp";
+import h5 from "@/assets/hero/h5.webp";
+import h6 from "@/assets/hero/h6.webp";
+import h7 from "@/assets/hero/h7.webp";
 
 const slides = [
   { url: h5, alt: "cosecha de café" },

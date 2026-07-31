@@ -1,4 +1,3 @@
-import img210021 from "@/assets/products/c21-0-21.png";
 import img25424 from "@/assets/products/c25-4-24.png";
 import imgKatiuska from "@/assets/products/ckatiuska.png";
 import imgMitakron from "@/assets/products/cmitakron.png";
@@ -6,16 +5,14 @@ import imgPlatanate from "@/assets/products/cplatanate.png";
 import imgSpasiva from "@/assets/products/cspasiva.png";
 import imgBonanza from "@/assets/products/cbonanza-300x300.png";
 /*Fichas*/
-import mitakronFicha from "@/assets/fichas/mitakron.png";
-import katiuskaFicha from "@/assets/fichas/katiuska.png";
-import platanateFicha from "@/assets/fichas/platanate.png";
-import ficha210021 from "@/assets/fichas/21-0-21.png";
-import ficha25424 from "@/assets/fichas/25-4-24.png";
-import spasivaFicha from "@/assets/fichas/spasiva.png";
-import bonanzaFicha from "@/assets/fichas/bonanza.png";
-import zanetaFicha from "@/assets/fichas/zaneta.png";
-import ureaFicha from "@/assets/fichas/urea.png";
-import yurikaFicha from "@/assets/fichas/yurika.png";export interface IProduct {
+import mitakronFicha from "@/assets/fichas/mitakron.webp";
+import katiuskaFicha from "@/assets/fichas/katiuska.webp";
+import platanateFicha from "@/assets/fichas/platanate.webp";
+import ficha25424 from "@/assets/fichas/25-4-24.webp";
+import spasivaFicha from "@/assets/fichas/spasiva.webp";
+import bonanzaFicha from "@/assets/fichas/bonanza.webp";
+
+export interface IProduct {
   slug: string;
   name: string;
   formula: string;

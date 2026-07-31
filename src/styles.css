@@ -217,3 +217,20 @@
 .whatsapp-pulse {
   animation: whatsappPulse 1.5s infinite;
 }
+@keyframes impactPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.35);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow:
+      0 12px 35px -10px rgba(46,125,50,.45),
+      0 0 18px rgba(76,175,80,.35);
+  }
+}
+
+.animate-impact {
+  animation: impactPulse 2.5s ease-in-out infinite;
+}

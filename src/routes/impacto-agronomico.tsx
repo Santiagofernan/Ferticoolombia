@@ -22,7 +22,7 @@ import papaImg from "@/assets/crops/papa.webp";
 import cañaImg from "@/assets/crops/caña.webp";
 import limoImg from "@/assets/crops/limon.webp";
 import aguacateImg from "@/assets/crops/aguacate.webp";
-import beforeImg from "@/assets/hero/h5.png";
+import beforeImg from "@/assets/hero/h5.webp";
 import afterImg from "@/assets/parallax/cafe.jpg";
 import ctaBg from "@/assets/stats/coffee-field.jpg";
 
@@ -123,7 +123,6 @@ function BeforeAfter() {
             <MoveHorizontal className="h-5 w-5" />
           </div>
         </div>
-
         <input
           type="range"
           min={0}

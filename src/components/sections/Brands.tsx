@@ -11,7 +11,7 @@ import logistics2 from "@/assets/brands/logistics-2.jpg";
 import logistics3 from "@/assets/brands/logistics-3.jpg";
 import logistics4 from "@/assets/brands/logistics-4.jpg";
 import fertilizerHold from "@/assets/brands/fertilizer-hold.jpg";
-import acronLogo from "@/assets/brands/acron.jpg";
+import acronLogo from "@/assets/brands/acron.webp";
 import coocentralLogo from "@/assets/brands/coocentral.svg";
 import logoIcon from "@/assets/brand/logo-icon.png";
 
@@ -38,7 +38,7 @@ const brands: Brand[] = [
     tagline: "Aliado nacional cooperativo",
     logo: coocentralLogo,
     url: "https://coocentral.com/",
-    logoClassName: "max-h-32 md:max-h-36",
+    logoClassName: "max-h-40 md:max-h-44 lg:max-h-48"
   },
 ];
 
@@ -161,7 +161,7 @@ export function Brands() {
                   <img
                     src={b.logo}
                     alt={`Logo oficial ${b.name}`}
-                    className={`w-auto object-contain transition-transform duration-500 group-hover:scale-105 ${b.logoClassName ?? "max-h-28 md:max-h-32"}`}
+                    className={`max-w-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 ${b.logoClassName ?? "max-h-28 md:max-h-32"}`}
                     loading="lazy"
                   />
                 </div>
