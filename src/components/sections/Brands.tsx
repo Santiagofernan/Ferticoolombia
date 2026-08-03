@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import plantInterior from "@/assets/brands/plant-interior.jpg";
-import plant4 from "@/assets/brands/plant-4.jpg";
-import plant5 from "@/assets/brands/plant-5.jpg";
-import plant6 from "@/assets/brands/plant-6.jpg";
-import plant7 from "@/assets/brands/plant-7.jpg";
+import plantInterior from "@/assets/brands/plant-interior.webp";
+import plant4 from "@/assets/brands/plant-4.webp";
+import plant5 from "@/assets/brands/plant-5.webp";
+import plant6 from "@/assets/brands/plant-6.webp";
+import plant7 from "@/assets/brands/plant-7.webp";
 import logistics1 from "@/assets/brands/logistics-1.jpg";
 import logistics2 from "@/assets/brands/logistics-2.jpg";
 import logistics3 from "@/assets/brands/logistics-3.jpg";

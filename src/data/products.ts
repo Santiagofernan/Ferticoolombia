@@ -1,9 +1,9 @@
-import img25424 from "@/assets/products/c25-4-24.png";
-import imgKatiuska from "@/assets/products/ckatiuska.png";
-import imgMitakron from "@/assets/products/cmitakron.png";
+import img25424 from "@/assets/products/25-4-24.webp";
+import imgKatiuska from "@/assets/products/katiuska.webp";
+import imgMitakron from "@/assets/products/mitakron.webp";
 import imgPlatanate from "@/assets/products/cplatanate.png";
-import imgSpasiva from "@/assets/products/cspasiva.png";
-import imgBonanza from "@/assets/products/cbonanza-300x300.png";
+import imgSpasiva from "@/assets/products/spasiva.webp";
+import imgBonanza from "@/assets/products/bonanza.webp";
 /*Fichas*/
 import mitakronFicha from "@/assets/fichas/mitakron.webp";
 import katiuskaFicha from "@/assets/fichas/katiuska.webp";
