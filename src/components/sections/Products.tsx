@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, FileText, Check } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
-import productsBg from "@/assets/backgrounds/products-bg-coffee.png";
+import productsBg from "@/assets/backgrounds/products-bg-coffee.webp";
 
 function ProductCard({
   product,
@@ -15,7 +15,7 @@ function ProductCard({
   const [isExpanded, setIsExpanded] = useState(false);
 
 return (
-    <article className="group flex min-h-[500px] sm:min-h-[620px] lg:min-h-[720px] flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
+    <article className="group flex min-h-[500px] sm:min-h-[620px] lg:min-h-[700px] flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
       <div onClick={() => onOpenFicha(product)}
         className="cursor-pointer"
         >   
@@ -39,12 +39,12 @@ return (
         {/* Composición química e ICA */}
         <div className="flex items-center gap-2 flex-wrap">
           {product.formula && (
-            <div className="rounded-full backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB' }}>
+            <div className="rounded-full backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#86e48b' }}>
               {product.formula}
             </div>
           )}
           {product.icaRegistration && (
-            <div className="rounded-full border backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB', borderColor: '#A8DCAB' }}>
+            <div className="rounded-full border backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB', borderColor: '#86e48b' }}>
               {product.icaRegistration}
             </div>
           )}
@@ -165,7 +165,7 @@ return (
                       className="shrink-0 px-3 sm:px-6 lg:px-8"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
-                      <div className="mx-auto w-[92%] sm:w-full max-w-[385px]">
+                      <div className="mx-auto w-[92%] sm:w-full max-w-[380px]">
                         <ProductCard
                         product={p}
                         onOpenFicha={setSelectedFicha}

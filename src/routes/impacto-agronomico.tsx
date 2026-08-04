@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import heroImg from "@/assets/backgrounds/products-bg-coffee.png";
+import heroImg from "@/assets/backgrounds/products-bg-coffee.webp";
 import cafeImg from "@/assets/crops/cafe.webp";
 import platanoImg from "@/assets/crops/platano.webp";
 import maracuyaImg from "@/assets/crops/maracuya.webp";
@@ -24,7 +24,7 @@ import limoImg from "@/assets/crops/limon.webp";
 import aguacateImg from "@/assets/crops/aguacate.webp";
 import beforeImg from "@/assets/parallax/cafe.jpg";
 import afterImg from "@/assets/hero/h5.webp";
-import ctaBg from "@/assets/stats/coffee-field.jpg";
+import ctaBg from "@/assets/hero/h7.webp";
 
 import { Link } from "@tanstack/react-router";
 
