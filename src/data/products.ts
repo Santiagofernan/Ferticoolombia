@@ -33,7 +33,7 @@ export const products: IProduct[] = [
     name: "Mitakron",
     formula: "16-16-16 + 3,5 (CaO)",
     ficha: mitakronFicha,
-    tagline: "Desarrollo vegetativo balanceado",
+    tagline: "Desarrollo vegetativo sostenible y levante garantizado",
     description:
       "Fertilizante compuesto complejo NPK con calcio, de reacción líquida y alta asimilación. Ideal para las etapas de levante, desarrollo y sostén del cultivo.",
     benefits: [
@@ -65,7 +65,7 @@ export const products: IProduct[] = [
     name: "Platanate",
     formula: "15-4-30",
     ficha: platanateFicha,
-    tagline: "Engorde y maduración del fruto",
+    tagline: "Maduración del fruto junto con mejoras en calidad y tamaño",
     description:
       "Fertilizante compuesto mezclado NPK con alta concentración de potasio. Recomendado para la fase de engorde y maduración en cultivos con altas exigencias de K: frutales, hortalizas, cítricos y plátano.",
     benefits: [
@@ -85,8 +85,8 @@ export const products: IProduct[] = [
     description:
       "Mezcla física Premium con fuentes de alta eficiencia y asimilación de NPK. Formulada para etapas de máxima demanda vegetativa y productiva del cultivo.",
     benefits: [
-      "Fuentes de alta eficiencia NPK",
-      "Alta asimilación por la planta",
+      "Eco amigable con el medio ambiente",
+      "Menor concentración de metales pesados",
       "Rendimiento superior por hectárea",
     ],
     icaRegistration: "ICA 10233",
