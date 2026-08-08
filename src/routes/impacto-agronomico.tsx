@@ -11,8 +11,9 @@ import {
   Package,
   MoveHorizontal,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 
+import AgriculturalBackground from "@/components/backgrounds/AgriculturalBackground";
 import heroImg from "@/assets/backgrounds/products-bg-coffee.webp";
 import cafeImg from "@/assets/crops/cafe.webp";
 import platanoImg from "@/assets/crops/platano.webp";
@@ -138,11 +139,25 @@ function BeforeAfter() {
 function ImpactoAgronomico() {
   const [selected, setSelected] = useState<Cultivo | null>(null);
   const selectedIndex = selected ? cultivos.findIndex((c) => c.nombre === selected.nombre) : -1;
+  const touchStartXRef = useRef<number | null>(null);
 
   const move = (dir: number) => {
     if (selectedIndex < 0) return;
     const next = (selectedIndex + dir + cultivos.length) % cultivos.length;
     setSelected(cultivos[next]);
+  };
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return;
+    const touchEndX = event.changedTouches[0]?.clientX ?? 0;
+    const delta = touchEndX - touchStartXRef.current;
+    if (delta > 40) move(-1);
+    if (delta < -40) move(1);
+    touchStartXRef.current = null;
   };
 
   return (
@@ -172,23 +187,23 @@ function ImpactoAgronomico() {
               Descubre cómo nuestros fertilizantes han mejorado la productividad, calidad y rendimiento de cientos de
               cultivos en Colombia.
             </p>
-          <div className="mt-10 flex items-center gap-5">    
-            <a href="#resultados" className="btn-primary-fc  bg-white text-primary hover:bg-white hover:text-primary-dark">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">    
+            <a href="#resultados" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(34,197,94,0.8)] transition hover:bg-emerald-500">
               Ver resultados
               <ArrowDown className="h-5 w-5" strokeWidth={2.25} />
             </a>
             <Link
               to="/"
-              className="btn-secondary-fc  bg-white/10 text-white hover:bg-white/20"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:bg-white/20"
             >
-            Volver
+              Volver
             </Link> 
           </div>         
           </motion.div>
         </div>
       </section>
       {/* ESTADÍSTICAS */}
-      <section aria-label="Cifras de impacto" className="bg-surface py-16 lg:py-20">
+      <section aria-label="Cifras de impacto" className="bg-slate-50 py-16 lg:py-20">
         <div className="container-fc">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {estadisticas.map((s, i) => (
@@ -198,17 +213,17 @@ function ImpactoAgronomico() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
-                className="flex items-center gap-5 rounded-[22px] border border-primary/15 bg-card p-6 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-card)] lg:p-7"
+                className="flex items-center gap-5 rounded-[22px] border border-slate-200/80 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_25px_60px_-30px_rgba(34,197,94,0.16)] lg:p-7"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[16px] bg-primary/10 text-primary">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[16px] bg-emerald-500/15 text-emerald-500 ring-1 ring-emerald-500/20">
                   <s.icon className="h-7 w-7" strokeWidth={2} />
                 </div>
                 <div>
-                  <div className="font-display text-3xl font-extrabold leading-none text-foreground lg:text-4xl">
+                  <div className="font-display text-3xl font-extrabold leading-none text-slate-950 lg:text-4xl">
                     {s.prefix}
                     <Counter to={s.value} />
                   </div>
-                  <p className="mt-2 text-sm leading-snug text-muted-foreground">{s.label}</p>
+                  <p className="mt-2 text-sm leading-snug text-slate-500">{s.label}</p>
                 </div>
               </motion.div>
             ))}
@@ -217,61 +232,73 @@ function ImpactoAgronomico() {
       </section>
 
       {/* RESULTADOS */}
-      <section id="resultados" className="section-fc bg-background">
-        <div className="container-fc">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mx-auto max-w-2xl text-center"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Resultados reales</span>
-            <h2 className="mt-4 font-display">Impacto en diferentes cultivos</h2>
-            <p className="mt-5 text-lg">
-              Conoce algunos de los resultados obtenidos por productores que utilizan fertilizantes Ferticolombia en
-              distintas regiones del país.
-            </p>
-          </motion.div>
+      <section id="resultados" className="relative isolate overflow-hidden bg-transparent py-20 lg:py-28">
+        <AgriculturalBackground
+          particleCount={22}
+          particleSpeed={0.65}
+          intensity={0.7}
+          opacity={1}
+          parallaxSpeed={0.5}
+          leaves={true}
+          clouds={true}
+          className="absolute inset-0"
+        />
+        <div className="relative z-10">
+          <div className="container-fc">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mx-auto max-w-2xl text-center text-black"
+            >
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Resultados reales</span>
+              <h2 className="mt-4 font-display text-black">Impacto en diferentes cultivos</h2>
+              <p className="mt-5 text-lg text-black">
+                Conoce algunos de los resultados obtenidos por productores que utilizan fertilizantes Ferticolombia en
+                distintas regiones del país.
+              </p>
+            </motion.div>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {cultivos.map((cultivo, i) => (
-              <motion.button
-                key={cultivo.nombre}
-                type="button"
-                onClick={() => setSelected(cultivo)}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
-                className="group flex flex-col overflow-hidden rounded-[24px] border border-border bg-card text-left shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1.5 hover:border-primary hover:shadow-[var(--shadow-card)]"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={cultivo.imagen}
-                    alt={`Cultivo de ${cultivo.nombre}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-2xl font-bold text-white">
-                    {cultivo.nombre}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[15px] font-semibold text-foreground">{cultivo.resultado}</p>
-                  <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    {cultivo.region}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                    Ver caso
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                  </span>
-                </div>
-              </motion.button>
-            ))}
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {cultivos.map((cultivo, i) => (
+                <motion.button
+                  key={cultivo.nombre}
+                  type="button"
+                  onClick={() => setSelected(cultivo)}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
+                  className="group flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/90 text-left shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:border-primary hover:shadow-[0_25px_70px_-34px_rgba(34,197,94,0.4)]"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={cultivo.imagen}
+                      alt={`Cultivo de ${cultivo.nombre}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    <span className="absolute bottom-4 left-5 font-display text-2xl font-bold text-white drop-shadow-[0_8px_20px_rgba(0,0,0,0.45)]">
+                      {cultivo.nombre}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-3 p-6">
+                    <p className="text-[15px] font-semibold text-foreground">{cultivo.resultado}</p>
+                    <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <MapPin className="h-4 w-4 text-primary" />
+                      {cultivo.region}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                      Ver caso
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                    </span>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -354,6 +381,8 @@ function ImpactoAgronomico() {
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ duration: 0.35, ease: EASE }}
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               className="relative w-full max-w-4xl overflow-hidden rounded-[28px] bg-card shadow-[var(--shadow-elevated)]"
             >
               <button
