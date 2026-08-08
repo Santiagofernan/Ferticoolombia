@@ -1,7 +1,7 @@
 const EASE = [0.22, 1, 0.36, 1] as const;
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, FileText, Check } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
 import productsBg from "@/assets/backgrounds/products-bg-coffee.webp";
 
