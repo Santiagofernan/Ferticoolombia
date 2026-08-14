@@ -3,6 +3,9 @@ import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
 import { Leaf, Target, ShieldCheck, ArrowRight, Building2, Compass, Eye } from "lucide-react";
 import videoNosotros from "@/assets/about/video-nosotros.mp4";
+// Public path base where optimized variants and poster can be placed (optional).
+const PUBLIC_VIDEO_BASE = "/about/video-nosotros"; // place optimized files in public/about/
+const PUBLIC_POSTER = "/about/video-nosotros-poster.jpg";
 
 const values = [
   {
@@ -50,21 +53,92 @@ const fadeUp: Variants = {
 };
 
 export function About() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    useEffect(() => {
+      const section = sectionRef.current;
+      const vid = videoRef.current || (document.querySelector('#nosotros video') as HTMLVideoElement | null);
+      if (!section || !vid) return;
+
+      const buildSources = (isMobile: boolean) => {
+        if (isMobile) {
+          return [
+            { src: `${PUBLIC_VIDEO_BASE}.mobile.webm`, type: 'video/webm' },
+            { src: `${PUBLIC_VIDEO_BASE}.mobile.mp4`, type: 'video/mp4' },
+            { src: videoNosotros, type: 'video/mp4' },
+          ];
+        }
+        return [
+          { src: `${PUBLIC_VIDEO_BASE}.720.webm`, type: 'video/webm' },
+          { src: `${PUBLIC_VIDEO_BASE}.720.mp4`, type: 'video/mp4' },
+          { src: videoNosotros, type: 'video/mp4' },
+        ];
+      };
+
+      const onIntersect: IntersectionObserverCallback = (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const isMobile = window.innerWidth <= 767;
+            const sources = buildSources(isMobile);
+
+            // set poster if available
+            try {
+              (vid as any).poster = PUBLIC_POSTER;
+            } catch (e) {}
+
+            // remove any existing sources
+            Array.from(vid.querySelectorAll('source')).forEach((s) => s.remove());
+
+            // append preferred sources (webm first)
+            sources.forEach((s) => {
+              const srcEl = document.createElement('source');
+              srcEl.src = s.src;
+              srcEl.type = s.type;
+              vid.appendChild(srcEl);
+            });
+
+            // trigger load/play
+            try {
+              vid.load();
+              const p = vid.play();
+              if (p && p.catch) p.catch(() => {});
+            } catch (e) {
+              // ignore play errors
+            }
+
+            obs.disconnect();
+          }
+        });
+      };
+
+      const io = new IntersectionObserver(onIntersect, { rootMargin: '300px' });
+      io.observe(section);
+      return () => io.disconnect();
+    }, []);
+
   return (
     <section
       id="nosotros"
+      ref={sectionRef}
       className="relative overflow-hidden pt-16 md:pt-20 pb-10 md:pb-12"
     >
-      {/* Video de fondo */}
+      {/* Video de fondo (lazy-load en mobile/desktop para reducir carga) */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="none"
         className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden
       >
-        <source src={videoNosotros} type="video/mp4" />
+        {/* responsive sources: data-src used for lazy assignment; if you later add mobile/webm variants, change these paths */}
+        <source data-src={videoNosotros} media="(max-width: 767px)" type="video/mp4" />
+        <source data-src={videoNosotros} media="(min-width: 768px)" type="video/mp4" />
       </video>
+
 
       {/* Capa oscura para mejorar la lectura */}
       <div className="absolute inset-0 bg-black/55" />
@@ -78,7 +152,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mb-8 w-fit rounded-[20px] bg-white/15 backdrop-blur-xl border border-white/20 px-5 py-3 shadow-[0_8px_32px_rgba(255,255,255,0.1)]"
+            className="mb-8 w-fit rounded-[20px] bg-white/15 md:backdrop-blur-xl border border-white/20 px-5 py-3 shadow-[0_8px_32px_rgba(255,255,255,0.1)]"
           >
             <div className="text-sm font-semibold text-white">+20 años nutriendo el campo colombiano</div>
           </motion.div>
@@ -108,7 +182,7 @@ export function About() {
                   key={v.title}
                   variants={fadeUp}
                   custom={4 + i}
-                  className="rounded-[22px] border border-white/30 bg-gradient-to-br from-white/20 via-white/12 to-white/8 backdrop-blur-2xl p-5 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_12px_40px_rgba(255,255,255,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] hover:border-white/70 hover:from-white/30 hover:via-white/20 hover:to-white/15 group"
+                  className="rounded-[22px] border border-white/30 bg-gradient-to-br from-white/20 via-white/12 to-white/8 md:backdrop-blur-2xl p-5 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_12px_40px_rgba(255,255,255,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] hover:border-white/70 hover:from-white/30 hover:via-white/20 hover:to-white/15 group"
                 >
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-[16px] bg-white/10 text-white transition-transform duration-300 group-hover:scale-110">
                     <v.icon className="h-5 w-5" strokeWidth={2.5} />
