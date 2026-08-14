@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -62,6 +62,11 @@ export function AgriculturalBackground({
     offset: ["start end", "end start"],
   });
 
+  // Prevent SSR/client hydration mismatches by rendering a minimal
+  // placeholder during SSR and until the component is mounted on the client.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const p = reduce ? 0 : Math.max(0, parallaxSpeed) * (isMobile ? 0.68 : 1);
   const motionFactor = isMobile ? 0.55 : 1;
   const globalIntensity = reduce ? Math.min(intensity, 0.75) : intensity;
@@ -122,6 +127,17 @@ export function AgriculturalBackground({
     [cloudCount, particleSpeed, isMobile],
   );
 
+  if (!mounted) {
+    return (
+      <div
+        ref={ref}
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 overflow-hidden select-none ${className}`}
+        style={{ opacity, zIndex: 0 }}
+      />
+    );
+  }
+
   return (
     <div
       ref={ref}
@@ -168,9 +184,9 @@ export function AgriculturalBackground({
           key={`cloud-${i}`}
           className="absolute will-change-transform"
           style={{
-            top: `${c.top}%`,
-            width: c.width,
-            height: c.height,
+            top: `${Number(c.top).toFixed(4)}%`,
+            width: `${Number(c.width).toFixed(3)}px`,
+            height: `${Number(c.height).toFixed(3)}px`,
             left: "-40%",
             borderRadius: "9999px",
             filter: "blur(38px)",
@@ -224,14 +240,14 @@ export function AgriculturalBackground({
             key={`p-${i}`}
             className="absolute rounded-full will-change-transform"
             style={{
-              left: `${s.left}%`,
-              top: `${s.top}%`,
-              width: s.size,
-              height: s.size,
+                left: `${Number(s.left).toFixed(4)}%`,
+                top: `${Number(s.top).toFixed(4)}%`,
+                width: `${Number(s.size).toFixed(5)}px`,
+                height: `${Number(s.size).toFixed(5)}px`,
               background: s.glow
                 ? `oklch(0.95 0.09 100 / ${s.alpha})`
                 : `oklch(0.46 0.07 90 / ${s.alpha})`,
-              boxShadow: s.glow ? `0 0 ${s.size * 1.8}px oklch(0.83 0.16 85 / ${s.alpha * 0.65})` : undefined,
+                boxShadow: s.glow ? `0 0 ${Number(s.size * 1.8).toFixed(5)}px oklch(0.83 0.16 85 / ${s.alpha * 0.65})` : undefined,
             }}
             animate={
               reduce
@@ -258,7 +274,7 @@ export function AgriculturalBackground({
           <motion.div
             key={`leaf-${i}`}
             className="absolute will-change-transform"
-            style={{ top: `${l.top}%`, left: "-12%" }}
+            style={{ top: `${Number(l.top).toFixed(4)}%`, left: "-12%" }}
             animate={
               reduce
                 ? undefined

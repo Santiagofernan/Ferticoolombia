@@ -119,6 +119,76 @@ return (
         [page, itemsPerView],
       );
 
+      // Mobile/trackpad interaction: swipe on touch devices and horizontal trackpad
+      // wheel gestures when cursor is over the carousel. Only active when
+      // `itemsPerView === 1` (mobile view).
+      const carouselRef = useRef<HTMLDivElement | null>(null);
+      const touchStartXRef = useRef<number | null>(null);
+      const pointerOverRef = useRef(false);
+      const lastWheelTimeRef = useRef(0);
+
+      useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+
+        const onWheel = (e: WheelEvent) => {
+          if (itemsPerView !== 1) return;
+          if (!pointerOverRef.current) return;
+          const now = Date.now();
+          if (now - lastWheelTimeRef.current < 350) return; // throttle
+          const dx = e.deltaX || 0;
+          if (Math.abs(dx) > 20) {
+            if (dx > 0) next();
+            else prev();
+            lastWheelTimeRef.current = now;
+          }
+        };
+
+        const onPointerEnter = () => (pointerOverRef.current = true);
+        const onPointerLeave = () => (pointerOverRef.current = false);
+
+        el.addEventListener("wheel", onWheel, { passive: true });
+        el.addEventListener("pointerenter", onPointerEnter);
+        el.addEventListener("pointerleave", onPointerLeave);
+
+        return () => {
+          el.removeEventListener("wheel", onWheel);
+          el.removeEventListener("pointerenter", onPointerEnter);
+          el.removeEventListener("pointerleave", onPointerLeave);
+        };
+      }, [itemsPerView, next, prev]);
+
+      // Touch swipe handling for mobile
+      useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+
+        const onTouchStart = (ev: TouchEvent) => {
+          touchStartXRef.current = ev.touches[0]?.clientX ?? null;
+        };
+        const onTouchEnd = (ev: TouchEvent) => {
+          if (touchStartXRef.current === null) return;
+          const touchEndX = ev.changedTouches[0]?.clientX ?? 0;
+          const delta = touchEndX - (touchStartXRef.current ?? 0);
+          if (delta > 40) prev();
+          if (delta < -40) next();
+          touchStartXRef.current = null;
+        };
+
+        el.addEventListener("touchstart", onTouchStart, { passive: true });
+        el.addEventListener("touchend", onTouchEnd, { passive: true });
+
+        return () => {
+          el.removeEventListener("touchstart", onTouchStart);
+          el.removeEventListener("touchend", onTouchEnd);
+        };
+      }, [itemsPerView, next, prev]);
+
+      // show a small touch hint briefly on mobile
+      useEffect(() => {
+        // no-op: touch hint removed per user request
+      }, [itemsPerView]);
+
       return (
         <section id="productos" ref={ref} className="section-fc relative overflow-hidden">
           <div aria-hidden className="absolute inset-0 overflow-hidden">
@@ -153,7 +223,7 @@ return (
             </motion.div>
             <div className="relative">
               {/* Carrusel */}
-              <div className="overflow-hidden px-1">
+              <div className="overflow-hidden px-1" ref={carouselRef}>
                 <motion.div
                   className="flex"
                   animate={{ x: `-${translatePct}%` }}
@@ -174,6 +244,7 @@ return (
                     </div>
                   ))}
                 </motion.div>
+                
               </div>
               {/* Flechas */}
               {totalPages > 1 && (
