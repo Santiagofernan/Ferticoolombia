@@ -1,16 +1,16 @@
-import img25424 from "@/assets/products/25-4-24.webp";
-import imgKatiuska from "@/assets/products/katiuska.webp";
-import imgMitakron from "@/assets/products/mitakron.webp";
-import imgPlatanate from "@/assets/products/cplatanate.png";
-import imgSpasiva from "@/assets/products/spasiva.webp";
-import imgBonanza from "@/assets/products/bonanza.webp";
+import img25424 from "@/assets/products/25-4-24.avif";
+import imgKatiuska from "@/assets/products/katiuska.avif";
+import imgMitakron from "@/assets/products/mitakron.avif";
+import imgPlatanate from "@/assets/products/cplatanate.avif";
+import imgSpasiva from "@/assets/products/spasiva.avif";
+import imgBonanza from "@/assets/products/bonanza.avif";
 /*Fichas*/
-import mitakronFicha from "@/assets/fichas/mitakron.webp";
-import katiuskaFicha from "@/assets/fichas/katiuska.webp";
-import platanateFicha from "@/assets/fichas/platanate.webp";
-import ficha25424 from "@/assets/fichas/25-4-24.webp";
-import spasivaFicha from "@/assets/fichas/spasiva.webp";
-import bonanzaFicha from "@/assets/fichas/bonanza.webp";
+import mitakronFicha from "@/assets/fichas/mitakron.avif";
+import katiuskaFicha from "@/assets/fichas/katiuska.avif";
+import platanateFicha from "@/assets/fichas/platanate.avif";
+import ficha25424 from "@/assets/fichas/25-4-24.avif";
+import spasivaFicha from "@/assets/fichas/spasiva.avif";
+import bonanzaFicha from "@/assets/fichas/bonanza.avif";
 
 export interface IProduct {
   slug: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logoIcon from "@/assets/brand/logo-icon.png";
+import logoIcon from "@/assets/brand/logo-icon.avif";
 
 const links = [
   { label: "Inicio", href: "#top" },

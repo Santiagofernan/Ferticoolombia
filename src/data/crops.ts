@@ -1,11 +1,11 @@
-import cafeImg from "@/assets/crops/cafe.webp";
-import platanoImg from "@/assets/crops/platano.webp";
-import maracuyaImg from "@/assets/crops/maracuya.webp";
-import tomateImg from "@/assets/crops/tomate.webp";
-import aguacateImg from "@/assets/crops/aguacate.webp";
-import limonImg from "@/assets/crops/limon.webp";
-import cañaImg from "@/assets/crops/caña.webp";
-import papaImg  from "@/assets/crops/papa.webp";
+import cafeImg from "@/assets/crops/cafe.avif";
+import platanoImg from "@/assets/crops/platano.avif";
+import maracuyaImg from "@/assets/crops/maracuya.avif";
+import tomateImg from "@/assets/crops/tomate.avif";
+import aguacateImg from "@/assets/crops/aguacate.avif";
+import limonImg from "@/assets/crops/limon.avif";
+import cañaImg from "@/assets/crops/caña.avif";
+import papaImg  from "@/assets/crops/papa.avif";
 
 export interface ICrop {
   slug: string;

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, Clock, Headphones, MapPinned, Award } from "lucide-react";
-import heroBg from "@/assets/hero/h3.webp";
+import heroBg from "@/assets/hero/h3.avif";
 import whatsappLogo from "@/assets/brand/whatsapp.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;

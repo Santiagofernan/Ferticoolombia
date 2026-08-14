@@ -14,18 +14,18 @@ import {
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 
 import AgriculturalBackground from "@/components/backgrounds/AgriculturalBackground";
-import heroImg from "@/assets/backgrounds/products-bg-coffee.webp";
-import cafeImg from "@/assets/crops/cafe.webp";
-import platanoImg from "@/assets/crops/platano.webp";
-import maracuyaImg from "@/assets/crops/maracuya.webp";
-import tomateImg from "@/assets/crops/tomate.webp";
-import papaImg from "@/assets/crops/papa.webp";
-import cañaImg from "@/assets/crops/caña.webp";
-import limoImg from "@/assets/crops/limon.webp";
-import aguacateImg from "@/assets/crops/aguacate.webp";
-import beforeImg from "@/assets/parallax/cafe.jpg";
-import afterImg from "@/assets/hero/h5.webp";
-import ctaBg from "@/assets/hero/h7.webp";
+import heroImg from "@/assets/backgrounds/products-bg-coffee.avif";
+import cafeImg from "@/assets/crops/cafe.avif";
+import platanoImg from "@/assets/crops/platano.avif";
+import maracuyaImg from "@/assets/crops/maracuya.avif";
+import tomateImg from "@/assets/crops/tomate.avif";
+import papaImg from "@/assets/crops/papa.avif";
+import cañaImg from "@/assets/crops/caña.avif";
+import limoImg from "@/assets/crops/limon.avif";
+import aguacateImg from "@/assets/crops/aguacate.avif";
+import beforeImg from "@/assets/parallax/cafe.avif";
+import afterImg from "@/assets/hero/h5.avif";
+import ctaBg from "@/assets/hero/h7.avif";
 
 import { Link } from "@tanstack/react-router";
 

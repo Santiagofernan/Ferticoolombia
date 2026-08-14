@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import plantInterior from "@/assets/brands/plant-interior.webp";
-import plant4 from "@/assets/brands/plant-4.webp";
-import plant5 from "@/assets/brands/plant-5.webp";
-import plant6 from "@/assets/brands/plant-6.webp";
-import plant7 from "@/assets/brands/plant-7.webp";
-import logistics1 from "@/assets/brands/logistics-1.jpg";
-import logistics2 from "@/assets/brands/logistics-2.jpg";
-import logistics3 from "@/assets/brands/logistics-3.jpg";
-import logistics4 from "@/assets/brands/logistics-4.jpg";
-import fertilizerHold from "@/assets/brands/fertilizer-hold.jpg";
-import acronLogo from "@/assets/brands/acron.webp";
+import plantInterior from "@/assets/brands/plant-interior.avif";
+import plant4 from "@/assets/brands/plant-4.avif";
+import plant5 from "@/assets/brands/plant-5.avif";
+import plant6 from "@/assets/brands/plant-6.avif";
+import plant7 from "@/assets/brands/plant-7.avif";
+import logistics1 from "@/assets/brands/logistics-1.avif";
+import logistics2 from "@/assets/brands/logistics-2.avif";
+import logistics4 from "@/assets/brands/logistics-4.avif";
+import fertilizerHold from "@/assets/brands/fertilizer-hold.webp";
+import acronLogo from "@/assets/brands/acron.avif";
 import coocentralLogo from "@/assets/brands/coocentral.svg";
-import logoIcon from "@/assets/brand/logo-icon.png";
+import logoIcon from "@/assets/brand/logo-icon.avif";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -51,7 +50,6 @@ const backgroundImages = [
   plant5,
   logistics2,
   plant6,
-  logistics3,
   plant7,
 ];
 

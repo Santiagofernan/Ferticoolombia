@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/brand/logo.png";
+import logo from "@/assets/brand/logo.avif";
 
 const columns = [
   {

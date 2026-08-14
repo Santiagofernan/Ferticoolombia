@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
-import productsBg from "@/assets/backgrounds/products-bg-coffee.webp";
+import productsBg from "@/assets/backgrounds/products-bg-coffee.avif";
 
 function ProductCard({
   product,

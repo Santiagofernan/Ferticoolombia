@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate, useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Calendar, Package, Users, MapPin } from "lucide-react";
-import coffeeField from "@/assets/hero/h7.webp";
+import coffeeField from "@/assets/hero/h7.avif";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
