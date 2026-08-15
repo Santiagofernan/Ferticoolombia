@@ -234,3 +234,13 @@
 .animate-impact {
   animation: impactPulse 2.5s ease-in-out infinite;
 }
+
+/* Ensure in-page anchors account for fixed header height using CSS variable set on the header */
+section[id] {
+  scroll-margin-top: calc(var(--header-height, 92px) + 6px);
+}
+
+/* Optional: ensure focus outline is visible for sections when navigated */
+section[id]:focus {
+  outline: none;
+}

@@ -2,10 +2,10 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
 import { Leaf, Target, ShieldCheck, ArrowRight, Building2, Compass, Eye } from "lucide-react";
-import videoNosotros from "@/assets/about/video-nosotros.mp4";
+import videoNosotros from "@/assets/about/Video-nosotros.webm";
 // Public path base where optimized variants and poster can be placed (optional).
 const PUBLIC_VIDEO_BASE = "/about/video-nosotros"; // place optimized files in public/about/
-const PUBLIC_POSTER = "/about/video-nosotros-poster.jpg";
+const PUBLIC_POSTER = "/about/video-nosotros-poster.avif";
 
 const values = [
   {
@@ -65,14 +65,12 @@ export function About() {
         if (isMobile) {
           return [
             { src: `${PUBLIC_VIDEO_BASE}.mobile.webm`, type: 'video/webm' },
-            { src: `${PUBLIC_VIDEO_BASE}.mobile.mp4`, type: 'video/mp4' },
-            { src: videoNosotros, type: 'video/mp4' },
+            { src: videoNosotros, type: 'video/webm' },
           ];
         }
         return [
           { src: `${PUBLIC_VIDEO_BASE}.720.webm`, type: 'video/webm' },
-          { src: `${PUBLIC_VIDEO_BASE}.720.mp4`, type: 'video/mp4' },
-          { src: videoNosotros, type: 'video/mp4' },
+          { src: videoNosotros, type: 'video/webm' },
         ];
       };
 
