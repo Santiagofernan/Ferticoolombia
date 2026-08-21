@@ -197,6 +197,38 @@
     transform: translateY(-2px);
   }
 }
+
+/* Subtle shared glow for native buttons and branded button links. */
+button:not(:disabled),
+[role="button"],
+.btn-primary-fc,
+.btn-secondary-fc {
+  transition: box-shadow 220ms ease, transform 220ms ease, background-color 220ms ease, color 220ms ease;
+}
+
+button:not(:disabled):hover,
+[role="button"]:hover,
+.btn-primary-fc:hover,
+.btn-secondary-fc:hover {
+  box-shadow: 0 5px 18px -11px oklch(0.52 0.14 145 / 0.7);
+}
+
+button:not(:disabled):active,
+[role="button"]:active,
+.btn-primary-fc:active,
+.btn-secondary-fc:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:not(:disabled),
+  [role="button"],
+  .btn-primary-fc,
+  .btn-secondary-fc {
+    transition: none;
+  }
+}
+
 @keyframes whatsappPulse {
   0% {
     transform: scale(1);

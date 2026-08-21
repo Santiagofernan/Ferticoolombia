@@ -42,26 +42,35 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    // observe sections for in-page anchors and update active when visible
+    // The section whose top has passed the header is the active navigation item.
     const anchorHrefs = links.map((l) => l.href).filter((h) => h.startsWith("#"));
     const els = anchorHrefs
       .map((h) => document.getElementById(h.replace(/^#/, "")))
       .filter(Boolean) as HTMLElement[];
     if (!els.length) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
-          }
-        });
-      },
-      { root: null, threshold: 0.5 },
-    );
+    let frame = 0;
+    const updateActiveSection = () => {
+      frame = 0;
+      const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 92;
+      const marker = headerHeight + 24;
+      const passedSections = els.filter((el) => el.getBoundingClientRect().top <= marker);
+      const current = passedSections[passedSections.length - 1];
+      setActive(current ? `#${current.id}` : "#top");
+    };
 
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Use CSS `scroll-margin-top` on sections instead of JS offset calculations.
