@@ -19,7 +19,7 @@ import cafeImg from "@/assets/crops/cafe.avif";
 import platanoImg from "@/assets/crops/platano.avif";
 import maracuyaImg from "@/assets/crops/maracuya.avif";
 import tomateImg from "@/assets/crops/tomate.avif";
-import papaImg from "@/assets/crops/papa.avif";
+import papaImg from "@/assets/crops/papa.webp";
 import cañaImg from "@/assets/crops/caña.avif";
 import limoImg from "@/assets/crops/limon.avif";
 import aguacateImg from "@/assets/crops/aguacate.avif";
@@ -373,7 +373,7 @@ function ImpactoAgronomico() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelected(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 p-3 backdrop-blur-sm sm:items-center sm:p-6"
           >
             <motion.div
               initial={{ scale: 0.94, opacity: 0 }}
@@ -383,7 +383,7 @@ function ImpactoAgronomico() {
               onClick={(e) => e.stopPropagation()}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="relative w-full max-w-4xl overflow-hidden rounded-[28px] bg-card shadow-[var(--shadow-elevated)]"
+              className="relative my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-4xl overflow-y-auto overflow-x-hidden rounded-[28px] bg-card shadow-[var(--shadow-elevated)] sm:max-h-[calc(100dvh-3rem)]"
             >
               <button
                 type="button"
@@ -394,23 +394,24 @@ function ImpactoAgronomico() {
                 <X className="h-5 w-5" />
               </button>
               <div className="relative">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={selected.nombre}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    src={selected.imagen}
-                    alt={`Cultivo de ${selected.nombre}`}
-                    className="h-64 w-full object-cover md:h-full"
-                  />
-                </AnimatePresence>
+                <div className="relative">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={selected.nombre}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      src={selected.imagen}
+                      alt={`Cultivo de ${selected.nombre}`}
+                      className="block max-h-[42dvh] min-h-52 w-full object-cover sm:max-h-[50dvh] md:max-h-[56dvh]"
+                    />
+                  </AnimatePresence>
                   <button
                     type="button"
                     onClick={() => move(-1)}
                     aria-label="Cultivo anterior"
-                    className="absolute left-4 top-[28%] z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-white hover:bg-white/25 transition-all duration-300 shadow-lg shadow-md transition-colors hover:bg-white hover:text-primary"
+                    className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/35 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary sm:left-4 sm:h-11 sm:w-11"
                   >
                     <ArrowLeft className="h-5 w-5" />
                   </button>
@@ -418,20 +419,21 @@ function ImpactoAgronomico() {
                     type="button"
                     onClick={() => move(1)}
                     aria-label="Cultivo siguiente"
-                    className="absolute right-4 top-[28%] z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-white hover:bg-white/25 transition-all duration-300 shadow-lg shadow-md transition-colors hover:bg-white hover:text-primary"
+                    className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/35 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary sm:right-4 sm:h-11 sm:w-11"
                   >
                     <ArrowRight className="h-5 w-5" />
                   </button>
-                  <div className="flex flex-col justify-center p-8 md:p-10">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Caso de éxito</span>
-                  <h3 className="mt-3 font-display">{selected.nombre}</h3>
+                </div>
+                <div className="flex flex-col justify-center p-8 md:p-10">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark">Caso de éxito</span>
+                  <h3 className="mt-3 font-display text-foreground">{selected.nombre}</h3>
                   <p className="mt-4 text-[17px] font-semibold text-foreground">{selected.resultado}</p>
-                  <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
+                  <p className="mt-3 flex items-center gap-2 text-sm font-medium text-foreground/80">
                     <MapPin className="h-4 w-4 text-primary" />
                     {selected.region}
                   </p>
                   <div className="mt-6 h-px bg-border" />
-                  <p className="mt-6 text-[15px] leading-relaxed">
+                  <p className="mt-6 text-[15px] font-medium leading-relaxed text-foreground/90">
                     Programa nutricional Ferticolombia con acompañamiento técnico en campo, análisis de suelo y
                     dosificación por etapa fenológica.
                   </p>

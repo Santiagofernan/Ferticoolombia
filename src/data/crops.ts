@@ -5,7 +5,7 @@ import tomateImg from "@/assets/crops/tomate.avif";
 import aguacateImg from "@/assets/crops/aguacate.avif";
 import limonImg from "@/assets/crops/limon.avif";
 import cañaImg from "@/assets/crops/caña.avif";
-import papaImg  from "@/assets/crops/papa.avif";
+import papaImg  from "@/assets/crops/papa.webp";
 
 export interface ICrop {
   slug: string;

@@ -8,6 +8,7 @@ import { Stats } from "@/components/sections/Stats";
 import { Products } from "@/components/sections/Products";
 import { Crops } from "@/components/sections/Crops";
 import { Benefits } from "@/components/sections/Benefits";
+import { YouTubeVideoSection } from "@/components/sections/YouTubeVideoSection";
 import { Brands } from "@/components/sections/Brands";
 import { Contact } from "@/components/sections/Contact";
 import PromoPopup from "@/components/layout/PromoPopup";
@@ -29,6 +30,7 @@ function Index() {
         <Products />
         <Crops />
         <Benefits />
+        <YouTubeVideoSection />
         <Brands />
         <Contact />
       </main>
