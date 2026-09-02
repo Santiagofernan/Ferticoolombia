@@ -203,7 +203,7 @@ function ImpactoAgronomico() {
         </div>
       </section>
       {/* ESTADÍSTICAS */}
-      <section aria-label="Cifras de impacto" className="bg-slate-50 py-16 lg:py-20">
+      <section aria-label="Cifras de impacto" className="bg-slate-50 dark:bg-background py-16 lg:py-20 transition-colors duration-400">
         <div className="container-fc">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {estadisticas.map((s, i) => (
@@ -213,17 +213,17 @@ function ImpactoAgronomico() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
-                className="flex items-center gap-5 rounded-[22px] border border-slate-200/80 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_25px_60px_-30px_rgba(34,197,94,0.16)] lg:p-7"
+                className="flex items-center gap-5 rounded-[22px] border border-slate-200/80 dark:border-border/50 bg-white dark:bg-card p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.12)] dark:shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-[0_25px_60px_-30px_rgba(34,197,94,0.16)] dark:hover:shadow-lg lg:p-7"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[16px] bg-emerald-500/15 text-emerald-500 ring-1 ring-emerald-500/20">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[16px] bg-emerald-500/15 dark:bg-primary/15 text-emerald-500 dark:text-primary-light ring-1 ring-emerald-500/20 dark:ring-primary/20">
                   <s.icon className="h-7 w-7" strokeWidth={2} />
                 </div>
                 <div>
-                  <div className="font-display text-3xl font-extrabold leading-none text-slate-950 lg:text-4xl">
+                  <div className="font-display text-3xl font-extrabold leading-none text-slate-950 dark:text-foreground lg:text-4xl">
                     {s.prefix}
                     <Counter to={s.value} />
                   </div>
-                  <p className="mt-2 text-sm leading-snug text-slate-500">{s.label}</p>
+                  <p className="mt-2 text-sm leading-snug text-slate-500 dark:text-muted-foreground">{s.label}</p>
                 </div>
               </motion.div>
             ))}
@@ -232,7 +232,7 @@ function ImpactoAgronomico() {
       </section>
 
       {/* RESULTADOS */}
-      <section id="resultados" className="relative isolate overflow-hidden bg-transparent py-20 lg:py-28">
+      <section id="resultados" className="relative isolate overflow-hidden bg-background py-20 transition-colors duration-400 lg:py-28">
         <AgriculturalBackground
           particleCount={22}
           particleSpeed={0.65}
@@ -243,6 +243,7 @@ function ImpactoAgronomico() {
           clouds={true}
           className="absolute inset-0"
         />
+        <div className="pointer-events-none absolute inset-0 bg-black/55 dark:bg-black/65" />
         <div className="relative z-10">
           <div className="container-fc">
             <motion.div
@@ -250,11 +251,11 @@ function ImpactoAgronomico() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: EASE }}
-              className="mx-auto max-w-2xl text-center text-black"
+              className="mx-auto max-w-2xl text-center text-white"
             >
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Resultados reales</span>
-              <h2 className="mt-4 font-display text-black">Impacto en diferentes cultivos</h2>
-              <p className="mt-5 text-lg text-black">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">Resultados reales</span>
+              <h2 className="mt-4 font-display text-white">Impacto en diferentes cultivos</h2>
+              <p className="mt-5 text-lg text-white/90">
                 Conoce algunos de los resultados obtenidos por productores que utilizan fertilizantes Ferticolombia en
                 distintas regiones del país.
               </p>
@@ -270,7 +271,7 @@ function ImpactoAgronomico() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
-                  className="group flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/90 text-left shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:border-primary hover:shadow-[0_25px_70px_-34px_rgba(34,197,94,0.4)]"
+                  className="group flex flex-col overflow-hidden rounded-[24px] border border-white/10 dark:border-border/50 bg-white/90 dark:bg-card text-left shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] dark:shadow-none transition-all duration-300 hover:-translate-y-1.5 hover:border-primary dark:hover:border-primary/50 hover:shadow-[0_25px_70px_-34px_rgba(34,197,94,0.4)] dark:hover:shadow-lg"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
@@ -286,12 +287,12 @@ function ImpactoAgronomico() {
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-3 p-6">
-                    <p className="text-[15px] font-semibold text-foreground">{cultivo.resultado}</p>
-                    <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4 text-primary" />
+                    <p className="text-[15px] font-semibold text-foreground dark:text-card-foreground">{cultivo.resultado}</p>
+                    <p className="mt-2 flex items-center gap-1.5 text-sm text-subtle dark:text-card-foreground/85">
+                      <MapPin className="h-4 w-4 text-primary dark:text-primary-light" />
                       {cultivo.region}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-primary-light">
                       Ver caso
                       <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                     </span>
@@ -304,7 +305,7 @@ function ImpactoAgronomico() {
       </section>
 
       {/* ANTES Y DESPUÉS */}
-      <section className="section-fc bg-surface">
+      <section className="section-fc bg-surface transition-colors duration-400 dark:bg-muted">
         <div className="container-fc">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,9 +314,9 @@ function ImpactoAgronomico() {
             transition={{ duration: 0.6, ease: EASE }}
             className="mx-auto max-w-2xl text-center"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Comparativa</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary dark:text-primary-light">Comparativa</span>
             <h2 className="mt-4 font-display">Antes y después</h2>
-            <p className="mt-5 text-lg">
+            <p className="mt-5 text-lg dark:text-foreground/90">
               Desliza la barra para comparar el estado del cultivo antes y después de aplicar el programa nutricional
               de Ferticolombia.
             </p>
@@ -334,8 +335,21 @@ function ImpactoAgronomico() {
       </section>
   {/* CTA FINAL */}
     <section className="relative isolate overflow-hidden py-24 lg:py-32">
-      <img src={ctaBg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+      <img
+        src={ctaBg}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover object-[center_44%] sm:object-[center_42%] lg:object-[center_40%]"
+      />
       <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 230"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-24 w-full fill-surface sm:h-28 lg:h-36 dark:fill-muted"
+      >
+        <path d="M0 0H1440V108C1266 160 1112 196 922 164C714 128 612 202 402 180C218 160 88 112 0 138Z" />
+      </svg>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -389,7 +403,7 @@ function ImpactoAgronomico() {
                 type="button"
                 onClick={() => setSelected(null)}
                 aria-label="Cerrar"
-                className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md transition-all duration-300 hover:rotate-90 hover:bg-white"
+                className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 dark:bg-card text-foreground dark:text-card-foreground shadow-md transition-all duration-300 hover:rotate-90 hover:bg-white dark:hover:bg-surface"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -411,7 +425,7 @@ function ImpactoAgronomico() {
                     type="button"
                     onClick={() => move(-1)}
                     aria-label="Cultivo anterior"
-                    className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/35 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary sm:left-4 sm:h-11 sm:w-11"
+                    className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 dark:border-white/20 bg-black/35 dark:bg-black/50 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary dark:hover:bg-surface dark:hover:text-primary-light sm:left-4 sm:h-11 sm:w-11"
                   >
                     <ArrowLeft className="h-5 w-5" />
                   </button>
@@ -419,21 +433,21 @@ function ImpactoAgronomico() {
                     type="button"
                     onClick={() => move(1)}
                     aria-label="Cultivo siguiente"
-                    className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/35 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary sm:right-4 sm:h-11 sm:w-11"
+                    className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 dark:border-white/20 bg-black/35 dark:bg-black/50 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-primary dark:hover:bg-surface dark:hover:text-primary-light sm:right-4 sm:h-11 sm:w-11"
                   >
                     <ArrowRight className="h-5 w-5" />
                   </button>
                 </div>
                 <div className="flex flex-col justify-center p-8 md:p-10">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark">Caso de éxito</span>
-                  <h3 className="mt-3 font-display text-foreground">{selected.nombre}</h3>
-                  <p className="mt-4 text-[17px] font-semibold text-foreground">{selected.resultado}</p>
-                  <p className="mt-3 flex items-center gap-2 text-sm font-medium text-foreground/80">
-                    <MapPin className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark dark:text-primary">Caso de éxito</span>
+                  <h3 className="mt-3 font-display text-foreground dark:text-card-foreground">{selected.nombre}</h3>
+                  <p className="mt-4 text-[17px] font-semibold text-foreground dark:text-card-foreground">{selected.resultado}</p>
+                  <p className="mt-3 flex items-center gap-2 text-sm font-medium text-foreground/80 dark:text-muted-foreground">
+                    <MapPin className="h-4 w-4 text-primary dark:text-primary-light" />
                     {selected.region}
                   </p>
-                  <div className="mt-6 h-px bg-border" />
-                  <p className="mt-6 text-[15px] font-medium leading-relaxed text-foreground/90">
+                  <div className="mt-6 h-px bg-border dark:bg-border/50" />
+                  <p className="mt-6 text-[15px] font-medium leading-relaxed text-foreground/90 dark:text-muted-foreground">
                     Programa nutricional Ferticolombia con acompañamiento técnico en campo, análisis de suelo y
                     dosificación por etapa fenológica.
                   </p>

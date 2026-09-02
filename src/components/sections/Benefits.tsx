@@ -44,17 +44,27 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section id="beneficios" className="bg-surface">
-      <div   className="relative overflow-hidden section-fc bg-[#F7FAF8]">
+    <section id="beneficios" className="bg-surface dark:bg-background transition-colors duration-400">
+      <div className="relative overflow-hidden section-fc bg-[#F7FAF8] dark:bg-surface transition-colors duration-400">
         {/* Fondo animado */}
           <div className="absolute inset-0 overflow-hidden">
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 dark:hidden"
                 style={{
                   background: `
                     radial-gradient(circle at 20% 20%, rgba(255,255,255,0.55), transparent 45%),
                     radial-gradient(circle at 80% 30%, rgba(255,255,255,0.35), transparent 40%),
                     radial-gradient(circle at 50% 80%, rgba(255,255,255,0.30), transparent 45%)
+                  `,
+                }}
+              />
+            <div
+                className="absolute inset-0 hidden dark:block"
+                style={{
+                  background: `
+                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 45%),
+                    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05), transparent 40%),
+                    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.04), transparent 45%)
                   `,
                 }}
               />
@@ -70,7 +80,7 @@ export function Benefits() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#3AA655]/35 blur-[220px]"
+              className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#3AA655]/35 dark:bg-[#3AA655]/10 blur-[220px] transition-colors duration-400"
             />
 
             {/* Amarillo */}
@@ -85,7 +95,7 @@ export function Benefits() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-[#F2C94C]/28 blur-[150px]"
+              className="absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-[#F2C94C]/28 dark:bg-[#F2C94C]/8 blur-[150px] transition-colors duration-400"
             />
 
             {/* Azul */}
@@ -100,7 +110,7 @@ export function Benefits() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute bottom-0 left-1/4 h-[450px] w-[450px] rounded-full bg-[#2F80ED]/25 blur-[260px]"
+              className="absolute bottom-0 left-1/4 h-[450px] w-[450px] rounded-full bg-[#2F80ED]/25 dark:bg-[#2F80ED]/8 blur-[260px] transition-colors duration-400"
             />
 
             {/* Naranja */}
@@ -115,7 +125,7 @@ export function Benefits() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute bottom-[-100px] right-[-80px] h-[420px] w-[420px] rounded-full bg-[#F2994A]/28 blur-[170px]"
+              className="absolute bottom-[-100px] right-[-80px] h-[420px] w-[420px] rounded-full bg-[#F2994A]/28 dark:bg-[#F2994A]/8 blur-[170px] transition-colors duration-400"
             />
           </div>
           <div className="container-fc relative z-10">     
@@ -126,13 +136,13 @@ export function Benefits() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >   
-          <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-[#2E7D32]">
+          <span className="inline-block text-xl font-semibold uppercase tracking-[0.2em] text-[#2E7D32] dark:text-primary-light">
             Por qué Ferticoolombia
           </span>
-          <h2 className="mt-4 font-display text-[#1B4332]">
+          <h2 className="mt-4 font-display text-[#1B4332] dark:text-foreground">
             Beneficios que marcan la diferencia
           </h2>
-          <p className="mt-5 text-lg text-slate-700">
+          <p className="mt-5 text-lg text-slate-700 dark:text-muted-foreground">
             Combinamos ciencia, logística y acompañamiento para entregar
             resultados medibles en el campo.
           </p>
@@ -149,15 +159,15 @@ export function Benefits() {
                 delay: (i % 3) * 0.1,
                 ease: EASE,
               }}
-              className="group relative rounded-[24px] bg-white border border-green-300/30 p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-green-500"
+              className="group relative rounded-[24px] bg-white dark:bg-card border border-green-300/30 dark:border-border/50 p-8 shadow-xl dark:shadow-none dark:shadow-lg/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:hover:shadow-lg hover:border-green-500 dark:hover:border-primary/50"
             >
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-[16px] bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-[16px] bg-primary/10 dark:bg-primary/15 text-primary dark:text-primary-light transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                 <b.icon className="h-7 w-7" strokeWidth={2} />
               </div>
-              <h3 className="mt-6 text-xl font-semibold text-foreground font-display">
+              <h3 className="mt-6 text-xl font-semibold text-foreground dark:text-card-foreground font-display">
                 {b.title}
               </h3>
-              <p className="mt-3 leading-relaxed">{b.desc}</p>
+              <p className="mt-3 leading-relaxed text-slate-600 dark:text-muted-foreground">{b.desc}</p>
             </motion.div>
           ))}
         </div>

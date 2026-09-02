@@ -98,7 +98,7 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: Math.min(i * 0.1, 0.35), ease: EASE }}
-              className="group flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-5 rounded-[24px] border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 lg:p-10 text-center transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 hover:border-primary-light/50 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+              className="group flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-5 rounded-[24px] border border-white/20 dark:border-border/50 bg-white/10 dark:bg-surface/50 backdrop-blur-xl p-6 md:p-8 lg:p-10 text-center transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 dark:hover:bg-surface/70 hover:border-primary-light/50 dark:hover:border-primary/30 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] dark:shadow-none overflow-hidden\"
             >
               <div className="inline-flex h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-[16px] bg-primary-light/20 text-primary-light ring-1 ring-white/20 transition-transform duration-500 group-hover:scale-110 shrink-0">
                 <s.icon className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" strokeWidth={2} />

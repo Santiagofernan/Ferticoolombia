@@ -99,6 +99,47 @@
   --about-card-bg: oklch(0.985 0.005 240);   /* soft premium card surface */
 }
 
+.dark {
+  /* Brand greens (unchanged) */
+  --primary: oklch(0.52 0.14 145);         /* #2E7D32 */
+  --primary-dark: oklch(0.41 0.12 145);    /* #1B5E20 */
+  --primary-light: oklch(0.73 0.16 145);   /* #66BB6A */
+  --primary-foreground: oklch(1 0 0);
+  --success: oklch(0.62 0.16 145);         /* #43A047 */
+
+  /* Neutrals dark */
+  --background: oklch(0.12 0.01 240);      /* Deep dark background */
+  --foreground: oklch(0.92 0.01 240);      /* Near white text */
+  --surface: oklch(0.18 0.01 240);         /* Dark surface */
+  --muted: oklch(0.25 0.01 240);           /* Dark muted */
+  --muted-foreground: oklch(0.7 0.02 235); /* Light muted text */
+  --subtle: oklch(0.6 0.02 235);           /* Light subtle text */
+
+  --card: oklch(0.16 0.01 240);            /* Dark card */
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.2 0.01 240);          /* Dark popover */
+  --popover-foreground: var(--foreground);
+
+  --secondary: oklch(0.22 0.01 240);
+  --secondary-foreground: var(--foreground);
+
+  --accent: oklch(0.83 0.16 85);           /* Accent unchanged */
+  --accent-foreground: oklch(0.25 0.02 85);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.28 0.01 240);          /* Dark border */
+  --input: oklch(0.22 0.01 240);           /* Dark input */
+  --ring: oklch(0.52 0.14 145);
+
+  --footer: oklch(0.08 0.005 240);         /* Very dark footer */
+  --footer-foreground: oklch(0.92 0.005 240);
+
+  --about-section-bg: oklch(0.15 0.008 145);
+  --about-card-bg: oklch(0.18 0.005 240);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -109,6 +150,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1), color 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   body {
@@ -117,6 +159,7 @@
     font-family: var(--font-sans);
     font-size: 18px;
     line-height: 1.7;
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1), color 400ms cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 400;
   }
 

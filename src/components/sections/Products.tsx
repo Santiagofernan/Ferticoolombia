@@ -1,7 +1,7 @@
 const EASE = [0.22, 1, 0.36, 1] as const;
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, X } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
 import productsBg from "@/assets/backgrounds/products-bg-coffee.avif";
 
@@ -12,56 +12,57 @@ function ProductCard({
   product: IProduct;
   onOpenFicha: (product: IProduct) => void;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
 return (
-    <article className="group flex min-h-[500px] sm:min-h-[620px] lg:min-h-[700px] flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] ring-2 ring-[#4CAF50]/40 bg-gradient-to-br from-[oklch(0.98_0.02_145)] via-white/95 to-[oklch(0.94_0.05_145)] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:ring-[#2E7D32] hover:shadow-[0_25px_70px_-15px_rgba(76,175,80,0.45)]">   
-      <div onClick={() => onOpenFicha(product)}
-        className="cursor-pointer"
-        >   
-          <div className="relative h-[240px] sm:h-[280px] overflow-hidden rounded-t-[28px] border-b border-[#4CAF50]/40">
+    <article className="group flex min-h-[500px] sm:min-h-[620px] lg:min-h-[700px] flex-col overflow-hidden rounded-[20px] sm:rounded-[28px] border border-primary/30 bg-card shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:border-primary dark:border-border/70 dark:bg-muted dark:shadow-none dark:hover:border-primary/60 dark:hover:shadow-lg">
+      <button
+        type="button"
+        onClick={() => onOpenFicha(product)}
+        aria-label={`Ver ficha técnica de ${product.name}`}
+        className="w-full cursor-pointer text-left"
+      >
+          <div className="relative flex h-[240px] items-center justify-center overflow-hidden rounded-t-[28px] border-b border-primary/30 bg-surface/70 p-5 dark:border-border dark:bg-muted-foreground/30 sm:h-[280px] sm:p-3">
             <img
               src={product.image}
               alt={`Empaque de ${product.name} ${product.formula}`}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-contain p-5 sm:p-3 transition-transform duration-500 group-hover:scale-105"
+              className="h-full max-w-full rounded-[28px] object-contain transition-transform duration-500 group-hover:scale-105 sm:rounded-[36px]"
             />
           </div>
-      </div>
+      </button>
       <div className="flex flex-1 flex-col gap-2 sm:gap-4 p-3.5 sm:p-6">
         <header className="space-y-0">
           <h3 className="font-display text-base sm:text-[1.45rem] leading-tight font-bold text-foreground">
             {product.name}
           </h3>
-          <p className="text-xs font-semibold text-primary">{product.tagline}</p>
+          <p className="text-xs font-semibold text-primary dark:text-primary-light">{product.tagline}</p>
         </header>
         {/* Composición química e ICA */}
         <div className="flex items-center gap-2 flex-wrap">
           {product.formula && (
-            <div className="rounded-full backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#86e48b' }}>
+            <div className="rounded-full bg-primary-light/45 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-primary-dark shadow-[var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px] dark:bg-primary/25 dark:text-primary-light">
               {product.formula}
             </div>
           )}
           {product.icaRegistration && (
-            <div className="rounded-full border backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-black shadow-[var(--shadow-soft)]" style={{ backgroundColor: '#A8DCAB', borderColor: '#86e48b' }}>
+            <div className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-primary-dark shadow-[var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px] dark:bg-primary/15 dark:text-primary-light">
               {product.icaRegistration}
             </div>
           )}
         </div>
 
-        <p className="text-xs sm:text-[14px] leading-snug sm:leading-relaxed text-subtle line-clamp-3 sm:line-clamp-none">
+        <p className="text-xs leading-snug text-subtle line-clamp-3 sm:text-[14px] sm:leading-relaxed sm:line-clamp-none dark:text-card-foreground/90">
           {product.description}
         </p>
         {product.benefits.length > 0 && (
           <>
-              <ul className="space-y-1 sm:space-y-2 rounded-lg sm:rounded-xl bg-[oklch(0.97_0.03_145)]/70 border border-primary/10 p-2 sm:p-3">
+              <ul className="space-y-1 rounded-lg border border-primary/10 bg-primary/5 p-2 sm:space-y-2 sm:rounded-xl sm:p-3 dark:border-border/70 dark:bg-background/30">
                 {product.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm">
                     <span className="mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
                       <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3" strokeWidth={3} />
                     </span>
-                    <span className="text-subtle leading-snug">{b}</span>
+                    <span className="leading-snug text-subtle dark:text-card-foreground/90">{b}</span>
                   </li>
                 ))}
               </ul>
@@ -255,7 +256,7 @@ return (
                     aria-label="Anterior"
                     whileTap={{ scale: 0.92 }}
                     whileHover={{ scale: 1.08 }}
-                    className="pointer-events-auto -ml-2 md:-ml-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/95 text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur transition-colors hover:bg-white"
+                    className="pointer-events-auto -ml-2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-card/95 text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur transition-colors hover:bg-card md:-ml-6 dark:border-border dark:bg-card/95 dark:shadow-none dark:hover:bg-surface"
                   >
                   <ChevronLeft className="h-6 w-6" strokeWidth={2.25} />
                   </motion.button>
@@ -265,7 +266,7 @@ return (
                     aria-label="Siguiente"
                     whileTap={{ scale: 0.92 }}
                     whileHover={{ scale: 1.08 }}
-                    className="pointer-events-auto -mr-2 md:-mr-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/95 text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur transition-colors hover:bg-white"
+                    className="pointer-events-auto -mr-2 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-card/95 text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur transition-colors hover:bg-card md:-mr-6 dark:border-border dark:bg-card/95 dark:shadow-none dark:hover:bg-surface"
                   >
                     <ChevronRight className="h-6 w-6" strokeWidth={2.25} />
                   </motion.button>
@@ -317,9 +318,10 @@ return (
           >
             <button
               onClick={() => setSelectedFicha(null)}
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg"
+              aria-label="Cerrar ficha técnica"
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg transition-all duration-300 hover:rotate-90 hover:bg-surface dark:shadow-none"
             >
-              ✕
+              <X className="h-5 w-5" aria-hidden="true" />
             </button>
 
             <img

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import logoIcon from "@/assets/brand/logo-icon.avif";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const links = [
   { label: "Inicio", href: "#top" },
@@ -16,6 +17,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("#top");
+  const { isDark, toggleDarkMode, mounted } = useDarkMode();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -88,17 +90,13 @@ export function Navbar() {
         {/* Logo — ícono oficial + marca en texto negro para máxima legibilidad. */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0" aria-label="Ferticoolombia">
           <div
-            className={`rounded-2xl p-2 transition-all duration-500 ${
-              scrolled
-                ? "bg-white/95 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.18)]"
-                : "bg-black/30 backdrop-blur-sm shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
-            }`}
+            className="p-2 transition-all duration-500"
           >
             <div className="flex items-center gap-2.5">
               <img src={logoIcon} alt="" className="h-9 w-auto transition-all duration-500" />
               <span
                 className={`text-[17px] font-bold tracking-[0.12em] leading-none transition-colors duration-500 ${
-                  scrolled ? "text-black" : "text-white"
+                  scrolled ? "text-foreground" : "text-white"
                 }`}
               >
                 FERTICOOLOMBIA
@@ -133,7 +131,21 @@ export function Navbar() {
           })}
         </nav>
 
-      <div className="hidden lg:block shrink-0">
+      <div className="hidden lg:flex items-center gap-3 shrink-0">
+        {mounted && (
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
+            className={`flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ${
+              scrolled
+                ? `border-border bg-background/60 text-foreground hover:bg-background`
+                : `border-white/30 bg-white/15 text-white hover:bg-white/25`
+            }`}
+          >
+            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
+        )}
         {(() => {
           const isImpact = active === "/impacto-agronomico";
           return (
@@ -187,13 +199,35 @@ export function Navbar() {
                   </a>
                 );
               })}
-              <Link
-                to="/impacto-agronomico"
-                onClick={() => setOpen(false)}
-                className="mt-4 inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
-              >
-                Impacto Ferticoolombia
-              </Link>            
+              <div className="mt-4 flex flex-col gap-3">
+                {mounted && (
+                  <button
+                    type="button"
+                    onClick={toggleDarkMode}
+                    aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-white/15 text-white font-semibold hover:bg-white/25 transition-colors border border-white/20"
+                  >
+                    {isDark ? (
+                      <>
+                        <Sun className="h-5 w-5" />
+                        Modo claro
+                      </>
+                    ) : (
+                      <>
+                        <Moon className="h-5 w-5" />
+                        Modo oscuro
+                      </>
+                    )}
+                  </button>
+                )}
+                <Link
+                  to="/impacto-agronomico"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex h-12 items-center justify-center rounded-2xl bg-white text-primary-dark font-semibold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:bg-primary hover:text-white transition-colors"
+                >
+                  Impacto Ferticoolombia
+                </Link>
+              </div>            
               </nav>
           </div>
           <style>{`@keyframes fadeSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}`}</style>

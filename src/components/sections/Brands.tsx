@@ -144,7 +144,7 @@ export function Brands() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visitar sitio oficial de ${b.name} (se abre en nueva pestaña)`}
-                className="group relative flex h-full flex-col rounded-2xl bg-white/85 backdrop-blur-2xl border border-white/50 p-7 md:p-8 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:bg-white/95 hover:shadow-[0_35px_80px_-20px_rgba(0,0,0,0.6)] hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="group relative flex h-full flex-col rounded-2xl bg-white/85 dark:bg-card backdrop-blur-2xl border border-white/50 dark:border-border/50 p-7 md:p-8 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] dark:shadow-none transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:bg-white/95 dark:hover:bg-surface hover:shadow-[0_35px_80px_-20px_rgba(0,0,0,0.6)] dark:hover:shadow-lg hover:border-primary/60 dark:hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background"
               >
                 <div className="pointer-events-none absolute inset-x-7 top-0 h-[3px] rounded-full bg-gradient-to-r from-primary to-primary-light opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -165,7 +165,7 @@ export function Brands() {
                 </div>
 
                 <div className="mt-5 border-t border-border pt-4 text-center">
-                  <p className="font-display text-lg font-bold text-primary-dark">
+                  <p className="font-display text-lg font-bold text-primary-dark dark:text-card-foreground\">
                     {b.name}
                   </p>
                   {b.tagline && (

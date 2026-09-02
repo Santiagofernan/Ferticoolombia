@@ -116,14 +116,6 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-fc py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Ferticoolombia. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition">
-              Política de privacidad
-            </a>
-            <a href="#" className="hover:text-white transition">
-              Términos
-            </a>
-          </div>
         </div>
       </div>
     </footer>

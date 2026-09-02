@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
 // Replace only this value when the final YouTube video is available.
-const YOUTUBE_VIDEO_ID = "AQUI_VA_EL_ID";
+const YOUTUBE_VIDEO_ID = "tXjdSsoMiDo";
 
 const YOUTUBE_THUMBNAIL = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
 const YOUTUBE_THUMBNAIL_FALLBACK = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
@@ -71,7 +71,7 @@ export function YouTubeVideoSection() {
                   onClick={() => hasVideoId && setIsPlaying(true)}
                   disabled={!hasVideoId}
                   aria-label={hasVideoId ? "Reproducir video de Ferticoolombia" : "Configura el ID del video de YouTube"}
-                  className="group absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-primary shadow-[0_10px_35px_-12px_rgba(0,0,0,0.55)] transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70 disabled:cursor-not-allowed disabled:opacity-80 sm:h-20 sm:w-20"
+                  className="group absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white dark:bg-card text-primary dark:text-card-foreground shadow-[0_10px_35px_-12px_rgba(0,0,0,0.55)] dark:shadow-none transition-all duration-300 hover:scale-105 hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70 dark:focus-visible:ring-primary/50 disabled:cursor-not-allowed disabled:opacity-80 sm:h-20 sm:w-20\"
                 >
                   <Play className="ml-1 h-7 w-7 fill-current sm:h-9 sm:w-9" />
                 </button>
