@@ -55,7 +55,7 @@ export function Footer() {
               <img src={logo} alt="Ferticoolombia" className="h-12 w-auto" />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/60 max-w-xs">
-              Más de dos décadas nutriendo el crecimiento del campo colombiano con fertilizantes de alta eficiencia.
+              Más de 10 años nutriendo el crecimiento del campo colombiano con fertilizantes de alta eficiencia.
             </p>
 
             <div className="mt-6 flex items-center gap-3">

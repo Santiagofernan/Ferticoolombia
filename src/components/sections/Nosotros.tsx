@@ -29,17 +29,17 @@ const corporateBlocks = [
   {
     icon: Building2,
     title: "¿Quiénes somos?",
-    text: "Marca colombiana del Huila, de COOCENTRAL, especializada en fertilizantes de alta eficiencia para el campo colombiano.",
+    text: "Marca colombiana del Huila, propiedad de COOCENTRAL, con más de 10 años comercializando fertilizantes de calidad para el campo.",
   },
   {
     icon: Compass,
     title: "Misión",
-    text: "Ser el aliado estratégico de nuestros clientes con soluciones nutricionales que aumenten la productividad del campo.",
+    text: "Ser el aliado estratégico del agricultor con soluciones nutricionales que impulsen la productividad del campo colombiano.",
   },
   {
     icon: Eye,
     title: "Visión",
-    text: "Para 2025 ser una empresa reconocida nacionalmente con portafolio de marca propia en nuevos mercados agrícolas.",
+    text: "Consolidarnos como una empresa reconocida a nivel nacional, con presencia en nuevos mercados agrícolas y un portafolio propio.",
   },
 ];
 
@@ -152,7 +152,7 @@ export function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mb-8 w-fit rounded-[20px] bg-white/15 md:backdrop-blur-xl border border-white/20 px-5 py-3 shadow-[0_8px_32px_rgba(255,255,255,0.1)]"
           >
-            <div className="text-sm font-semibold text-white">+20 años nutriendo el campo colombiano</div>
+            <div className="text-sm font-semibold text-white">+10 años nutriendo el campo colombiano</div>
           </motion.div>
 
           {/* Contenido */}
@@ -171,7 +171,7 @@ export function About() {
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="mt-5 text-lg text-white">
               En Ferticoolombia importamos y formulamos fertilizantes de alta eficiencia con foco en el rendimiento real
-              de los cultivos. Más de dos décadas trabajando junto a agricultores, cooperativas y distribuidores en todo
+              de los cultivos. Más de 10 años trabajando junto a agricultores, cooperativas y distribuidores en todo
               el territorio nacional.
             </motion.p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto">

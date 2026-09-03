@@ -20,7 +20,7 @@ const trustItems = [
   { icon: Clock, label: "Respuesta rápida" },
   { icon: Headphones, label: "Asesoría técnica especializada" },
   { icon: MapPinned, label: "Cobertura nacional" },
-  { icon: Award, label: "Más de 20 años de experiencia" },
+  { icon: Award, label: "Más de 10 años de experiencia" },
 ];
 
 const contactItems = [

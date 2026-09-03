@@ -1,5 +1,5 @@
-import { motion, useInView, useMotionValue, useTransform, animate, useScroll } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { AnimatePresence, motion, useInView, useMotionValue, useTransform, animate, useScroll } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Calendar, Package, Users, MapPin } from "lucide-react";
 import coffeeField from "@/assets/hero/h7.avif";
 
@@ -14,10 +14,21 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { icon: Calendar, value: 20, prefix: "+", label: "Años de experiencia" },
+  { icon: Calendar, value: 10, prefix: "+", label: "Años de experiencia" },
   { icon: Package, value: 50000, suffix: "+", label: "Toneladas distribuidas" },
   { icon: Users, value: 1500, suffix: "+", label: "Clientes activos" },
-  { icon: MapPin, value: 100, suffix: "%", label: "Cobertura nacional" },
+  { icon: MapPin, value: 0, label: "Cobertura nacional" },
+];
+
+const departments = [
+  "Huila",
+  "Cauca",
+  "Putumayo",
+  "Caquetá",
+  "Nariño",
+  "Valle del Cauca",
+  "Santander",
+  "Atlántico",
 ];
 
 function Counter({ to }: { to: number }) {
@@ -44,12 +55,22 @@ function Counter({ to }: { to: number }) {
 }
 
 export function Stats() {
+  const [departmentIndex, setDepartmentIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  useEffect(() => {
+    const rotationDelay = departments[departmentIndex] === "Valle del Cauca" ? 3000 : 5000;
+    const timeout = window.setTimeout(() => {
+      setDepartmentIndex((current) => (current + 1) % departments.length);
+    }, rotationDelay);
+
+    return () => window.clearTimeout(timeout);
+  }, [departmentIndex]);
 
   return (
     <section
@@ -85,12 +106,12 @@ export function Stats() {
             <span className="text-primary-light">cada cosecha</span>
           </h2>
           <p className="mt-5 text-lg text-white/85 drop-shadow-[0_1px_10px_rgba(0,0,0,0.6)]">
-            Más de dos décadas nutriendo el campo colombiano con respaldo técnico,
+            Más de 10 años nutriendo el campo colombiano con respaldo técnico,
             cobertura nacional y aliados internacionales.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid w-full max-w-[1680px] gap-6 md:gap-8 lg:gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.25fr)]">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -104,11 +125,50 @@ export function Stats() {
                 <s.icon className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" strokeWidth={2} />
               </div>
               <div className="flex items-center justify-center w-full">
-                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]">
-                  {s.prefix}
-                  <Counter to={s.value} />
-                  {s.suffix}
-                </div>
+                {s.label === "Cobertura nacional" ? (
+                  <div className="relative flex h-16 w-full items-center justify-center overflow-hidden md:h-20 lg:h-20" aria-live="polite">
+                    <AnimatePresence initial={false} mode="wait">
+                      {(() => {
+                        const department = departments[departmentIndex];
+                        const isLongDepartment = department.length > 12;
+                        const isValleDelCauca = department === "Valle del Cauca";
+
+                        return (
+                          <motion.div
+                            key={department}
+                            initial={{ opacity: isValleDelCauca ? 1 : 0, x: isLongDepartment ? "100%" : 36 }}
+                            animate={
+                              isLongDepartment
+                                ? { opacity: 1, x: isValleDelCauca ? ["100%", "0%", "0%"] : ["100%", "0%", "-100%"] }
+                                : { opacity: 1, x: 0 }
+                            }
+                            exit={{ opacity: isValleDelCauca ? 1 : 0, x: -36 }}
+                            transition={
+                              isLongDepartment
+                                ? {
+                                    duration: isValleDelCauca ? 3 : 4.6,
+                                    times: isValleDelCauca ? [0, 0.5, 1] : undefined,
+                                    ease: "linear",
+                                  }
+                                : { duration: 0.65, ease: EASE }
+                            }
+                            className={`absolute inset-x-0 flex items-center justify-center whitespace-nowrap font-display font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)] ${
+                              isLongDepartment ? "text-xl md:text-2xl lg:text-3xl" : "text-3xl md:text-4xl lg:text-5xl"
+                            }`}
+                          >
+                            {department}
+                          </motion.div>
+                        );
+                      })()}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <div className="font-display text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)] md:text-4xl lg:text-5xl">
+                    {s.prefix}
+                    <Counter to={s.value} />
+                    {s.suffix}
+                  </div>
+                )}
               </div>
               <div className="text-xs md:text-sm lg:text-base uppercase tracking-[0.2em] text-white/90">
                 {s.label}

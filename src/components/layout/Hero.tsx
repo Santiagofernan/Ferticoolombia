@@ -86,7 +86,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-white/90 max-w-[600px] leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.4)]">
-            Más de 20 años importando y formulando fertilizantes de alta eficiencia. Soluciones técnicas, sostenibles y
+            Más de 10 años importando y comercializando fertilizantes de alta eficiencia. Soluciones técnicas, sostenibles y
             confiables para el productor colombiano.
           </p>
 
@@ -107,9 +107,9 @@ export function Hero() {
           {/* Trust strip */}
           <div className="mt-14 grid grid-cols-3 gap-6 max-w-[520px] border-t border-white/20 pt-8">
             {[
-              { k: "+20", v: "años" },
+              { k: "+10", v: "años" },
               { k: "1.500+", v: "clientes" },
-              { k: "100%", v: "cobertura nacional" },
+              { k: "8", v: "departamentos" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl md:text-3xl font-extrabold text-white">{s.k}</div>

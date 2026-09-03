@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 function NotFoundComponent() {
   return (
@@ -81,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Más de 20 años importando y formulando fertilizantes de alta eficiencia para el productor colombiano. Soluciones técnicas, sostenibles y confiables.",
+          "Más de 10 años importando y comercializando fertilizantes de alta eficiencia para el productor colombiano. Soluciones técnicas, sostenibles y confiables.",
       },
       { name: "author", content: "Ferticoolombia" },
       { name: "theme-color", content: "#2E7D32" },
@@ -160,6 +161,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useDarkMode();
 
   return (
     <QueryClientProvider client={queryClient}>
