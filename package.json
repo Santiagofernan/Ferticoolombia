@@ -9,7 +9,7 @@
     "build:analyze": "vite build",
     "optimize:assets": "node ./scripts/optimize-assets.js",
     "build:dev": "vite build --mode development",
-    "preview": "wrangler dev --config .output/server/wrangler.json",
+    "preview": "vite preview dist",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
@@ -82,13 +82,11 @@
     "fluent-ffmpeg": "^2.1.3",
     "glob": "^13.0.6",
     "globals": "^15.15.0",
-    "nitro": "3.0.260603-beta",
     "prettier": "^3.7.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "sharp": "^0.35.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^8.0.16",
-    "wrangler": "^4.129.0"
+    "vite": "^8.0.16"
   }
 }
