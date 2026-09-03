@@ -170,9 +170,9 @@ export function About() {
               Aliados técnicos del productor colombiano
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="mt-5 text-lg text-white">
-              En Ferticoolombia importamos y formulamos fertilizantes de alta eficiencia con foco en el rendimiento real
-              de los cultivos. Más de 10 años trabajando junto a agricultores, cooperativas y distribuidores en todo
-              el territorio nacional.
+              En Ferticoolombia importamos y comercializamos fertilizantes de alta eficiencia con foco en el rendimiento real
+              de los cultivos. Más de 10 años trabajando junto a agricultores, cooperativas y distribuidores en gran parte
+              del territorio nacional.
             </motion.p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto">
               {values.map((v, i) => (

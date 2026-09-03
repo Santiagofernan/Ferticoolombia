@@ -7,11 +7,19 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useDarkMode } from "../hooks/useDarkMode";
+import logoIcon from "../assets/brand/logo-icon.avif";
+import socialImage from "../assets/hero/h4.avif";
+import { absoluteSiteUrl, SITE_URL } from "../lib/seo";
+
+const SITE_TITLE = "Ferticolombia | Soluciones nutricionales para el agro colombiano";
+const SITE_DESCRIPTION =
+  "Ferticolombia ofrece soluciones nutricionales y fertilizantes de alta eficiencia para mejorar el rendimiento de los cultivos en Colombia.";
+const SOCIAL_IMAGE_URL = absoluteSiteUrl(socialImage);
+const LOGO_URL = absoluteSiteUrl(logoIcon);
 
 function NotFoundComponent() {
   return (
@@ -38,9 +46,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -78,38 +83,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ferticoolombia" },
+      { title: SITE_TITLE },
       {
         name: "description",
-        content:
-          "Más de 10 años importando y comercializando fertilizantes de alta eficiencia para el productor colombiano. Soluciones técnicas, sostenibles y confiables.",
+        content: SITE_DESCRIPTION,
       },
       { name: "author", content: "Ferticoolombia" },
       { name: "theme-color", content: "#2E7D32" },
-      { property: "og:title", content: "Ferticoolombia" },
-      {
-        property: "og:description",
-        content:
-          "Fertilizantes de alta eficiencia para café, plátano, cítricos, hortalizas y maíz.",
-      },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "es_CO" },
-      { property: "og:site_name", content: "Ferticoolombia" },
-      { property: "og:url", content: "/" },
+      { property: "og:site_name", content: "Ferticolombia" },
+      ...(SITE_URL ? [{ property: "og:url", content: `${SITE_URL}/` }] : []),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Ferticoolombia" },
-      {
-        name: "twitter:description",
-        content:
-          "Fertilizantes de alta eficiencia para el productor colombiano.",
-      },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      ...(SITE_URL && SOCIAL_IMAGE_URL
+        ? [
+            { property: "og:image", content: SOCIAL_IMAGE_URL },
+            { name: "twitter:image", content: SOCIAL_IMAGE_URL },
+          ]
+        : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
-      { rel: "canonical", href: "/" },
+      ...(SITE_URL ? [{ rel: "canonical", href: `${SITE_URL}/` }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -127,12 +129,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Ferticoolombia",
-          description:
-            "Importación y formulación de fertilizantes de alta eficiencia para el agricultor colombiano.",
+          name: "Ferticolombia",
+          description: SITE_DESCRIPTION,
           areaServed: "CO",
           industry: "Agricultura",
-          sameAs: [],
+          ...(LOGO_URL ? { logo: LOGO_URL } : {}),
+          ...(SITE_URL ? { url: `${SITE_URL}/` } : {}),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Ferticolombia",
+          description: SITE_DESCRIPTION,
+          ...(SITE_URL ? { url: `${SITE_URL}/` } : {}),
         }),
       },
     ],

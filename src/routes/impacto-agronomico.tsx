@@ -1,17 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, AnimatePresence, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowLeft,
-  X,
-  Sprout,
-  Users,
-  MapPin,
-  Package,
-  MoveHorizontal,
-} from "lucide-react";
-import { useEffect, useRef, useState, type TouchEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowDown, ArrowRight, ArrowLeft, X, MapPin, MoveHorizontal } from "lucide-react";
+import { useRef, useState, type TouchEvent } from "react";
+import { Link } from "@tanstack/react-router";
 
 import AgriculturalBackground from "@/components/backgrounds/AgriculturalBackground";
 import heroImg from "@/assets/backgrounds/products-bg-coffee.avif";
@@ -27,7 +18,7 @@ import beforeImg from "@/assets/parallax/cafe.avif";
 import afterImg from "@/assets/hero/h5.avif";
 import ctaBg from "@/assets/hero/h7.avif";
 
-import { Link } from "@tanstack/react-router";
+import { absoluteSiteUrl, SITE_URL } from "@/lib/seo";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -39,22 +30,56 @@ interface Cultivo {
 }
 
 const cultivos: Cultivo[] = [
-  { nombre: "Café", imagen: cafeImg, resultado: "+18% en rendimiento por hectárea", region: "Eje Cafetero" },
-  { nombre: "Plátano", imagen: platanoImg, resultado: "Racimos con mayor peso y llenado", region: "Valle del Cauca" },
-  { nombre: "Maracuyá", imagen: maracuyaImg, resultado: "Floración sostenida y mejor cuaje", region: "Huila" },
-  { nombre: "Tomate", imagen: tomateImg, resultado: "Mayor firmeza y vida en anaquel", region: "Cundinamarca" },
-  { nombre: "Papa", imagen: papaImg, resultado: "Incremento en el tamaño y calidad del tubérculo", region: "Nariño" },
-  { nombre: "Caña de azúcar", imagen: cañaImg, resultado: "Mejor desarrollo y rendimiento del cultivo", region: "Cauca" },
-  { nombre: "Limón", imagen: limoImg, resultado: "Frutos más grandes y jugosos", region: "Magdalena" },
-  { nombre: "Aguacate", imagen: aguacateImg, resultado: "Mayor producción y calidad de frutos", region: "Antioquia" },
+  {
+    nombre: "Café",
+    imagen: cafeImg,
+    resultado: "+18% en rendimiento por hectárea",
+    region: "Eje Cafetero",
+  },
+  {
+    nombre: "Plátano",
+    imagen: platanoImg,
+    resultado: "Racimos con mayor peso y llenado",
+    region: "Valle del Cauca",
+  },
+  {
+    nombre: "Maracuyá",
+    imagen: maracuyaImg,
+    resultado: "Floración sostenida y mejor cuaje",
+    region: "Huila",
+  },
+  {
+    nombre: "Tomate",
+    imagen: tomateImg,
+    resultado: "Mayor firmeza y vida en anaquel",
+    region: "Cundinamarca",
+  },
+  {
+    nombre: "Papa",
+    imagen: papaImg,
+    resultado: "Incremento en el tamaño y calidad del tubérculo",
+    region: "Nariño",
+  },
+  {
+    nombre: "Caña de azúcar",
+    imagen: cañaImg,
+    resultado: "Mejor desarrollo y rendimiento del cultivo",
+    region: "Cauca",
+  },
+  {
+    nombre: "Limón",
+    imagen: limoImg,
+    resultado: "Frutos más grandes y jugosos",
+    region: "Magdalena",
+  },
+  {
+    nombre: "Aguacate",
+    imagen: aguacateImg,
+    resultado: "Mayor producción y calidad de frutos",
+    region: "Antioquia",
+  },
 ];
 
-const estadisticas = [
-  { icon: Sprout, value: 20, prefix: "+", label: "Años de experiencia" },
-  { icon: Users, value: 1000, prefix: "+", label: "Productores atendidos" },
-  { icon: MapPin, value: 15, prefix: "+", label: "Departamentos con presencia" },
-  { icon: Package, value: 50, prefix: "+", label: "Referencias de fertilizantes" },
-];
 export const Route = createFileRoute("/impacto-agronomico")({
   head: () => ({
     meta: [
@@ -70,30 +95,25 @@ export const Route = createFileRoute("/impacto-agronomico")({
         content: "Rendimiento, calidad y productividad comprobados en cultivos de Colombia.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Ferticolombia" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Impacto Agronómico | Ferticolombia" },
+      {
+        name: "twitter:description",
+        content: "Rendimiento, calidad y productividad comprobados en cultivos de Colombia.",
+      },
+      ...(SITE_URL
+        ? [
+            { property: "og:url", content: `${SITE_URL}/impacto-agronomico` },
+            { property: "og:image", content: absoluteSiteUrl(heroImg) ?? "" },
+            { name: "twitter:image", content: absoluteSiteUrl(heroImg) ?? "" },
+          ]
+        : []),
     ],
+    links: [...(SITE_URL ? [{ rel: "canonical", href: `${SITE_URL}/impacto-agronomico` }] : [])],
   }),
   component: ImpactoAgronomico,
 });
-
-function Counter({ to }: { to: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v).toLocaleString("es-CO"));
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(count, to, { duration: 1.8, ease: EASE });
-    return controls.stop;
-  }, [inView, to, count]);
-
-  useEffect(() => rounded.on("change", (v) => {
-    if (ref.current) ref.current.textContent = v;
-  }), [rounded]);
-
-  return <span ref={ref}>0</span>;
-}
 
 function BeforeAfter() {
   const [pos, setPos] = useState(50);
@@ -101,7 +121,11 @@ function BeforeAfter() {
   return (
     <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-primary/15 shadow-[var(--shadow-card)]">
       <div className="relative aspect-[16/9] select-none">
-        <img src={afterImg} alt="Cultivo después del tratamiento nutricional" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={afterImg}
+          alt="Cultivo después del tratamiento nutricional"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
           <img
             src={beforeImg}
@@ -164,75 +188,56 @@ function ImpactoAgronomico() {
     <main>
       {/* HERO */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <img src={heroImg} alt="Cultivo de café en Colombia" className=" absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={heroImg}
+          alt="Cultivo de café en Colombia"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
 
         <div className="container-fc relative z-10 py-28">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE }}
-              className=" max-w-[720px] text-white"
-            >
-            <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] backdrop-blur-md">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE }}
+            className="max-w-[720px] text-white"
+          >
+            <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em]">
               Resultados reales
             </span>
-
-            <h1 className="mt-6 font-display font-extrabold text-white leading-[1.05]">
+            <h1 className="mt-6 font-display font-extrabold leading-[1.05] text-white">
               Impacto
               <br />
               Agronómico
             </h1>
-            <p className="mt-6 max-w-[600px] text-lg text-white/90 leading-relaxed">
-              Descubre cómo nuestros fertilizantes han mejorado la productividad, calidad y rendimiento de cientos de
-              cultivos en Colombia.
+            <p className="mt-6 max-w-[600px] text-lg leading-relaxed text-white/90">
+              Descubre cómo nuestros fertilizantes han mejorado la productividad, calidad y
+              rendimiento de cientos de cultivos en Colombia.
             </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">    
-            <a href="#resultados" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(34,197,94,0.8)] transition hover:bg-emerald-500">
-              Ver resultados
-              <ArrowDown className="h-5 w-5" strokeWidth={2.25} />
-            </a>
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:bg-white/20"
-            >
-              Volver
-            </Link> 
-          </div>         
-          </motion.div>
-        </div>
-      </section>
-      {/* ESTADÍSTICAS */}
-      <section aria-label="Cifras de impacto" className="bg-slate-50 dark:bg-background py-16 lg:py-20 transition-colors duration-400">
-        <div className="container-fc">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {estadisticas.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
-                className="flex items-center gap-5 rounded-[22px] border border-slate-200/80 dark:border-border/50 bg-white dark:bg-card p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.12)] dark:shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-[0_25px_60px_-30px_rgba(34,197,94,0.16)] dark:hover:shadow-lg lg:p-7"
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <a
+                href="#resultados"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(34,197,94,0.8)] transition hover:bg-emerald-500"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[16px] bg-emerald-500/15 dark:bg-primary/15 text-emerald-500 dark:text-primary-light ring-1 ring-emerald-500/20 dark:ring-primary/20">
-                  <s.icon className="h-7 w-7" strokeWidth={2} />
-                </div>
-                <div>
-                  <div className="font-display text-3xl font-extrabold leading-none text-slate-950 dark:text-foreground lg:text-4xl">
-                    {s.prefix}
-                    <Counter to={s.value} />
-                  </div>
-                  <p className="mt-2 text-sm leading-snug text-slate-500 dark:text-muted-foreground">{s.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                Ver resultados
+                <ArrowDown className="h-5 w-5" strokeWidth={2.25} />
+              </a>
+              <Link
+                to="/"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:bg-white/20"
+              >
+                Volver
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* RESULTADOS */}
-      <section id="resultados" className="relative isolate overflow-hidden bg-background py-20 transition-colors duration-400 lg:py-28">
+      <section
+        id="resultados"
+        className="relative isolate overflow-hidden bg-background py-20 transition-colors duration-400 lg:py-28"
+      >
         <AgriculturalBackground
           particleCount={22}
           particleSpeed={0.65}
@@ -253,11 +258,13 @@ function ImpactoAgronomico() {
               transition={{ duration: 0.6, ease: EASE }}
               className="mx-auto max-w-2xl text-center text-white"
             >
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">Resultados reales</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">
+                Resultados reales
+              </span>
               <h2 className="mt-4 font-display text-white">Impacto en diferentes cultivos</h2>
               <p className="mt-5 text-lg text-white/90">
-                Conoce algunos de los resultados obtenidos por productores que utilizan fertilizantes Ferticolombia en
-                distintas regiones del país.
+                Conoce algunos de los resultados obtenidos por productores que utilizan
+                fertilizantes Ferticolombia en distintas regiones del país.
               </p>
             </motion.div>
 
@@ -287,7 +294,9 @@ function ImpactoAgronomico() {
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col gap-3 p-6">
-                    <p className="text-[15px] font-semibold text-foreground dark:text-card-foreground">{cultivo.resultado}</p>
+                    <p className="text-[15px] font-semibold text-foreground dark:text-card-foreground">
+                      {cultivo.resultado}
+                    </p>
                     <p className="mt-2 flex items-center gap-1.5 text-sm text-subtle dark:text-card-foreground/85">
                       <MapPin className="h-4 w-4 text-primary dark:text-primary-light" />
                       {cultivo.region}
@@ -314,11 +323,13 @@ function ImpactoAgronomico() {
             transition={{ duration: 0.6, ease: EASE }}
             className="mx-auto max-w-2xl text-center"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary dark:text-primary-light">Comparativa</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary dark:text-primary-light">
+              Comparativa
+            </span>
             <h2 className="mt-4 font-display">Antes y después</h2>
             <p className="mt-5 text-lg dark:text-foreground/90">
-              Desliza la barra para comparar el estado del cultivo antes y después de aplicar el programa nutricional
-              de Ferticolombia.
+              Desliza la barra para comparar el estado del cultivo antes y después de aplicar el
+              programa nutricional de Ferticolombia.
             </p>
           </motion.div>
 
@@ -333,23 +344,23 @@ function ImpactoAgronomico() {
           </motion.div>
         </div>
       </section>
-  {/* CTA FINAL */}
-    <section className="relative isolate overflow-hidden py-24 lg:py-32">
-      <img
-        src={ctaBg}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 h-full w-full object-cover object-[center_44%] sm:object-[center_42%] lg:object-[center_40%]"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1440 230"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-24 w-full fill-surface sm:h-28 lg:h-36 dark:fill-muted"
-      >
-        <path d="M0 0H1440V108C1266 160 1112 196 922 164C714 128 612 202 402 180C218 160 88 112 0 138Z" />
-      </svg>
+      {/* CTA FINAL */}
+      <section className="relative isolate overflow-hidden py-24 lg:py-32">
+        <img
+          src={ctaBg}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover object-[center_44%] sm:object-[center_42%] lg:object-[center_40%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 1440 230"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-24 w-full fill-surface sm:h-28 lg:h-36 dark:fill-muted"
+        >
+          <path d="M0 0H1440V108C1266 160 1112 196 922 164C714 128 612 202 402 180C218 160 88 112 0 138Z" />
+        </svg>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -362,10 +373,14 @@ function ImpactoAgronomico() {
             ¿Quieres obtener estos resultados en tu cultivo?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-white/85">
-            Nuestro equipo técnico diseña un programa nutricional a la medida de tu finca y tu cultivo.
+            Nuestro equipo técnico diseña un programa nutricional a la medida de tu finca y tu
+            cultivo.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/#contacto" className="btn-primary-fc bg-white text-primary hover:bg-white hover:text-primary-dark">
+            <a
+              href="/#contacto"
+              className="btn-primary-fc bg-white text-primary hover:bg-white hover:text-primary-dark"
+            >
               Solicitar asesoría
               <ArrowRight className="h-5 w-5" strokeWidth={2.25} />
             </a>
@@ -439,17 +454,23 @@ function ImpactoAgronomico() {
                   </button>
                 </div>
                 <div className="flex flex-col justify-center p-8 md:p-10">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark dark:text-primary">Caso de éxito</span>
-                  <h3 className="mt-3 font-display text-foreground dark:text-card-foreground">{selected.nombre}</h3>
-                  <p className="mt-4 text-[17px] font-semibold text-foreground dark:text-card-foreground">{selected.resultado}</p>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark dark:text-primary">
+                    Caso de éxito
+                  </span>
+                  <h3 className="mt-3 font-display text-foreground dark:text-card-foreground">
+                    {selected.nombre}
+                  </h3>
+                  <p className="mt-4 text-[17px] font-semibold text-foreground dark:text-card-foreground">
+                    {selected.resultado}
+                  </p>
                   <p className="mt-3 flex items-center gap-2 text-sm font-medium text-foreground/80 dark:text-muted-foreground">
                     <MapPin className="h-4 w-4 text-primary dark:text-primary-light" />
                     {selected.region}
                   </p>
                   <div className="mt-6 h-px bg-border dark:bg-border/50" />
                   <p className="mt-6 text-[15px] font-medium leading-relaxed text-foreground/90 dark:text-muted-foreground">
-                    Programa nutricional Ferticolombia con acompañamiento técnico en campo, análisis de suelo y
-                    dosificación por etapa fenológica.
+                    Programa nutricional Ferticolombia con acompañamiento técnico en campo, análisis
+                    de suelo y dosificación por etapa fenológica.
                   </p>
                 </div>
               </div>

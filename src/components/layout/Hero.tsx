@@ -108,7 +108,7 @@ export function Hero() {
           <div className="mt-14 grid grid-cols-3 gap-6 max-w-[520px] border-t border-white/20 pt-8">
             {[
               { k: "+10", v: "años" },
-              { k: "1.500+", v: "clientes" },
+              { k: "50.000+", v: "toneladas distribuidas" },
               { k: "8", v: "departamentos" },
             ].map((s) => (
               <div key={s.v}>

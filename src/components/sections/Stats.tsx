@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useInView, useMotionValue, useTransform, animate, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Package, Users, MapPin } from "lucide-react";
+import { Calendar, Package, MapPin } from "lucide-react";
 import coffeeField from "@/assets/hero/h7.avif";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -16,7 +16,6 @@ interface Stat {
 const stats: Stat[] = [
   { icon: Calendar, value: 10, prefix: "+", label: "Años de experiencia" },
   { icon: Package, value: 50000, suffix: "+", label: "Toneladas distribuidas" },
-  { icon: Users, value: 1500, suffix: "+", label: "Clientes activos" },
   { icon: MapPin, value: 0, label: "Cobertura nacional" },
 ];
 
@@ -111,7 +110,7 @@ export function Stats() {
           </p>
         </motion.div>
 
-        <div className="mx-auto grid w-full max-w-[1680px] gap-6 md:gap-8 lg:gap-8 sm:grid-cols-2 lg:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.25fr)]">
+        <div className="mx-auto grid w-full max-w-[1680px] gap-6 md:gap-8 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
