@@ -4,6 +4,8 @@ import imgMitakron from "@/assets/products/mitakron.avif";
 import imgPlatanate from "@/assets/products/cplatanate.avif";
 import imgSpasiva from "@/assets/products/spasiva.avif";
 import imgBonanza from "@/assets/products/bonanza.avif";
+import imgYurika from "@/assets/products/Yurika.jpg";
+import imgZaneta from "@/assets/products/Zaneta.jpg";
 /*Fichas*/
 import mitakronFicha from "@/assets/fichas/mitakron.avif";
 import katiuskaFicha from "@/assets/fichas/katiuska.avif";
@@ -11,6 +13,8 @@ import platanateFicha from "@/assets/fichas/platanate.avif";
 import ficha25424 from "@/assets/fichas/25-4-24.avif";
 import spasivaFicha from "@/assets/fichas/spasiva.avif";
 import bonanzaFicha from "@/assets/fichas/bonanza.avif";
+import yurikaFicha from "@/assets/fichas/Yurika.jpg";
+import zanetaFicha from "@/assets/fichas/Zaneta.jpg";
 
 export interface IProduct {
   slug: string;
@@ -21,8 +25,7 @@ export interface IProduct {
   description: string;
   benefits: string[];
   image: string;
-  /** Registro ICA vigente a nombre de COOCENTRAL. */
-  icaRegistration?: string;
+  imageAlt?: string;
   /** Ruta al PDF de ficha técnica. Reemplazable cuando existan los PDFs oficiales. */
   datasheetUrl?: string;
 }
@@ -41,8 +44,54 @@ export const products: IProduct[] = [
       "Fuentes de alta eficiencia y asimilación",
       "Ideal para etapa de desarrollo vegetativo",
     ],
-    icaRegistration: "ICA 9872",
     image: imgMitakron,
+  },
+  {
+    slug: "yurika",
+    name: "Yurika",
+    formula: "23-4-20-3(MgO)-4(S)",
+    ficha: yurikaFicha,
+    tagline: "Nutrición equilibrada para el desarrollo del cultivo",
+    description:
+      "Fertilizante compuesto NPK con magnesio y azufre, formulado para aportar una nutrición equilibrada y favorecer el desarrollo productivo del cultivo.",
+    benefits: [
+      "Aporta magnesio y azufre",
+      "Nutrición equilibrada NPK",
+      "Favorece el desarrollo del cultivo",
+    ],
+    image: imgYurika,
+    imageAlt: "Fertilizante Yurika 23-4-20-3(MgO)-4(S) - Ferticolombia",
+  },
+  {
+    slug: "zaneta",
+    name: "Zaneta",
+    formula: "26-4-22",
+    ficha: zanetaFicha,
+    tagline: "Alta eficiencia para el rendimiento del cultivo",
+    description:
+      "Fertilizante compuesto NPK de alta concentración, diseñado para acompañar las etapas de mayor demanda nutricional del cultivo.",
+    benefits: [
+      "Alta concentración de nitrógeno y potasio",
+      "Nutrición NPK eficiente",
+      "Acompaña el rendimiento del cultivo",
+    ],
+    image: imgZaneta,
+    imageAlt: "Fertilizante Zaneta 26-4-22 - Ferticolombia",
+  },
+  {
+    slug: "bonanza",
+    name: "Bonanza",
+    formula: "19-9-19 + 1 (CaO)",
+    ficha: bonanzaFicha,
+    tagline: "Fructificación y cargue de cosecha",
+    description:
+      "Fertilizante compuesto complejo NPK con calcio y fuentes de alta eficiencia. La mejor opción para lograr una cosecha óptima, con gran aporte en el proceso de fructificación y cargue.",
+    benefits: [
+      "Optimiza fructificación y cargue",
+      "Balance NPK con calcio",
+      "Fuentes de alta eficiencia agronómica",
+    ],
+    image: imgBonanza,
   },
   {
     slug: "katiuska",
@@ -57,7 +106,6 @@ export const products: IProduct[] = [
       "Ayuda al llenado del fruto",
       "Fertilización más completa y eficiente",
     ],
-    icaRegistration: "ICA 10233",
     image: imgKatiuska,
   },
   {
@@ -73,7 +121,6 @@ export const products: IProduct[] = [
       "Alto aporte de potasio (K₂O 30%)",
       "Ideal para plátano, cítricos y hortalizas",
     ],
-    icaRegistration: "ICA 12534",
     image: imgPlatanate,
   },
   {
@@ -89,24 +136,7 @@ export const products: IProduct[] = [
       "Menor concentración de metales pesados",
       "Rendimiento superior por hectárea",
     ],
-    icaRegistration: "ICA 10233",
     image: imgSpasiva,
-  },
-  {
-    slug: "bonanza",
-    name: "Bonanza",
-    formula: "19-9-19 + 1 (CaO)",
-    ficha: bonanzaFicha,
-    tagline: "Fructificación y cargue de cosecha",
-    description:
-      "Fertilizante compuesto complejo NPK con calcio y fuentes de alta eficiencia. La mejor opción para lograr una cosecha óptima, con gran aporte en el proceso de fructificación y cargue.",
-    benefits: [
-      "Optimiza fructificación y cargue",
-      "Balance NPK con calcio",
-      "Fuentes de alta eficiencia agronómica",
-    ],
-    icaRegistration: "ICA 9873",
-    image: imgBonanza,
   },
   {
     slug: "25-4-24",

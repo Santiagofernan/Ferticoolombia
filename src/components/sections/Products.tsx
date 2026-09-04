@@ -23,7 +23,7 @@ return (
           <div className="relative flex h-[240px] items-center justify-center overflow-hidden rounded-t-[28px] border-b border-primary/30 bg-surface/70 p-5 dark:border-border dark:bg-muted-foreground/30 sm:h-[280px] sm:p-3">
             <img
               src={product.image}
-              alt={`Empaque de ${product.name} ${product.formula}`}
+              alt={product.imageAlt ?? `Empaque de ${product.name} ${product.formula}`}
               loading="lazy"
               decoding="async"
               className="h-full max-w-full rounded-[28px] object-contain transition-transform duration-500 group-hover:scale-105 sm:rounded-[36px]"
@@ -37,16 +37,11 @@ return (
           </h3>
           <p className="text-xs font-semibold text-primary dark:text-primary-light">{product.tagline}</p>
         </header>
-        {/* Composición química e ICA */}
+        {/* Composición química */}
         <div className="flex items-center gap-2 flex-wrap">
           {product.formula && (
             <div className="rounded-full bg-primary-light/45 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-primary-dark shadow-[var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px] dark:bg-primary/25 dark:text-primary-light">
               {product.formula}
-            </div>
-          )}
-          {product.icaRegistration && (
-            <div className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-primary-dark shadow-[var(--shadow-soft)] sm:px-4 sm:py-2 sm:text-[11px] dark:bg-primary/15 dark:text-primary-light">
-              {product.icaRegistration}
             </div>
           )}
         </div>
@@ -326,7 +321,7 @@ return (
 
             <img
               src={selectedFicha.ficha}
-              alt={`Ficha técnica ${selectedFicha.name}`}
+              alt={selectedFicha.imageAlt ?? `Ficha técnica ${selectedFicha.name}`}
               className="max-h-[90vh] rounded-2xl object-contain shadow-2xl"
             />
           </motion.div>
