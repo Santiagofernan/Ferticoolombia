@@ -40,7 +40,7 @@ const columns = [
 ];
 
 const socials = [
-  { Icon: Facebook, label: "Facebook de Ferticoolombia", href: "https://www.facebook.com/ferticoolombia" },
+  { Icon: Facebook, label: "Facebook de Ferticoolombia", href: "https://www.facebook.com/profile.php?id=61556356763369" },
   { Icon: Instagram, label: "Instagram de Ferticoolombia", href: "https://www.instagram.com/ferticoolombia" },
 ];
 
