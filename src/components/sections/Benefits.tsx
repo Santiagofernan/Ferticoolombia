@@ -33,7 +33,7 @@ const benefits = [
   {
     icon: Truck,
     title: "Distribución nacional",
-    desc: "Cobertura logística en todo el territorio, del Caribe a la Amazonía.",
+    desc: "Cobertura logística en todo el territorio.",
   },
   {
     icon: Headphones,
