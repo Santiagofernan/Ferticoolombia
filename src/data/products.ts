@@ -4,8 +4,8 @@ import imgMitakron from "@/assets/products/mitakron.avif";
 import imgPlatanate from "@/assets/products/cplatanate.avif";
 import imgSpasiva from "@/assets/products/spasiva.avif";
 import imgBonanza from "@/assets/products/bonanza.avif";
-import imgYurika from "@/assets/products/Yurika.jpg";
-import imgZaneta from "@/assets/products/Zaneta.jpg";
+import imgYurika from "@/assets/products/Yurika.avif";
+import imgZaneta from "@/assets/products/Zaneta.avif";
 /*Fichas*/
 import mitakronFicha from "@/assets/fichas/mitakron.avif";
 import katiuskaFicha from "@/assets/fichas/katiuska.avif";
@@ -13,8 +13,8 @@ import platanateFicha from "@/assets/fichas/platanate.avif";
 import ficha25424 from "@/assets/fichas/25-4-24.avif";
 import spasivaFicha from "@/assets/fichas/spasiva.avif";
 import bonanzaFicha from "@/assets/fichas/bonanza.avif";
-import yurikaFicha from "@/assets/fichas/Yurika.jpg";
-import zanetaFicha from "@/assets/fichas/Zaneta.jpg";
+import yurikaFicha from "@/assets/fichas/Yurika.avif";
+import zanetaFicha from "@/assets/fichas/Zaneta.avif";
 
 export interface IProduct {
   slug: string;
