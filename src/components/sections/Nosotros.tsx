@@ -2,7 +2,6 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
 import { Leaf, Target, ShieldCheck, ArrowRight, Building2, Compass, Eye } from "lucide-react";
-import videoNosotros from "@/assets/about/Video-nosotros.webm";
 // Public path base where optimized variants and poster can be placed (optional).
 const PUBLIC_VIDEO_BASE = "/about/video-nosotros"; // place optimized files in public/about/
 const PUBLIC_POSTER = "/about/video-nosotros-poster.avif";
@@ -56,64 +55,39 @@ export function About() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    useEffect(() => {
-      const section = sectionRef.current;
-      const vid = videoRef.current || (document.querySelector('#nosotros video') as HTMLVideoElement | null);
-      if (!section || !vid) return;
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-      const buildSources = (isMobile: boolean) => {
-        if (isMobile) {
-          return [
-            { src: `${PUBLIC_VIDEO_BASE}.mobile.webm`, type: 'video/webm' },
-            { src: videoNosotros, type: 'video/webm' },
-          ];
-        }
-        return [
-          { src: `${PUBLIC_VIDEO_BASE}.720.webm`, type: 'video/webm' },
-          { src: videoNosotros, type: 'video/webm' },
-        ];
-      };
+    video.poster = PUBLIC_POSTER;
 
-      const onIntersect: IntersectionObserverCallback = (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const isMobile = window.innerWidth <= 767;
-            const sources = buildSources(isMobile);
+    const loadVideo = () => {
+      const source = document.createElement('source');
+      source.src = window.innerWidth <= 767
+        ? `${PUBLIC_VIDEO_BASE}.mobile.webm`
+        : `${PUBLIC_VIDEO_BASE}.720.webm`;
+      source.type = 'video/webm';
+      video.appendChild(source);
+      video.load();
 
-            // set poster if available
-            try {
-              (vid as any).poster = PUBLIC_POSTER;
-            } catch (e) {}
+      const playPromise = video.play();
+      playPromise?.catch(() => {
+        // El navegador puede bloquear autoplay aunque el video esté muted.
+      });
+    };
 
-            // remove any existing sources
-            Array.from(vid.querySelectorAll('source')).forEach((s) => s.remove());
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        loadVideo();
+        observer.disconnect();
+      },
+      { rootMargin: '300px 0px 300px 0px' },
+    );
 
-            // append preferred sources (webm first)
-            sources.forEach((s) => {
-              const srcEl = document.createElement('source');
-              srcEl.src = s.src;
-              srcEl.type = s.type;
-              vid.appendChild(srcEl);
-            });
-
-            // trigger load/play
-            try {
-              vid.load();
-              const p = vid.play();
-              if (p && p.catch) p.catch(() => {});
-            } catch (e) {
-              // ignore play errors
-            }
-
-            obs.disconnect();
-          }
-        });
-      };
-
-      const io = new IntersectionObserver(onIntersect, { rootMargin: '300px' });
-      io.observe(section);
-      return () => io.disconnect();
-    }, []);
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -121,21 +95,18 @@ export function About() {
       ref={sectionRef}
       className="relative overflow-hidden pt-16 md:pt-20 pb-10 md:pb-12"
     >
-      {/* Video de fondo (lazy-load en mobile/desktop para reducir carga) */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        className="absolute inset-0 h-full w-full object-cover"
-        aria-hidden
-      >
-        {/* responsive sources: data-src used for lazy assignment; if you later add mobile/webm variants, change these paths */}
-        <source data-src={videoNosotros} media="(max-width: 767px)" type="video/mp4" />
-        <source data-src={videoNosotros} media="(min-width: 768px)" type="video/mp4" />
-      </video>
+      {/* Video de fondo optimizado para lazy loading. */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={PUBLIC_POSTER}
+          className="absolute inset-0 h-full w-full object-cover"
+          aria-hidden
+        />
 
 
       {/* Capa oscura para mejorar la lectura */}
