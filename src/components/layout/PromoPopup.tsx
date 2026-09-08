@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import banner1 from "@/assets/banners/banner1.avif";
@@ -13,8 +13,8 @@ export default function PromoPopup() {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 
-  // Mostrar una sola vez al día
-  useEffect(() => {
+  // Se resuelve antes del primer pintado del cliente para no retrasar el popup.
+  useLayoutEffect(() => {
   const popupShown = localStorage.getItem("ferticoolombia-popup-shown");
 
   if (!popupShown) {
@@ -83,10 +83,13 @@ export default function PromoPopup() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6 }}
-              alt={`Banner promocional de Ferticoolombia ${current + 1}`}
-              className="max-h-[80vh] w-auto object-contain mx-auto w-fit"
-            />
+            transition={{ duration: 0.6 }}
+            alt={`Banner promocional de Ferticoolombia ${current + 1}`}
+            loading="eager"
+            fetchPriority={current === 0 ? "high" : "auto"}
+            decoding="async"
+            className="max-h-[80vh] w-auto object-contain mx-auto w-fit"
+          />
           </AnimatePresence>
         </div>
 

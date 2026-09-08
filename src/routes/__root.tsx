@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { useDarkMode } from "../hooks/useDarkMode";
 import logoIcon from "../assets/brand/logo-icon.avif";
 import socialImage from "../assets/hero/h4.avif";
+import popupBanner from "../assets/banners/banner1.avif";
 import { absoluteSiteUrl, SITE_URL } from "../lib/seo";
 
 const SITE_TITLE = "Ferticolombia | Soluciones nutricionales para el agro colombiano";
@@ -160,7 +161,22 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
       <head>
-
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `let shouldPreloadPopup = window.location.pathname === "/";
+              try {
+                shouldPreloadPopup = shouldPreloadPopup && !window.localStorage.getItem("ferticoolombia-popup-shown");
+              } catch (_) {}
+              if (shouldPreloadPopup) {
+                const popupPreload = document.createElement("link");
+                popupPreload.rel = "preload";
+                popupPreload.as = "image";
+                popupPreload.href = ${JSON.stringify(popupBanner)};
+                popupPreload.fetchPriority = "high";
+                document.head.appendChild(popupPreload);
+              }`,
+          }}
+        />
         <HeadContent />
       </head>
       <body>

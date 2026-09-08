@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ChevronDown, Sprout, ArrowRight } from "lucide-react";
 
 import h1 from "@/assets/hero/h1.avif";
@@ -30,8 +30,12 @@ const INTERVAL = 2500;
 
 export function Hero() {
   const [index, setIndex] = useState(0);
+  const [prioritizeHero, setPrioritizeHero] = useState(false);
 
-  const go = (n: number) => setIndex((n + slides.length) % slides.length);
+  // Keep the popup preload ahead of the first Hero image on the initial document.
+  useLayoutEffect(() => {
+    setPrioritizeHero(true);
+  }, []);
 
   useEffect(() => {
     const id = window.setInterval(() => {
@@ -52,7 +56,7 @@ export function Hero() {
             sizes="100vw"
             alt={s.alt}
             loading={i === 0 ? "eager" : "lazy"}
-            fetchPriority={i === 0 ? "high" : "auto"}
+            fetchPriority={i === 0 && prioritizeHero ? "high" : "auto"}
             decoding="async"
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${
               i === index ? "opacity-100" : "opacity-0"
@@ -115,38 +119,24 @@ export function Hero() {
           </div>
 
           {/* Trust strip */}
-          <div className="mt-14 grid grid-cols-3 gap-6 max-w-[520px] border-t border-white/20 pt-8">
+          <div className="mt-14 grid w-full max-w-[520px] grid-cols-[minmax(0,1fr)_minmax(112px,1.25fr)_minmax(0,1fr)] gap-x-[clamp(12px,4vw,28px)] border-t border-white/20 px-[clamp(16px,5vw,32px)] pt-8">
             {[
               { k: "+10", v: "años" },
               { k: "50.000+", v: "toneladas distribuidas" },
               { k: "8", v: "departamentos" },
-            ].map((s) => (
-              <div key={s.v}>
-                <div className="font-display text-2xl md:text-3xl font-extrabold text-white">{s.k}</div>
-                <div className="mt-1 text-xs uppercase tracking-wider text-white/70">{s.v}</div>
+            ].map((s, i) => (
+              <div
+                key={s.v}
+                className={`relative flex w-full min-w-0 flex-col items-center text-center ${
+                  i > 0 ? "border-l border-white/25" : ""
+                }`}
+              >
+                <div className="whitespace-nowrap font-display text-2xl md:text-3xl font-extrabold text-white">{s.k}</div>
+                <div className="mt-1 w-full min-w-0 break-words [overflow-wrap:break-word] text-xs uppercase tracking-wider text-white/70">{s.v}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Indicators */}
-      <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => go(i)}
-            aria-label={`Ir a la imagen ${i + 1}`}
-            className="flex h-11 w-11 items-center justify-center rounded-full transition-all duration-500"
-          >
-            <span
-              aria-hidden="true"
-              className={`block h-1.5 rounded-full ${
-                i === index ? "w-10 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
-              }`}
-            />
-          </button>
-        ))}
       </div>
 
       {/* Scroll indicator */}

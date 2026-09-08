@@ -48,7 +48,7 @@ export function Footer() {
   return (
     <footer className="bg-footer text-footer-foreground">
       <div className="container-fc py-20">
-        <div className="grid gap-12 lg:gap-16 xl:gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.5fr]">
+        <div className="grid grid-cols-1 gap-y-12 lg:gap-16 xl:gap-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.5fr]">
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3" aria-label="Ferticoolombia">
@@ -73,9 +73,10 @@ export function Footer() {
               ))}
             </div>
           </div>
-          {/* Link columns */}
+          {/* Two compact columns on mobile; direct grid items from lg upward. */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:contents">
           {columns.map((col) => (
-            <div key={col.title}>
+            <div key={col.title} className="min-w-0">
               <h4 className="font-display text-sm font-bold uppercase tracking-widest text-white mb-5">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((l) => (
@@ -90,26 +91,27 @@ export function Footer() {
           ))}
 
           {/* Contact */}
-          <div>
+          <div className="min-w-0">
             <h4 className="font-display text-sm font-bold uppercase tracking-widest text-white mb-5">Contacto</h4>
-            <ul className="space-y-4 text-sm text-white/70">
-              <li className="flex gap-3">
+            <ul className="min-w-0 space-y-4 text-sm text-white/70">
+              <li className="flex min-w-0 gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary-light" strokeWidth={2} />
                 <span>Garzón, Huila</span>
               </li>
-              <li className="flex gap-3">
+              <li className="flex min-w-0 gap-3">
                 <Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary-light" strokeWidth={2} />
-                <a href="tel:(+57) 312 4804546 " className="hover:text-white transition">
+                <a href="tel:(+57) 312 4804546 " className="min-w-0 break-words hover:text-white transition">
                   +57 312 4804546
                 </a>
               </li>
-              <li className="flex gap-3">
+              <li className="flex min-w-0 gap-3">
                 <Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary-light" strokeWidth={2} />
-                <a href="mailto:contacto@ferticoolombia.com" className="hover:text-white transition break-all">
+                <a href="mailto:contacto@ferticoolombia.com" className="min-w-0 break-all hover:text-white transition">
                   ferticoolombia@coocentral.co 
                 </a>
               </li>
             </ul>
+          </div>
           </div>
         </div>
       </div>
