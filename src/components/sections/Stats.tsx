@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useInView, useMotionValue, useTransform, anima
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Package, MapPin } from "lucide-react";
 import coffeeField from "@/assets/hero/h7.avif";
+import coffeeFieldMobile from "@/assets/hero/h7-mobile.avif";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -81,8 +82,12 @@ export function Stats() {
       <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 scale-110">
         <img
           src={coffeeField}
+          srcSet={`${coffeeFieldMobile} 768w, ${coffeeField} 1920w`}
+          sizes="100vw"
           alt=""
           aria-hidden
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />

@@ -85,6 +85,8 @@ export function Brands() {
             src={backgroundImages[current]}
             alt=""
             aria-hidden
+            loading="lazy"
+            decoding="async"
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -102,6 +104,8 @@ export function Brands() {
         src={logoIcon}
         alt=""
         aria-hidden
+        loading="lazy"
+        decoding="async"
         className="pointer-events-none absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 w-32 md:w-44 opacity-[0.07] brightness-0 invert select-none"
       />
 

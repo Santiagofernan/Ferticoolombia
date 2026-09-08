@@ -69,6 +69,7 @@ export default function PromoPopup() {
         {/* Cerrar */}
         <button
           onClick={closePopup}
+          aria-label="Cerrar banner promocional"
           className="absolute right-4 top-4 z-30 rounded-full bg-white/100 p-2 shadow-lg transition hover:scale-150"
         >
           <X size={22} />
@@ -83,6 +84,7 @@ export default function PromoPopup() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
+              alt={`Banner promocional de Ferticoolombia ${current + 1}`}
               className="max-h-[80vh] w-auto object-contain mx-auto w-fit"
             />
           </AnimatePresence>
@@ -94,12 +96,11 @@ export default function PromoPopup() {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-3 rounded-full transition-all ${
-                current === i
-                  ? "w-8 bg-white"
-                  : "w-3 bg-white/50"
-              }`}
-            />
+              aria-label={`Ir al banner promocional ${i + 1}`}
+              className="flex h-11 w-11 items-center justify-center rounded-full transition-all"
+            >
+              <span className={current === i ? "h-3 w-8 rounded-full bg-white" : "h-3 w-3 rounded-full bg-white/50"} aria-hidden="true" />
+            </button>
           ))}
         </div>
       </motion.div>

@@ -8,15 +8,22 @@ import h4 from "@/assets/hero/h4.avif";
 import h5 from "@/assets/hero/h5.avif";
 import h6 from "@/assets/hero/h6.avif";
 import h7 from "@/assets/hero/h7.avif";
+import h1Mobile from "@/assets/hero/h1-mobile.avif";
+import h2Mobile from "@/assets/hero/h2-mobile.avif";
+import h3Mobile from "@/assets/hero/h3-mobile.avif";
+import h4Mobile from "@/assets/hero/h4-mobile.avif";
+import h5Mobile from "@/assets/hero/h5-mobile.avif";
+import h6Mobile from "@/assets/hero/h6-mobile.avif";
+import h7Mobile from "@/assets/hero/h7-mobile.avif";
 
 const slides = [
-  { url: h5, alt: "cosecha de café" },
-  { url: h7, alt: "Cultivo de café en Sevilla" },
-  { url: h1, alt: "Flor de café en plena floración" },
-  { url: h3, alt: "Finca de café y plátano" },
-  { url: h4, alt: "Campo cultivado" },
-  { url: h6, alt: "Cerezas de café maduras" },
-  { url: h2, alt: "Palo de café" },
+  { url: h5, mobileUrl: h5Mobile, desktopWidth: 1672, alt: "cosecha de café" },
+  { url: h7, mobileUrl: h7Mobile, desktopWidth: 1920, alt: "Cultivo de café en Sevilla" },
+  { url: h1, mobileUrl: h1Mobile, desktopWidth: 1672, alt: "Flor de café en plena floración" },
+  { url: h3, mobileUrl: h3Mobile, desktopWidth: 1672, alt: "Finca de café y plátano" },
+  { url: h4, mobileUrl: h4Mobile, desktopWidth: 1672, alt: "Campo cultivado" },
+  { url: h6, mobileUrl: h6Mobile, desktopWidth: 1672, alt: "Cerezas de café maduras" },
+  { url: h2, mobileUrl: h2Mobile, desktopWidth: 1672, alt: "Palo de café" },
 ];
 
 const INTERVAL = 2500;
@@ -41,8 +48,11 @@ export function Hero() {
           <img
             key={s.url}
             src={s.url}
+            srcSet={`${s.mobileUrl} 768w, ${s.url} ${s.desktopWidth}w`}
+            sizes="100vw"
             alt={s.alt}
             loading={i === 0 ? "eager" : "lazy"}
+            fetchPriority={i === 0 ? "high" : "auto"}
             decoding="async"
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${
               i === index ? "opacity-100" : "opacity-0"
@@ -99,7 +109,7 @@ export function Hero() {
               Ver productos
               <ArrowRight className="h-5 w-5" strokeWidth={2.25} />
             </a>
-            <a href="#contacto" className="btn-secondary-fc border-white text-white hover:bg-white hover:text-primary">
+            <a href="#contacto" aria-label="Solicitar asesoría en la sección de contacto" className="btn-secondary-fc border-white text-white hover:bg-white hover:text-primary">
               Solicitar asesoría
             </a>
           </div>
@@ -127,10 +137,15 @@ export function Hero() {
             key={i}
             onClick={() => go(i)}
             aria-label={`Ir a la imagen ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === index ? "w-10 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
-            }`}
-          />
+            className="flex h-11 w-11 items-center justify-center rounded-full transition-all duration-500"
+          >
+            <span
+              aria-hidden="true"
+              className={`block h-1.5 rounded-full ${
+                i === index ? "w-10 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          </button>
         ))}
       </div>
 

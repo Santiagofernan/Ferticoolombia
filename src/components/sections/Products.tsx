@@ -279,15 +279,20 @@ return (
                       type="button"
                       onClick={() => setPage(i)}
                       aria-label={`Ir a la página ${i + 1}`}
-                      className="h-2.5 rounded-full transition-all"
-                      animate={{
-                        width: active ? 28 : 10,
-                        backgroundColor: active
-                          ? "rgba(255,255,255,0.95)"
-                          : "rgba(255,255,255,0.4)",
-                      }}
+                      className="flex h-11 min-w-11 items-center justify-center rounded-full transition-all"
                       whileHover={{ scale: 1.15 }}
-                    />
+                    >
+                      <motion.span
+                        aria-hidden="true"
+                        className="block h-2.5 rounded-full"
+                        animate={{
+                          width: active ? 28 : 10,
+                          backgroundColor: active
+                            ? "rgba(255,255,255,0.95)"
+                            : "rgba(255,255,255,0.4)",
+                        }}
+                      />
+                    </motion.button>
                   );
                 })}
               </AnimatePresence>

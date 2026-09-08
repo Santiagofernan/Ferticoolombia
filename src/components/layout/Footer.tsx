@@ -54,7 +54,7 @@ export function Footer() {
             <Link to="/" className="flex items-center gap-3" aria-label="Ferticoolombia">
               <img src={logo} alt="Ferticoolombia" className="h-12 w-auto" />
             </Link>
-            <p className="mt-5 text-sm leading-relaxed text-white/60 max-w-xs">
+            <p className="mt-5 text-sm leading-relaxed text-white/80 max-w-xs">
               Más de 10 años nutriendo el crecimiento del campo colombiano con fertilizantes de alta eficiencia.
             </p>
 
@@ -114,7 +114,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-fc py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <div className="container-fc py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
           <p>© {new Date().getFullYear()} Ferticoolombia. Todos los derechos reservados.</p>
         </div>
       </div>

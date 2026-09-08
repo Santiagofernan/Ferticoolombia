@@ -65,6 +65,8 @@ export function Crops() {
                   <img
                     src={current.image}
                     alt={`Cultivo de ${current.name}`}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
@@ -102,6 +104,7 @@ export function Crops() {
                     <div className="mt-8">
                       <a
                         href="#contacto"
+                        aria-label={`Solicitar asesoría para el cultivo de ${current.name}`}
                         className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-200 hover:gap-3 hover:bg-primary-dark"
                       >
                         Solicitar asesoría
@@ -116,12 +119,18 @@ export function Crops() {
                             setDirection(i > index ? 1 : -1);
                             setIndex(i);
                           }}
-                          className={`transition-all rounded-full ${
-                            i === index
-                              ? "w-8 h-2 bg-white"
-                              : "w-2 h-2 bg-white/40"
-                          }`}
-                        />
+                          aria-label={`Ir al cultivo ${crops[i].name}`}
+                          className="flex h-11 w-11 items-center justify-center rounded-full transition-all"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className={`block rounded-full ${
+                              i === index
+                                ? "h-2 w-8 bg-white"
+                                : "h-2 w-2 bg-white/40"
+                            }`}
+                          />
+                        </button>
                       ))}
                     </div>                  
                   </div>

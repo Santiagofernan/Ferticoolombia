@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, Clock, Headphones, MapPinned, Award } from "lucide-react";
 import heroBg from "@/assets/hero/h3.avif";
+import heroBgMobile from "@/assets/hero/h3-mobile.avif";
 import whatsappLogo from "@/assets/brand/whatsapp.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -34,7 +35,16 @@ export function Contact() {
     <section id="contacto" className="relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" aria-hidden className="h-full w-full object-cover" />
+        <img
+          src={heroBg}
+          srcSet={`${heroBgMobile} 768w, ${heroBg} 1672w`}
+          sizes="100vw"
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/75 to-[oklch(0.28_0.08_145/0.85)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.52_0.14_145/0.35),transparent_60%)]" />
       </div>
@@ -175,6 +185,7 @@ export function Contact() {
 
             <a
               href={WHATSAPP_URL}
+              aria-label="Solicitar asesoría por WhatsApp"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-sm font-bold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[0_15px_40px_-10px_oklch(0.52_0.14_145/0.7)]"

@@ -8,7 +8,7 @@ import { Stats } from "@/components/sections/Stats";
 import { Products } from "@/components/sections/Products";
 import { Crops } from "@/components/sections/Crops";
 import { Benefits } from "@/components/sections/Benefits";
-import { YouTubeVideoSection } from "@/components/sections/YouTubeVideoSection";
+import { InstagramReelSection } from "@/components/sections/InstagramReelSection";
 import { Brands } from "@/components/sections/Brands";
 import { Contact } from "@/components/sections/Contact";
 import PromoPopup from "@/components/layout/PromoPopup";
@@ -16,7 +16,6 @@ import PromoPopup from "@/components/layout/PromoPopup";
 export const Route = createFileRoute("/")({
   component: Index,
 });
-
 
 function Index() {
   return (
@@ -30,7 +29,7 @@ function Index() {
         <Products />
         <Crops />
         <Benefits />
-        <YouTubeVideoSection />
+        <InstagramReelSection />
         <Brands />
         <Contact />
       </main>
