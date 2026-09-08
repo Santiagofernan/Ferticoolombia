@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, ArrowUp } from "lucide-react";
-import whatsappIcon from "@/assets/brand/whatsapp.webp";
+import whatsappIcon from "@/assets/brand/whatsapp-128.webp";
 const WHATSAPP_NUMBER = "312 4804546";
 const WHATSAPP_MSG = encodeURIComponent("Hola Ferticoolombia, quisiera recibir asesoría sobre sus fertilizantes.");
 

@@ -2,14 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import plantInterior from "@/assets/brands/plant-interior.avif";
-import plant4 from "@/assets/brands/plant-4.avif";
-import plant5 from "@/assets/brands/plant-5.avif";
-import plant6 from "@/assets/brands/plant-6.avif";
-import plant7 from "@/assets/brands/plant-7.avif";
-import logistics1 from "@/assets/brands/logistics-1.avif";
-import logistics2 from "@/assets/brands/logistics-2.avif";
+import plantInterior768 from "@/assets/brands/variants/plant-interior-768.avif";
+import plantInterior1280 from "@/assets/brands/variants/plant-interior-1280.avif";
+import plant4_768 from "@/assets/brands/variants/plant-4-768.avif";
+import plant4_1280 from "@/assets/brands/variants/plant-4-1280.avif";
+import plant5_768 from "@/assets/brands/variants/plant-5-768.avif";
+import plant5_1280 from "@/assets/brands/variants/plant-5-1280.avif";
+import plant6_768 from "@/assets/brands/variants/plant-6-768.avif";
+import plant6_1280 from "@/assets/brands/variants/plant-6-1280.avif";
+import plant7_768 from "@/assets/brands/variants/plant-7-768.avif";
+import plant7_1280 from "@/assets/brands/variants/plant-7-1280.avif";
+import logistics1_768 from "@/assets/brands/variants/logistics-1-768.avif";
+import logistics1_1280 from "@/assets/brands/variants/logistics-1-1280.avif";
+import logistics2_768 from "@/assets/brands/variants/logistics-2-768.avif";
+import logistics2_1280 from "@/assets/brands/variants/logistics-2-1280.avif";
 import logistics4 from "@/assets/brands/logistics-4.avif";
-import fertilizerHold from "@/assets/brands/fertilizer-hold.webp";
+import logistics4_768 from "@/assets/brands/variants/logistics-4-768.avif";
+import logistics4_1280 from "@/assets/brands/variants/logistics-4-1280.avif";
+import fertilizerHold768 from "@/assets/brands/variants/fertilizer-hold-768.avif";
+import fertilizerHold1280 from "@/assets/brands/variants/fertilizer-hold-1280.avif";
 import acronLogo from "@/assets/brands/acron.avif";
 import coocentralLogo from "@/assets/brands/coocentral.svg";
 import logoIcon from "@/assets/brand/logo-icon.avif";
@@ -41,16 +52,18 @@ const brands: Brand[] = [
   },
 ];
 
-const backgroundImages = [
-  logistics4,
-  plant4,
-  fertilizerHold,
-  plantInterior,
-  logistics1,
-  plant5,
-  logistics2,
-  plant6,
-  plant7,
+type ResponsiveBackground = { src: string; srcSet: string };
+
+const backgroundImages: ResponsiveBackground[] = [
+  { src: logistics4_1280, srcSet: `${logistics4_768} 768w, ${logistics4_1280} 1280w, ${logistics4} 1600w` },
+  { src: plant4_1280, srcSet: `${plant4_768} 768w, ${plant4_1280} 1280w` },
+  { src: fertilizerHold1280, srcSet: `${fertilizerHold768} 768w, ${fertilizerHold1280} 1280w` },
+  { src: plantInterior1280, srcSet: `${plantInterior768} 768w, ${plantInterior1280} 1280w, ${plantInterior} 1920w` },
+  { src: logistics1_1280, srcSet: `${logistics1_768} 768w, ${logistics1_1280} 1280w` },
+  { src: plant5_1280, srcSet: `${plant5_768} 768w, ${plant5_1280} 1280w` },
+  { src: logistics2_1280, srcSet: `${logistics2_768} 768w, ${logistics2_1280} 1280w` },
+  { src: plant6_1280, srcSet: `${plant6_768} 768w, ${plant6_1280} 1280w` },
+  { src: plant7_1280, srcSet: `${plant7_768} 768w, ${plant7_1280} 1280w` },
 ];
 
 export function Brands() {
@@ -82,7 +95,9 @@ export function Brands() {
         <AnimatePresence initial={false} mode="sync">
           <motion.img
             key={current}
-            src={backgroundImages[current]}
+            src={backgroundImages[current].src}
+            srcSet={backgroundImages[current].srcSet}
+            sizes="(min-width: 1280px) 1280px, 100vw"
             alt=""
             aria-hidden
             loading="lazy"

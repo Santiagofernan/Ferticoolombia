@@ -63,7 +63,9 @@ export function Crops() {
                   className="absolute inset-0"
                 >
                   <img
-                    src={current.image}
+                    src={current.image.src}
+                    srcSet={current.image.srcSet}
+                    sizes="(min-width: 1280px) 1280px, 100vw"
                     alt={`Cultivo de ${current.name}`}
                     loading="lazy"
                     decoding="async"

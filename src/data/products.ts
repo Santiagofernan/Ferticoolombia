@@ -1,11 +1,35 @@
-import img25424 from "@/assets/products/25-4-24.avif";
-import imgKatiuska from "@/assets/products/katiuska.avif";
-import imgMitakron from "@/assets/products/mitakron.avif";
-import imgPlatanate from "@/assets/products/cplatanate.avif";
-import imgSpasiva from "@/assets/products/spasiva.avif";
-import imgBonanza from "@/assets/products/bonanza.avif";
-import imgYurika from "@/assets/products/Yurika.avif";
-import imgZaneta from "@/assets/products/Zaneta.avif";
+import img25424_240 from "@/assets/products/variants/25-4-24-240.avif";
+import img25424_360 from "@/assets/products/variants/25-4-24-360.avif";
+import img25424_520 from "@/assets/products/variants/25-4-24-520.avif";
+import img25424_720 from "@/assets/products/variants/25-4-24-720.avif";
+import imgKatiuska_240 from "@/assets/products/variants/katiuska-240.avif";
+import imgKatiuska_360 from "@/assets/products/variants/katiuska-360.avif";
+import imgKatiuska_520 from "@/assets/products/variants/katiuska-520.avif";
+import imgKatiuska_720 from "@/assets/products/variants/katiuska-720.avif";
+import imgMitakron_240 from "@/assets/products/variants/mitakron-240.avif";
+import imgMitakron_360 from "@/assets/products/variants/mitakron-360.avif";
+import imgMitakron_520 from "@/assets/products/variants/mitakron-520.avif";
+import imgMitakron_720 from "@/assets/products/variants/mitakron-720.avif";
+import imgPlatanate_240 from "@/assets/products/variants/cplatanate-240.avif";
+import imgPlatanate_360 from "@/assets/products/variants/cplatanate-360.avif";
+import imgPlatanate_520 from "@/assets/products/variants/cplatanate-520.avif";
+import imgPlatanate_720 from "@/assets/products/variants/cplatanate-720.avif";
+import imgSpasiva_240 from "@/assets/products/variants/spasiva-240.avif";
+import imgSpasiva_360 from "@/assets/products/variants/spasiva-360.avif";
+import imgSpasiva_520 from "@/assets/products/variants/spasiva-520.avif";
+import imgSpasiva_720 from "@/assets/products/variants/spasiva-720.avif";
+import imgBonanza_240 from "@/assets/products/variants/bonanza-240.avif";
+import imgBonanza_360 from "@/assets/products/variants/bonanza-360.avif";
+import imgBonanza_520 from "@/assets/products/variants/bonanza-520.avif";
+import imgBonanza_720 from "@/assets/products/variants/bonanza-720.avif";
+import imgYurika_240 from "@/assets/products/variants/Yurika-240.avif";
+import imgYurika_360 from "@/assets/products/variants/Yurika-360.avif";
+import imgYurika_520 from "@/assets/products/variants/Yurika-520.avif";
+import imgYurika_720 from "@/assets/products/variants/Yurika-720.avif";
+import imgZaneta_240 from "@/assets/products/variants/Zaneta-240.avif";
+import imgZaneta_360 from "@/assets/products/variants/Zaneta-360.avif";
+import imgZaneta_520 from "@/assets/products/variants/Zaneta-520.avif";
+import imgZaneta_720 from "@/assets/products/variants/Zaneta-720.avif";
 /*Fichas*/
 import mitakronFicha from "@/assets/fichas/mitakron.avif";
 import katiuskaFicha from "@/assets/fichas/katiuska.avif";
@@ -24,10 +48,15 @@ export interface IProduct {
   tagline: string;
   description: string;
   benefits: string[];
-  image: string;
+  image: ResponsiveImage;
   imageAlt?: string;
   /** Ruta al PDF de ficha técnica. Reemplazable cuando existan los PDFs oficiales. */
   datasheetUrl?: string;
+}
+
+export interface ResponsiveImage {
+  src: string;
+  srcSet: string;
 }
 
 export const products: IProduct[] = [
@@ -44,7 +73,7 @@ export const products: IProduct[] = [
       "Fuentes de alta eficiencia y asimilación",
       "Ideal para etapa de desarrollo vegetativo",
     ],
-    image: imgMitakron,
+    image: { src: imgMitakron_360, srcSet: `${imgMitakron_240} 240w, ${imgMitakron_360} 360w, ${imgMitakron_520} 520w, ${imgMitakron_720} 720w` },
   },
   {
     slug: "yurika",
@@ -59,7 +88,7 @@ export const products: IProduct[] = [
       "Nutrición equilibrada NPK",
       "Favorece el desarrollo del cultivo",
     ],
-    image: imgYurika,
+    image: { src: imgYurika_360, srcSet: `${imgYurika_240} 240w, ${imgYurika_360} 360w, ${imgYurika_520} 520w, ${imgYurika_720} 720w` },
     imageAlt: "Fertilizante Yurika 23-4-20-3(MgO)-4(S) - Ferticolombia",
   },
   {
@@ -75,7 +104,7 @@ export const products: IProduct[] = [
       "Nutrición NPK eficiente",
       "Acompaña el rendimiento del cultivo",
     ],
-    image: imgZaneta,
+    image: { src: imgZaneta_360, srcSet: `${imgZaneta_240} 240w, ${imgZaneta_360} 360w, ${imgZaneta_520} 520w, ${imgZaneta_720} 720w` },
     imageAlt: "Fertilizante Zaneta 26-4-22 - Ferticolombia",
   },
   {
@@ -91,7 +120,7 @@ export const products: IProduct[] = [
       "Balance NPK con calcio",
       "Fuentes de alta eficiencia agronómica",
     ],
-    image: imgBonanza,
+    image: { src: imgBonanza_360, srcSet: `${imgBonanza_240} 240w, ${imgBonanza_360} 360w, ${imgBonanza_520} 520w, ${imgBonanza_720} 720w` },
   },
   {
     slug: "katiuska",
@@ -106,7 +135,7 @@ export const products: IProduct[] = [
       "Ayuda al llenado del fruto",
       "Fertilización más completa y eficiente",
     ],
-    image: imgKatiuska,
+    image: { src: imgKatiuska_360, srcSet: `${imgKatiuska_240} 240w, ${imgKatiuska_360} 360w, ${imgKatiuska_520} 520w, ${imgKatiuska_720} 720w` },
   },
   {
     slug: "platanate",
@@ -121,7 +150,7 @@ export const products: IProduct[] = [
       "Alto aporte de potasio (K₂O 30%)",
       "Ideal para plátano, cítricos y hortalizas",
     ],
-    image: imgPlatanate,
+    image: { src: imgPlatanate_360, srcSet: `${imgPlatanate_240} 240w, ${imgPlatanate_360} 360w, ${imgPlatanate_520} 520w, ${imgPlatanate_720} 720w` },
   },
   {
     slug: "spasiva",
@@ -136,7 +165,7 @@ export const products: IProduct[] = [
       "Menor concentración de metales pesados",
       "Rendimiento superior por hectárea",
     ],
-    image: imgSpasiva,
+    image: { src: imgSpasiva_360, srcSet: `${imgSpasiva_240} 240w, ${imgSpasiva_360} 360w, ${imgSpasiva_520} 520w, ${imgSpasiva_720} 720w` },
   },
   {
     slug: "25-4-24",
@@ -151,6 +180,6 @@ export const products: IProduct[] = [
       "Aplicación edáfica uniforme",
       "Alta eficiencia agronómica",
     ],
-    image: img25424,
+    image: { src: img25424_360, srcSet: `${img25424_240} 240w, ${img25424_360} 360w, ${img25424_520} 520w, ${img25424_720} 720w` },
   },
 ];

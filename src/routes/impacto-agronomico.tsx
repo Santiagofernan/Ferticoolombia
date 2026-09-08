@@ -6,17 +6,16 @@ import { Link } from "@tanstack/react-router";
 
 import AgriculturalBackground from "@/components/backgrounds/AgriculturalBackground";
 import heroImg from "@/assets/backgrounds/products-bg-coffee.avif";
-import cafeImg from "@/assets/crops/cafe.avif";
-import platanoImg from "@/assets/crops/platano.avif";
-import maracuyaImg from "@/assets/crops/maracuya.avif";
-import tomateImg from "@/assets/crops/tomate.avif";
-import papaImg from "@/assets/crops/papa.webp";
-import cañaImg from "@/assets/crops/caña.avif";
-import limoImg from "@/assets/crops/limon.avif";
-import aguacateImg from "@/assets/crops/aguacate.avif";
+import heroImg768 from "@/assets/backgrounds/variants/products-bg-coffee-768.avif";
+import heroImg1280 from "@/assets/backgrounds/variants/products-bg-coffee-1280.avif";
 import beforeImg from "@/assets/parallax/cafe.avif";
+import beforeImg640 from "@/assets/parallax/variants/cafe-640.avif";
+import beforeImg1024 from "@/assets/parallax/variants/cafe-1024.avif";
 import afterImg from "@/assets/hero/h5.avif";
+import afterImgMobile from "@/assets/hero/h5-mobile.avif";
 import ctaBg from "@/assets/hero/h7.avif";
+import ctaBgMobile from "@/assets/hero/h7-mobile.avif";
+import { cropImages, type ResponsiveCropImage } from "@/data/crops";
 
 import { absoluteSiteUrl, SITE_URL } from "@/lib/seo";
 
@@ -24,7 +23,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 interface Cultivo {
   nombre: string;
-  imagen: string;
+  imagen: ResponsiveCropImage;
   resultado: string;
   region: string;
 }
@@ -32,49 +31,49 @@ interface Cultivo {
 const cultivos: Cultivo[] = [
   {
     nombre: "Café",
-    imagen: cafeImg,
+    imagen: cropImages.cafe,
     resultado: "+18% en rendimiento por hectárea",
     region: "Eje Cafetero",
   },
   {
     nombre: "Plátano",
-    imagen: platanoImg,
+    imagen: cropImages.platano,
     resultado: "Racimos con mayor peso y llenado",
     region: "Valle del Cauca",
   },
   {
     nombre: "Maracuyá",
-    imagen: maracuyaImg,
+    imagen: cropImages.maracuya,
     resultado: "Floración sostenida y mejor cuaje",
     region: "Huila",
   },
   {
     nombre: "Tomate",
-    imagen: tomateImg,
+    imagen: cropImages.tomate,
     resultado: "Mayor firmeza y vida en anaquel",
     region: "Cundinamarca",
   },
   {
     nombre: "Papa",
-    imagen: papaImg,
+    imagen: cropImages.papa,
     resultado: "Incremento en el tamaño y calidad del tubérculo",
     region: "Nariño",
   },
   {
     nombre: "Caña de azúcar",
-    imagen: cañaImg,
+    imagen: cropImages.caña,
     resultado: "Mejor desarrollo y rendimiento del cultivo",
     region: "Cauca",
   },
   {
     nombre: "Limón",
-    imagen: limoImg,
+    imagen: cropImages.limon,
     resultado: "Frutos más grandes y jugosos",
     region: "Magdalena",
   },
   {
     nombre: "Aguacate",
-    imagen: aguacateImg,
+    imagen: cropImages.aguacate,
     resultado: "Mayor producción y calidad de frutos",
     region: "Antioquia",
   },
@@ -123,13 +122,21 @@ function BeforeAfter() {
       <div className="relative aspect-[16/9] select-none">
         <img
           src={afterImg}
+          srcSet={`${afterImgMobile} 768w, ${afterImg} 1672w`}
+          sizes="(min-width: 1024px) 1024px, 100vw"
           alt="Cultivo después del tratamiento nutricional"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
           <img
             src={beforeImg}
+            srcSet={`${beforeImg640} 640w, ${beforeImg1024} 1024w, ${beforeImg} 1280w`}
+            sizes="(min-width: 1024px) 1024px, 100vw"
             alt="Cultivo antes del tratamiento nutricional"
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ width: `${(100 / Math.max(pos, 1)) * 100}%`, maxWidth: "none" }}
           />
@@ -190,7 +197,11 @@ function ImpactoAgronomico() {
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <img
           src={heroImg}
+          srcSet={`${heroImg768} 768w, ${heroImg1280} 1280w, ${heroImg} 1672w`}
+          sizes="100vw"
           alt="Cultivo de café en Colombia"
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
@@ -282,7 +293,9 @@ function ImpactoAgronomico() {
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
-                      src={cultivo.imagen}
+                      src={cultivo.imagen.src}
+                      srcSet={cultivo.imagen.srcSet}
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                       alt={`Cultivo de ${cultivo.nombre}`}
                       loading="lazy"
                       decoding="async"
@@ -348,8 +361,12 @@ function ImpactoAgronomico() {
       <section className="relative isolate overflow-hidden py-24 lg:py-32">
         <img
           src={ctaBg}
+          srcSet={`${ctaBgMobile} 768w, ${ctaBg} 1920w`}
+          sizes="100vw"
           alt=""
           aria-hidden
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-[center_44%] sm:object-[center_42%] lg:object-[center_40%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-black/70 to-black/60" />
@@ -432,7 +449,9 @@ function ImpactoAgronomico() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      src={selected.imagen}
+                      src={selected.imagen.src}
+                      srcSet={selected.imagen.srcSet}
+                      sizes="(min-width: 1024px) 1024px, 100vw"
                       alt={`Cultivo de ${selected.nombre}`}
                       className="block max-h-[42dvh] min-h-52 w-full object-cover sm:max-h-[50dvh] md:max-h-[56dvh]"
                     />

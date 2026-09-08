@@ -59,9 +59,8 @@ export function About() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.poster = PUBLIC_POSTER;
-
     const loadVideo = () => {
+      video.poster = PUBLIC_POSTER;
       const source = document.createElement('source');
       source.src = window.innerWidth <= 767
         ? `${PUBLIC_VIDEO_BASE}.mobile.webm`
@@ -103,7 +102,6 @@ export function About() {
           loop
           playsInline
           preload="none"
-          poster={PUBLIC_POSTER}
           className="absolute inset-0 h-full w-full object-cover"
           aria-hidden
         />

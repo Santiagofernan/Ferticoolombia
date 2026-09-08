@@ -30,6 +30,7 @@ const INTERVAL = 2500;
 
 export function Hero() {
   const [index, setIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
   const [prioritizeHero, setPrioritizeHero] = useState(false);
 
   // Keep the popup preload ahead of the first Hero image on the initial document.
@@ -38,17 +39,21 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % slides.length);
+    const id = window.setTimeout(() => {
+      setPreviousIndex(index);
+      setIndex((index + 1) % slides.length);
     }, INTERVAL);
-    return () => window.clearInterval(id);
-  }, []);
+    return () => window.clearTimeout(id);
+  }, [index]);
 
   return (
     <section id="top" className="relative min-h-[100dvh] flex items-center overflow-hidden">
       {/* Carousel layer */}
       <div className="absolute inset-0 z-0">
-        {slides.map((s, i) => (
+        {slides.map((s, i) => {
+          if (i !== index && i !== previousIndex) return null;
+
+          return (
           <img
             key={s.url}
             src={s.url}
@@ -63,7 +68,8 @@ export function Hero() {
             }`}
             style={{ transform: "scale(1.04)" }}
           />
-        ))}
+          );
+        })}
 
         {/* Legibility overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/25" />

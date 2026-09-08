@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Check, X } from "lucide-react";
 import { products, type IProduct } from "@/data/products";
-import productsBg from "@/assets/backgrounds/products-bg-coffee.avif";
+import productsBg768 from "@/assets/backgrounds/variants/products-bg-coffee-768.avif";
+import productsBg1280 from "@/assets/backgrounds/variants/products-bg-coffee-1280.avif";
 
 function ProductCard({
   product,
@@ -22,7 +23,9 @@ return (
       >
           <div className="relative flex h-[240px] items-center justify-center overflow-hidden rounded-t-[28px] border-b border-primary/30 bg-surface/70 p-5 dark:border-border dark:bg-muted-foreground/30 sm:h-[280px] sm:p-3">
             <img
-              src={product.image}
+              src={product.image.src}
+              srcSet={product.image.srcSet}
+              sizes="(min-width: 1024px) 356px, (min-width: 640px) calc((100vw - 96px) / 2), calc(92vw - 64px)"
               alt={product.imageAlt ?? `Empaque de ${product.name} ${product.formula}`}
               loading="lazy"
               decoding="async"
@@ -188,9 +191,16 @@ return (
       return (
         <section id="productos" ref={ref} className="section-fc relative overflow-hidden">
           <div aria-hidden className="absolute inset-0 overflow-hidden">
-            <motion.div
-              className="absolute inset-[-24px] bg-cover bg-center blur-[1.5px]"
-              style={{ backgroundImage: `url(${productsBg})`, y }}
+            <motion.img
+              src={productsBg1280}
+              srcSet={`${productsBg768} 768w, ${productsBg1280} 1280w`}
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              alt=""
+              aria-hidden
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-[-24px] h-[calc(100%+48px)] w-[calc(100%+48px)] object-cover object-center blur-[1.5px]"
+              style={{ y }}
             />
           </div>
           <div aria-hidden className="absolute inset-0 bg-black/55" />
