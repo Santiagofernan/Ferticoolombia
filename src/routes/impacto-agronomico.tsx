@@ -387,10 +387,10 @@ function ImpactoAgronomico() {
           className="container-fc relative z-10 text-center"
         >
           <h2 className="mx-auto max-w-3xl font-display text-white">
-            ¿Quieres obtener estos resultados en tu cultivo?
+            ¿Desea obtener estos resultados en su cultivo?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-white/85">
-            Nuestro equipo técnico diseña un programa nutricional a la medida de tu finca y tu
+            Nuestro equipo técnico diseña un programa nutricional a la medida de su finca y su
             cultivo.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

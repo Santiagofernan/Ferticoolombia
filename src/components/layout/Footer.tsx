@@ -33,7 +33,7 @@ const columns = [
       { label: "Plátano", href: "#cultivos" },
       { label: "Cítricos", href: "#cultivos" },
       { label: "Papa", href: "#cultivos" },
-      { label: "Caña de azucar", href: "#cultivos" },
+      { label: "Caña de azúcar", href: "#cultivos" },
       { label: "Tomate", href: "#cultivos" },
     ],
   },

@@ -96,20 +96,43 @@ return (
 
       const itemsPerView = useItemsPerView();
       const [page, setPage] = useState(0);
+      const [isSnappingToStart, setIsSnappingToStart] = useState(false);
 
-      const totalPages = Math.max(1, products.length - itemsPerView + 1);
+      // Añadimos al final las tarjetas iniciales para que la vuelta a Katiuska
+      // continúe hacia adelante, sin el salto visual hacia atrás.
+      const carouselProducts = useMemo(
+        () => [...products, ...products.slice(0, itemsPerView)],
+        [itemsPerView],
+      );
+      const totalPages = products.length;
       const [selectedFicha, setSelectedFicha] = useState<IProduct | null>(null);
       
       useEffect(() => {
-        if (page > totalPages - 1) setPage(0);
+        if (page > totalPages) setPage(0);
       }, [totalPages, page]);
+
+      useEffect(() => {
+        if (!isSnappingToStart) return;
+        const frame = window.requestAnimationFrame(() => setIsSnappingToStart(false));
+        return () => window.cancelAnimationFrame(frame);
+      }, [isSnappingToStart]);
+
+      useEffect(() => {
+        if (totalPages <= 1 || selectedFicha) return;
+
+        const rotation = window.setInterval(() => {
+          setPage((currentPage) => Math.min(currentPage + 1, totalPages));
+        }, 4000);
+
+        return () => window.clearInterval(rotation);
+      }, [totalPages, selectedFicha]);
 
       const prev = useCallback(
         () => setPage((p) => (p - 1 + totalPages) % totalPages),
         [totalPages],
       );
       const next = useCallback(
-        () => setPage((p) => (p + 1) % totalPages),
+        () => setPage((p) => Math.min(p + 1, totalPages)),
         [totalPages],
       );
 
@@ -233,11 +256,17 @@ return (
                 <motion.div
                   className="flex"
                   animate={{ x: `-${translatePct}%` }}
-                  transition={{ duration: 0.6, ease: EASE }}
+                  transition={{ duration: isSnappingToStart ? 0 : 0.6, ease: EASE }}
+                  onAnimationComplete={() => {
+                    if (page === totalPages) {
+                      setIsSnappingToStart(true);
+                      setPage(0);
+                    }
+                  }}
                 >
-                  {products.map((p) => (
+                  {carouselProducts.map((p, i) => (
                     <div
-                      key={p.slug}
+                      key={`${p.slug}-${i}`}
                       className="shrink-0 px-3 sm:px-6 lg:px-8"
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
@@ -282,7 +311,7 @@ return (
             <div className="mt-6 sm:mt-10 flex items-center justify-center gap-2.5">
               <AnimatePresence initial={false}>
                 {Array.from({ length: totalPages }).map((_, i) => {
-                  const active = i === page;
+                  const active = i === page % totalPages;
                   return (
                     <motion.button
                       key={i}

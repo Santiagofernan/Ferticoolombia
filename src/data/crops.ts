@@ -60,7 +60,7 @@ export const crops: ICrop[] = [
     slug: "cafe",
     name: "Café",
     description:
-      "Nutrición balanceada para etapas de levante, floración y llenado del grano. Formulaciones que potencian rendimiento y calidad de taza.",
+      "Nutrición balanceada para las etapas de levante, floración y llenado del grano. Formulaciones que potencian el rendimiento y la calidad de taza.",
     recommended: ["mitakron", "katiuska", "spasiva"],
     image: cropImages.cafe,
     accent: "Grano de altura",
@@ -69,7 +69,7 @@ export const crops: ICrop[] = [
     slug: "platano",
     name: "Plátano",
     description:
-      "Alta demanda de potasio para engorde y llenado del racimo. Programa nutricional pensado para máxima productividad.",
+      "Alta demanda de potasio para el engorde y llenado del racimo. Programa nutricional diseñado para alcanzar la máxima productividad.",
     recommended: ["platanate", "katiuska", "kcl"],
     image: cropImages.platano,
     accent: "Racimos productivos",
@@ -78,7 +78,7 @@ export const crops: ICrop[] = [
     slug: "maracuya",
     name: "Maracuyá",
     description:
-      "Aporte estratégico de potasio, calcio y micronutrientes para floración sostenida, cuaje y calidad de fruto exportable.",
+      "Aporte estratégico de potasio, calcio y micronutrientes para una floración sostenida, el cuaje y la calidad del fruto para exportación.",
     recommended: ["bonanza", "yurika", "21-0-21"],
     image: cropImages.maracuya,
     accent: "Fruta de exportación",
@@ -87,7 +87,7 @@ export const crops: ICrop[] = [
     slug: "tomate",
     name: "Tomate",
     description:
-      "Programa nutricional de precisión para ciclos intensivos: firmeza, color, vida en anaquel y calidad post-cosecha.",
+      "Programa nutricional de precisión para ciclos intensivos: firmeza, color, vida en anaquel y calidad poscosecha.",
     recommended: ["mitakron", "25-4-24", "bonanza"],
     image: cropImages.tomate,
     accent: "Cultivo de precisión",
@@ -103,7 +103,7 @@ export const crops: ICrop[] = [
   },
   {
     slug: "limon",
-    name: "Limon",
+    name: "Limón",
     description:
       "Formulaciones diseñadas para mejorar la producción, calidad y tamaño del fruto.",
     recommended: ["Platanate", "Mitakron"],
@@ -123,7 +123,7 @@ export const crops: ICrop[] = [
     slug: "papa",
     name: "Papa",
     description:
-      "Nutrición balanceada para etapas de crecimiento, floración y tuberización. Formulaciones que potencian rendimiento y calidad del tubérculo.",
+      "Nutrición balanceada para las etapas de crecimiento, floración y tuberización. Formulaciones que potencian el rendimiento y la calidad del tubérculo.",
     recommended: ["Mitakron", "Katiuska", "Spasiva"],
     image: cropImages.papa, 
     accent: "Tuberización eficiente",

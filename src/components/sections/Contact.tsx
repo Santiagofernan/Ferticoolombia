@@ -66,7 +66,7 @@ export function Contact() {
             ¿Necesita asesoría <span className="text-primary-light">técnica</span> especializada?
           </h2>
           <p className="mt-6 text-lg text-white/75 max-w-2xl">
-            Nuestro equipo está listo para acompañarlo en la nutrición y desarrollo de sus cultivos.
+            Nuestro equipo está listo para acompañarlo en la nutrición y el desarrollo de sus cultivos.
           </p>
         </motion.div>
 

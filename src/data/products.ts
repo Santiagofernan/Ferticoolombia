@@ -59,7 +59,7 @@ export interface ResponsiveImage {
   srcSet: string;
 }
 
-export const products: IProduct[] = [
+const productCatalog: IProduct[] = [
   {
     slug: "mitakron",
     name: "Mitakron",
@@ -114,7 +114,7 @@ export const products: IProduct[] = [
     ficha: bonanzaFicha,
     tagline: "Fructificación y cargue de cosecha",
     description:
-      "Fertilizante compuesto complejo NPK con calcio y fuentes de alta eficiencia. La mejor opción para lograr una cosecha óptima, con gran aporte en el proceso de fructificación y cargue.",
+      "Fertilizante compuesto complejo NPK con calcio y fuentes de alta eficiencia. Una excelente opción para lograr una cosecha óptima, con un importante aporte al proceso de fructificación y cargue.",
     benefits: [
       "Optimiza fructificación y cargue",
       "Balance NPK con calcio",
@@ -129,7 +129,7 @@ export const products: IProduct[] = [
     ficha: katiuskaFicha,
     tagline: "Cargue y llenado del fruto",
     description:
-      "Fertilizante complejo compuesto NPK con magnesio y azufre, ideal para las etapas de producción, cargue o cosecha. Aporta elementos secundarios para una nutrición más completa.",
+      "Fertilizante compuesto NPK complejo con magnesio y azufre, ideal para las etapas de producción, cargue o cosecha. Aporta elementos secundarios para una nutrición más completa.",
     benefits: [
       "Aporta Mg y S secundarios",
       "Ayuda al llenado del fruto",
@@ -142,7 +142,7 @@ export const products: IProduct[] = [
     name: "Platanate",
     formula: "15-4-30",
     ficha: platanateFicha,
-    tagline: "Maduración del fruto junto con mejoras en calidad y tamaño",
+    tagline: "Maduración del fruto con mejoras en su calidad y tamaño",
     description:
       "Fertilizante compuesto mezclado NPK con alta concentración de potasio. Recomendado para la fase de engorde y maduración en cultivos con altas exigencias de K: frutales, hortalizas, cítricos y plátano.",
     benefits: [
@@ -159,9 +159,9 @@ export const products: IProduct[] = [
     ficha: spasivaFicha,
     tagline: "Mezcla física premium NPK",
     description:
-      "Mezcla física Premium con fuentes de alta eficiencia y asimilación de NPK. Formulada para etapas de máxima demanda vegetativa y productiva del cultivo.",
+      "Mezcla física premium con fuentes de alta eficiencia y asimilación de NPK. Formulada para etapas de máxima demanda vegetativa y productiva del cultivo.",
     benefits: [
-      "Eco amigable con el medio ambiente",
+      "Respetuoso con el medio ambiente",
       "Menor concentración de metales pesados",
       "Rendimiento superior por hectárea",
     ],
@@ -174,7 +174,7 @@ export const products: IProduct[] = [
     ficha: ficha25424,
     tagline: "Nutrición de precisión granulada",
     description:
-      "Fertilizante compuesto mezclado NPK para aplicación al suelo. Uso agrícola granulado, ideal para planes de fertilización técnicos.",
+      "Fertilizante compuesto mezclado NPK, de aplicación al suelo y uso agrícola granulado, ideal para planes técnicos de fertilización.",
     benefits: [
       "Relación N-K optimizada",
       "Aplicación edáfica uniforme",
@@ -183,3 +183,18 @@ export const products: IProduct[] = [
     image: { src: img25424_360, srcSet: `${img25424_240} 240w, ${img25424_360} 360w, ${img25424_520} 520w, ${img25424_720} 720w` },
   },
 ];
+
+const productOrder = [
+  "katiuska",
+  "bonanza",
+  "yurika",
+  "zaneta",
+  "mitakron",
+  "platanate",
+  "spasiva",
+  "25-4-24",
+] as const;
+
+export const products = [...productCatalog].sort(
+  (a, b) => productOrder.indexOf(a.slug as (typeof productOrder)[number]) - productOrder.indexOf(b.slug as (typeof productOrder)[number]),
+);
